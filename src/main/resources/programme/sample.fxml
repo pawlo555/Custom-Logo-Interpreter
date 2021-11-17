@@ -1,4 +1,21 @@
-<?import javafx.scene.layout.GridPane?>
-<GridPane fx:controller="programme.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import programme.elements.LynxCanvas?>
+<?import programme.elements.Console?>
+<HBox fx:controller="programme.Controller"
+      xmlns:fx="http://javafx.com/fxml"
+      layoutX="20" layoutY="20" prefHeight="680" prefWidth="1240">
+    <VBox maxWidth="340">
+        <HBox prefHeight="30">
+            <Button text="Commands"/>
+            <Button text="Procedures"/>
+            <Button text="Load file" />
+            <Button text="Clean" />
+        </HBox>
+        <Console/>
+        <Label text="Console translator" prefHeight="100"/>
+    </VBox>
+    <LynxCanvas />
+</HBox>
