@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import programme.elements.LynxCanvas?>
 <?import programme.elements.Console?>
-<HBox fx:controller="programme.Controller"
+<HBox fx:controller="programme.controllers.Controller"
       xmlns:fx="http://javafx.com/fxml"
       layoutX="20" layoutY="20" prefHeight="680" prefWidth="1240">
     <VBox maxWidth="340">
@@ -17,5 +17,5 @@
         <Console/>
         <Label text="Console translator" prefHeight="100"/>
     </VBox>
-    <LynxCanvas />
+    <LynxCanvas fx:id="canvas"/>
 </HBox>

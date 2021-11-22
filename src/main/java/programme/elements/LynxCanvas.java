@@ -2,27 +2,38 @@ package programme.elements;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class LynxCanvas extends Canvas {
     private final static double WIDTH = 900;
     private final static double HEIGHT = 680;
+    private final static double TURTLE_SIZE = 10.;
 
 
-    public LynxCanvas() throws FileNotFoundException {
+    public LynxCanvas() {
         super();
         setHeight(HEIGHT);
         setWidth(WIDTH);
 
         GraphicsContext gc = getGraphicsContext2D();
-        System.out.println("Image");
-        Image image = new Image(new FileInputStream("src/main/resources/programme/elements/lynx.jpg"));
-        gc.setFill(Color.DARKKHAKI);
-        gc.drawImage(image, 0, 0, WIDTH, HEIGHT);
+        gc.setFill(Color.RED);
         System.out.println("End");
+    }
+
+    public void paintLine(int x, int y, int newX, int newY) {
+        GraphicsContext gc = getGraphicsContext2D();
+        gc.strokeLine(x,y,newX, newY);
+    }
+
+    public void paintTurtle(int x, int y) {
+        GraphicsContext gc = getGraphicsContext2D();
+        gc.fillRect(x-TURTLE_SIZE/2, y-TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
+    }
+
+    public void repaintTurtle(int x, int y, int newX, int newY) {
+        GraphicsContext gc = getGraphicsContext2D();
+        gc.clearRect(x-TURTLE_SIZE/2, y-TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
+        paintTurtle(newX, newY);
     }
 }

@@ -5,15 +5,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import programme.controllers.Controller;
+import programme.elements.Turtle;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
-        System.out.println("Start to watch");
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent root = loader.load();
+        Controller controller = loader.getController();
+
+        Turtle turtle = new Turtle(controller.getCanvas(), 100, 100);
+        turtle.setDown();
+        turtle.moveTo(200, 200);
+        turtle.moveTo(300, 300);
         stage.setTitle("Lynx translator");
-        System.out.println("Scene");
         stage.setScene(new Scene(root, 1280, 720));
         stage.setResizable(false);
         stage.show();
