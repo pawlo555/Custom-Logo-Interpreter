@@ -21,17 +21,17 @@ public class LynxCanvas extends Canvas {
         System.out.println("End");
     }
 
-    public void paintLine(int x, int y, int newX, int newY) {
+    public void paintLine(double x, double y, double newX, double newY) {
         GraphicsContext gc = getGraphicsContext2D();
         gc.strokeLine(x,y,newX, newY);
     }
 
-    public void paintTurtle(int x, int y) {
+    public void paintTurtle(double x, double y) {
         GraphicsContext gc = getGraphicsContext2D();
         gc.fillRect(x-TURTLE_SIZE/2, y-TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
     }
 
-    public void repaintTurtle(int x, int y, int newX, int newY) {
+    public void repaintTurtle(double x, double y, double newX, double newY) {
         GraphicsContext gc = getGraphicsContext2D();
         gc.clearRect(x-TURTLE_SIZE/2, y-TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
         paintTurtle(newX, newY);

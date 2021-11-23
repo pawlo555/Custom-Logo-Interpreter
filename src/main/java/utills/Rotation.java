@@ -1,4 +1,4 @@
-package programme.utills;
+package utills;
 
 
 /*
@@ -16,11 +16,24 @@ public class Rotation {
         currentRotation = startingRotation;
     }
 
+    /*
+    Change the rotation, degreesToChange should be larger than MAX_DEGREES
+     */
     public void changeRotation(int degreesToChange) {
-        currentRotation = degreesToChange % MAX_DEGREES;
+        currentRotation = (currentRotation + degreesToChange + MAX_DEGREES) % MAX_DEGREES;
+    }
+
+    public Vector2D getUnitVector2D() {
+        double x = Math.sin(currentRotation);
+        double y = Math.cos(currentRotation);
+        return new Vector2D(x,y);
     }
 
     public int getRotation() {
         return currentRotation;
+    }
+
+    public void setDegrees(int degrees) {
+        currentRotation = degrees;
     }
 }

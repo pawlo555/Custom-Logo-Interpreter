@@ -6,7 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import programme.controllers.Controller;
-import programme.elements.Turtle;
+import interpreter.Turtle;
+import utills.Vector2D;
 
 public class Main extends Application {
 
@@ -17,10 +18,10 @@ public class Main extends Application {
         Parent root = loader.load();
         Controller controller = loader.getController();
 
-        Turtle turtle = new Turtle(controller.getCanvas(), 100, 100);
+        Turtle turtle = new Turtle(new Vector2D(100, 100));
         turtle.setDown();
-        turtle.moveTo(200, 200);
-        turtle.moveTo(300, 300);
+        turtle.moveTo(new Vector2D(200, 200));
+        turtle.moveTo(new Vector2D(300, 300));
         stage.setTitle("Lynx translator");
         stage.setScene(new Scene(root, 1280, 720));
         stage.setResizable(false);
