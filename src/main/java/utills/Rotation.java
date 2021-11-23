@@ -24,8 +24,8 @@ public class Rotation {
     }
 
     public Vector2D getUnitVector2D() {
-        double x = Math.sin(currentRotation);
-        double y = Math.cos(currentRotation);
+        double x = Math.sin(currentRotation*2*Math.PI/MAX_DEGREES);
+        double y = Math.cos(currentRotation*2*Math.PI/MAX_DEGREES);
         return new Vector2D(x,y);
     }
 

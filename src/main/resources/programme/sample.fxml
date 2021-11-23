@@ -9,13 +9,13 @@
       layoutX="20" layoutY="20" prefHeight="680" prefWidth="1240">
     <VBox maxWidth="340">
         <HBox prefHeight="30">
-            <Button text="Commands"/>
-            <Button text="Procedures"/>
-            <Button text="Load file" />
-            <Button text="Clean" />
+            <Button text="Commands" onAction="#loadConsole"/>
+            <Button text="Procedures" onAction="#loadProcedures"/>
+            <Button text="Load file" onAction="#loadFile"/>
+            <Button text="Clean" onAction="#clean"/>
         </HBox>
-        <Console/>
-        <Label text="Console translator" prefHeight="100"/>
+        <Console fx:id="console"/>
+        <Label fx:id="error_reporter" text="Console translator" prefHeight="100"/>
     </VBox>
-    <LynxCanvas fx:id="canvas"/>
+    <LynxCanvas fx:id="lynxCanvas"/>
 </HBox>

@@ -1,5 +1,7 @@
 package programme;
 
+import interpreter.Engine;
+import interpreter.Interpreter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,11 +19,10 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = loader.load();
         Controller controller = loader.getController();
+        Engine engine = new Engine(controller.getLynxCanvas());
+        Interpreter interpreter = new Interpreter(engine);
+        controller.getConsole().addListener(interpreter);
 
-        Turtle turtle = new Turtle(new Vector2D(100, 100));
-        turtle.setDown();
-        turtle.moveTo(new Vector2D(200, 200));
-        turtle.moveTo(new Vector2D(300, 300));
         stage.setTitle("Lynx translator");
         stage.setScene(new Scene(root, 1280, 720));
         stage.setResizable(false);

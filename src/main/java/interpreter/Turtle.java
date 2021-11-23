@@ -13,7 +13,7 @@ public class Turtle {
     private boolean isDown = true;
     private boolean isErasing = false;
 
-    private Colour turtleColor;
+    private Colour turtleColour;
     private final Pen pen = new Pen(Colour.BLACK);
 
     public Turtle(Vector2D position) {
@@ -43,22 +43,6 @@ public class Turtle {
     public void setNotErasing() {
         isErasing = false;
     }
-
-    public void moveTo(Vector2D newPosition) {
-        paintLineIfNeeded(newPosition);
-        changeTurtlePosition(newPosition);
-    }
-
-    private void paintLineIfNeeded(Vector2D newPosition) {
-        if (isDown) {
-            System.out.println(position);
-        }
-    }
-
-    private void changeTurtlePosition(Vector2D newPosition) {
-        position = newPosition;
-    }
-
 
     public void forward(double n) {
         Vector2D move = rotation.getUnitVector2D().multiply(n);
@@ -109,11 +93,11 @@ public class Turtle {
         rotation.setDegrees(degrees);
     }
 
-    public Colour setPenColour() {
+    public Colour getPenColour() {
         return pen.getColour();
     }
 
-    public void getPenColour(Colour newPenColour) {
+    public void setPenColour(Colour newPenColour) {
         pen.setColour(newPenColour);
     }
 
@@ -125,11 +109,11 @@ public class Turtle {
         pen.setSize(size);
     }
 
-    public Colour getTurtleColor() {
-        return turtleColor;
+    public Colour getTurtleColour() {
+        return turtleColour;
     }
 
-    public void setTurtleColor(Colour turtleColor) {
-        this.turtleColor = turtleColor;
+    public void setTurtleColour(Colour turtleColour) {
+        this.turtleColour = turtleColour;
     }
 }
