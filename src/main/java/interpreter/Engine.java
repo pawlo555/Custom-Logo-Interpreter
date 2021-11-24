@@ -25,8 +25,6 @@ public class Engine {
         backward(200);
         left(90);
         backward(100);
-        //Turtle xd = new Turtle(LynxCanvas.BASIC_POSITION);
-        //addTurtle("Janusz", xd);
     }
 
     public void changeTurtle(String newTurtleName) {

@@ -35,7 +35,7 @@ public class Console extends VBox {
 
     private void enterPressed() {
         String commandText = currentCommand.getText();
-        notifyObservers(commandText);
+        notifyObservers(commandText.substring(prefix.length(), commandText.length()-1));
         String textToPreviousCommands = prevCommands.getText() + commandText;
         prevCommands.setText(textToPreviousCommands);
         newCommand();

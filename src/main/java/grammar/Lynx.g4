@@ -78,11 +78,15 @@ fragment Vv         : ('v') ;
 fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
 
+//Bracets:
+fragment OPEN       : ('[') ;
+
 // DIGITS
 fragment DIGIT      : [0-9] ;
 NEGATINATURALNUMBER : ('-') WHITESPACE DIGIT+;
 NATURALNUMBER       : DIGIT+ ;
 FLOATNUMBER         : ('-')? DIGIT+ ([.,] DIGIT+)? ;
+FLOATNUMBER2        : ('-' | '+')? ('0' | NATURALNUMBER) ([.,] DIGIT+);
 
 //LOGIC
 NOT                 : ('!');
@@ -92,13 +96,13 @@ OR                  : ('||' | Oo Rr);
 //COMMANDS
 BACK                : (B A C K | B K);
 DISTANCE            : D I S T A N C E;
-FORWARD             : (F O R W A R D | F D);
+FORWARD             : (F O R W A R D | F D | 'forward' | 'fd' );
 GLIDE               : G I L D E;
 HEADING             : H E A D I N G;
 HOME                : H O M E;
 LEFT                : (L E F T | L T);
 POS                 : P O S;
-RIGHT               : (R I G H T | R T);
+RIGHT               : (R I G H T | R T | 'right' | 'rt' );
 SETHEADING          : (S E T H E A D I N G | S E T H);
 SETPOS              : S E T P O S;
 SETX                : S E T X;
@@ -113,7 +117,7 @@ IF                  : Ii Ff;
 
 //ADDITIONS
 WORD                : (LOWERCASE | UPPERCASE | DIGIT |'_')+ ;
-WHITESPACE          : (' ' | '\t') ;
+WHITESPACE          : (' ' | '\t')+ ;
 NEWLINE             : ('\r'? '\n' | '\r')+ ;
 IFSTATMENT          : ('<' | '>' | '==' );
 
