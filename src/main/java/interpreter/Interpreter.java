@@ -16,15 +16,32 @@ public class Interpreter implements ConsoleListener {
     public void parseCommands(String commands) {
         CharStream charStream = CharStreams.fromString(commands);
         LynxLexer lexer = new LynxLexer(charStream);
-        Token token = lexer.getToken();
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         LynxParser parser = new LynxParser(tokenStream);
         System.out.println(parser);
         ParseTree tree = parser.program();
+
+        ParseTree child = tree.getChild(0);
+        ParseTree command = child.getChild(0);
+        parseCommand(command);
         System.out.println(tree.getChildCount());
         System.out.println( parser.getBuildParseTree());
-        //ParseTree tree = context.getChild(0);
-        //System.out.println(tree);
+        ParseTree commandName = tree.getChild(0);
+
+    }
+
+    public void parseCommand(ParseTree command) {
+        String commandName = command.getChild(0).getText();
+        String commandValue = command.getChild(2).getText();
+        int value = Integer.parseInt(commandValue);
+        switch(commandName) {
+            case "forward": engine.forward(value); break;
+            case "BACK": engine.backward(value); break;
+            case "LEFT": engine.left(value); break;
+            case "RIGHT": engine.right(value);  break;
+            default: throw new IllegalStateException("Invalid commandName");
+        }
+
     }
 
     public void enterPressed(String command) {

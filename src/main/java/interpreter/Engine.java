@@ -19,12 +19,6 @@ public class Engine {
         turtlesMap.put("t", turtle);
         currentTurtle = turtle;
         this.lynxCanvas = canvas;
-        forward(100);
-        right(90);
-        forward(100);
-        backward(200);
-        left(90);
-        backward(100);
     }
 
     public void changeTurtle(String newTurtleName) {
