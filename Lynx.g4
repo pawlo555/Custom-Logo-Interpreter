@@ -6,7 +6,7 @@ program
     : line+ endFileArg
     ;
 line
-    : newLineArg? (spaceArg? cmd spaceArg?)+   newLineArg?
+    : brakeArg? (spaceArg? cmd spaceArg?)+   brakeArg?
     ;
 cmd:
     //operation commands
@@ -39,51 +39,46 @@ cmd:
 
 //operation commands
 repeat:
-    REPEAT spaceArg naturalNumberArg spaceArg insideLoop ;
-
-insideLoop:
-    '[' line']'
-    ;
-
+    REPEAT brakeArg naturalNumberArg brakeArg '[' line']' ;
 
 //number commands
 back:
-    BACK spaceArg totalnumberArg
+    BACK brakeArg totalnumberArg
     ;
 forward:
-    FORWARD spaceArg totalnumberArg
+    FORWARD brakeArg totalnumberArg
     ;
 left:
-    LEFT spaceArg totalnumberArg
+    LEFT brakeArg totalnumberArg
     ;
 right:
-    RIGHT spaceArg totalnumberArg
+    RIGHT brakeArg totalnumberArg
     ;
 setheading:
-    SETHEADING spaceArg totalnumberArg
+    SETHEADING brakeArg totalnumberArg
     ;
 setx:
-    SETX spaceArg totalnumberArg
+    SETX brakeArg totalnumberArg
     ;
 sety:
-    SETY spaceArg totalnumberArg
+    SETY brakeArg totalnumberArg
     ;
 
 //bracket commands
 setpos:
-    SETPOS spaceArg  '[' spaceArg totalnumberArg spaceArg ',' spaceArg totalnumberArg  spaceArg']'
+    SETPOS brakeArg  '[' brakeArg totalnumberArg brakeArg ',' brakeArg totalnumberArg  brakeArg']'
     ;
 
 //word commands
 distance:
-    DISTANCE spaceArg stringArg
+    DISTANCE brakeArg stringArg
     ;
 towards:
-    TOWARDS spaceArg stringArg
+    TOWARDS brakeArg stringArg
     ;
 
 gilde:
-    GLIDE spaceArg totalnumberArg spaceArg totalnumberArg
+    GLIDE brakeArg totalnumberArg brakeArg totalnumberArg
     ;
 
 //just commands
@@ -109,6 +104,9 @@ spaceArg:
     ;
 newLineArg:
     NEWLINE+
+    ;
+brakeArg:
+    (spaceArg | newLineArg)+
     ;
 naturalNumberArg:
     NATURALNUMBER
@@ -227,6 +225,7 @@ YCOR:
 
 
 
+
 //LOGIC
 NOT:
     'NOT'
@@ -266,6 +265,5 @@ WHITESPACE:
 NEWLINE:
     '\r'? '\n'
     | '\r';
-//IFSTATMENT: ('<' | '>' | '==');
 
 
