@@ -15,10 +15,9 @@ public class Engine {
     private Turtle currentTurtle;
 
     public Engine(LynxCanvas canvas) {
-        Turtle turtle = new Turtle(new Vector2D(0,0));
-        turtlesMap.put("t", turtle);
-        currentTurtle = turtle;
         this.lynxCanvas = canvas;
+        Turtle turtle = new Turtle(new Vector2D(0,0));
+        addTurtle("t", turtle);
     }
 
     public void changeTurtle(String newTurtleName) {
@@ -35,7 +34,8 @@ public class Engine {
         }
         turtlesMap.put(newTurtleName, newTurtle);
         Vector2D turtlePosition = newTurtle.getPosition();
-        lynxCanvas.paintTurtle(turtlePosition.x, turtlePosition.y);
+        Vector2D toPaint = LynxCanvas.toCanvasCoordinates(turtlePosition);
+        lynxCanvas.paintTurtle(toPaint.x, toPaint.y);
     }
 
     public void removeTurtle(String toRemoveTurtleName) {
