@@ -1,9 +1,9 @@
 package interpreter;
 
-import utills.Colour;
-import utills.Pen;
-import utills.Rotation;
-import utills.Vector2D;
+import utils.Colour;
+import utils.Pen;
+import utils.Rotation;
+import utils.Vector2D;
 
 public class Turtle {
 
@@ -14,7 +14,7 @@ public class Turtle {
     private boolean isErasing = false;
 
     private Colour turtleColour;
-    private final Pen pen = new Pen(Colour.BLACK);
+    private final Pen pen = new Pen(Colour.BLACK, 1);
 
     public Turtle(Vector2D position) {
         this.position = position;

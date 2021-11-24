@@ -1,8 +1,8 @@
 package interpreter;
 
 import programme.elements.LynxCanvas;
-import utills.Colour;
-import utills.Vector2D;
+import utils.Colour;
+import utils.Vector2D;
 
 import java.util.HashMap;
 
@@ -17,7 +17,8 @@ public class Engine {
     public Engine(LynxCanvas canvas) {
         this.lynxCanvas = canvas;
         Turtle turtle = new Turtle(new Vector2D(0,0));
-        addTurtle("t", turtle);
+        addTurtle(BASE_TURTLE_NAME, turtle);
+        currentTurtle = turtle;
     }
 
     public void changeTurtle(String newTurtleName) {
@@ -88,7 +89,7 @@ public class Engine {
         forward(-n);
     }
 
-    // TODO we should turn the turtle on screen to
+    // TODO we should turn the turtle on screen too
     public void right(int degrees) {
         currentTurtle.right(degrees);
     }
@@ -152,5 +153,4 @@ public class Engine {
     public void setTurtleColour(Colour turtleColor) {
         currentTurtle.setTurtleColour(turtleColor);
     }
-
 }

@@ -1,4 +1,4 @@
-package utills;
+package utils;
 
 
 /*
@@ -13,7 +13,7 @@ public class Rotation {
     public Rotation() {}
 
     public Rotation(int startingRotation) {
-        currentRotation = startingRotation;
+        currentRotation = startingRotation % MAX_DEGREES;
     }
 
     /*

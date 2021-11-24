@@ -1,9 +1,10 @@
-package utills;
+package utils;
 
 import java.util.Objects;
-import java.util.Vector;
 
 public class Vector2D {
+    public final static double DELTA = 1e-8;
+
     public final double x;
     public final double y;
 
@@ -20,14 +21,6 @@ public class Vector2D {
     @Override
     public String toString() {
         return "(" + this.x + "," + this.y + ")";
-    }
-
-    public boolean precedes(Vector2D other) {
-        return this.y <= other.y && this.x <= other.x;
-    }
-
-    public boolean follows(Vector2D other) {
-        return this.y >= other.y && this.x >= other.x;
     }
 
     public Vector2D upperRight(Vector2D other) {
@@ -64,7 +57,7 @@ public class Vector2D {
         if (!(other instanceof Vector2D))
             return false;
         Vector2D that = (Vector2D) other;
-        return this.x == that.x && this.y == that.y;
+        return this.x - that.x < DELTA && this.y - that.y < DELTA;
     }
 
     public Vector2D opposite() {

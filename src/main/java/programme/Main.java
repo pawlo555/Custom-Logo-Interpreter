@@ -8,8 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import programme.controllers.Controller;
-import interpreter.Turtle;
-import utills.Vector2D;
 
 public class Main extends Application {
 

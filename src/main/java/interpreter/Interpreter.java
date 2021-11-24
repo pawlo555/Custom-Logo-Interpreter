@@ -35,8 +35,8 @@ public class Interpreter implements ConsoleListener {
         String commandName = command.getChild(0).getText();
         String commandValue = command.getChild(2).getText();
         int value = Integer.parseInt(commandValue);
-        switch(commandName) {
-            case "forward": engine.forward(value); break;
+        switch(commandName.toUpperCase()) {
+            case "FORWARD": engine.forward(value); break;
             case "BACK": engine.backward(value); break;
             case "LEFT": engine.left(value); break;
             case "RIGHT": engine.right(value);  break;

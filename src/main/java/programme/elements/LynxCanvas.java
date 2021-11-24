@@ -4,7 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import utills.Vector2D;
+import utils.Vector2D;
 
 
 public class LynxCanvas extends Group {
