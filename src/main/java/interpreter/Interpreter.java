@@ -20,7 +20,8 @@ public class Interpreter implements ConsoleListener {
         LynxParser parser = new LynxParser(tokenStream);
         System.out.println(parser);
         ParseTree tree = parser.program();
-
+        String result = tree.toStringTree(parser);
+        System.out.println(result);
         ParseTree child = tree.getChild(0);
         ParseTree command = child.getChild(0);
         parseCommand(command);

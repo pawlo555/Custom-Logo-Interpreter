@@ -2,141 +2,929 @@ grammar Lynx; // Define a grammar called Hello
 
 // PARSER
 
-program             : line+ endFileArg ;
-line                : command+ (newLineArg | endFileArg);
-command             : numberCommand | bracketCommand | wordCommand | dubleNumberCommand | justCommandName | repeat | spaceArg;
+program
+    : line+ endFileArg
+    ;
+line
+    : brakeArg? (spaceArg? cmd spaceArg?)+   brakeArg?
+    ;
+cmd:
+    //operation commands
+    repeat
+    //number commands
+    | forward
+    | back
+    | left
+    | right
+    | setheading
+    | setx
+    | sety
+    // bracket commands
+    | setpos
+    // word commands
+    | distance
+    | towards
+    // duble number commands
+    | gilde
+    // just commands
+    | heading
+    | home
+    | pos
+    | xcor
+    | ycor
+    ;
 
-numberCommand       : numberCommandName spaceArg totalnumberArg ;
-bracketCommand      : bracketCommandName spaceArg '[' totalnumberArg ',' totalnumberArg ']';
-wordCommand         : wordCommandName spaceArg stringArg;
-dubleNumberCommand  : dubleNumberCommandName spaceArg totalnumberArg spaceArg totalnumberArg;
 
-repeat              : repeatName spaceArg naturalNumberArg spaceArg insideLoop ;
 //if                : IF WHITESPACE (NATURALNUMBER | )
-insideLoop          : '[' spaceArg? multipleInside spaceArg?']';
-multipleInside      : ((command spaceArg)+ command | command);
 
-numberCommandName   : (BACK | FORWARD | LEFT | RIGHT | SETHEADING | SETX | SETY);
-bracketCommandName  : (SETPOS);
-wordCommandName     : (DISTANCE | TOWARDS);
-justCommandName     : (HEADING | HOME | POS | XCOR | YCOR);
-dubleNumberCommandName  : (GLIDE);
-repeatName          : REPEAT;
+//operation commands
+repeat:
+    REPEAT brakeArg naturalNumberArg brakeArg '[' line']' ;
 
-stringArg           :WORD;
-totalnumberArg      :(NATURALNUMBER | NEGATINATURALNUMBER);
-naturalNumberArg    : NATURALNUMBER;
-spaceArg            : WHITESPACE;
-newLineArg          : NEWLINE;
-endFileArg          : EOF;
+//number commands
+back:
+    BACK brakeArg totalnumberArg
+    ;
+forward:
+    FORWARD brakeArg totalnumberArg
+    ;
+left:
+    LEFT brakeArg totalnumberArg
+    ;
+right:
+    RIGHT brakeArg totalnumberArg
+    ;
+setheading:
+    SETHEADING brakeArg totalnumberArg
+    ;
+setx:
+    SETX brakeArg totalnumberArg
+    ;
+sety:
+    SETY brakeArg totalnumberArg
+    ;
+
+//bracket commands
+setpos:
+    SETPOS brakeArg  '[' brakeArg totalnumberArg brakeArg ',' brakeArg totalnumberArg  brakeArg']'
+    ;
+
+//word commands
+distance:
+    DISTANCE brakeArg stringArg
+    ;
+towards:
+    TOWARDS brakeArg stringArg
+    ;
+
+gilde:
+    GLIDE brakeArg totalnumberArg brakeArg totalnumberArg
+    ;
+
+//just commands
+heading:
+    HEADING
+    ;
+home:
+    HOME
+    ;
+pos:
+    POS
+    ;
+xcor:
+    XCOR
+    ;
+ycor:
+    YCOR
+    ;
+
+//arguments
+spaceArg:
+    (WHITESPACE)+
+    ;
+newLineArg:
+    NEWLINE+
+    ;
+brakeArg:
+    (spaceArg | newLineArg)+
+    ;
+naturalNumberArg:
+    NATURALNUMBER
+    ;
+totalnumberArg:
+    NATURALNUMBER
+    | NEGATINATURALNUMBER
+    ;
+stringArg:
+    OTHERWORD
+    ;
+endFileArg:
+    EOF
+    ;
 
 
 // LEXER
-//BIG LETERS
-fragment A          : ('A') ;
-fragment B          : ('B') ;
-fragment C          : ('C') ;
-fragment D          : ('D') ;
-fragment E          : ('E') ;
-fragment F          : ('F') ;
-fragment G          : ('G') ;
-fragment H          : ('H') ;
-fragment I          : ('I') ;
-fragment J          : ('J') ;
-fragment K          : ('K') ;
-fragment L          : ('L') ;
-fragment M          : ('M') ;
-fragment N          : ('N') ;
-fragment O          : ('O') ;
-fragment P          : ('P') ;
-fragment R          : ('R') ;
-fragment S          : ('S') ;
-fragment T          : ('T') ;
-fragment U          : ('U') ;
-fragment W          : ('W') ;
-fragment X          : ('X') ;
-fragment Y          : ('Y') ;
-fragment Z          : ('Z') ;
-fragment Q          : ('Q') ;
-fragment V          : ('V') ;
-
-//SMALL LETERS
-fragment Aa         : ('a') ;
-fragment Bb         : ('b') ;
-fragment Cc         : ('c') ;
-fragment Dd         : ('d') ;
-fragment Ee         : ('e') ;
-fragment Ff         : ('f') ;
-fragment Gg         : ('g') ;
-fragment Hh         : ('h') ;
-fragment Ii         : ('i') ;
-fragment Jj         : ('j') ;
-fragment Kk         : ('k') ;
-fragment Ll         : ('l') ;
-fragment Mm         : ('m') ;
-fragment Nn         : ('n') ;
-fragment Oo         : ('o') ;
-fragment Pp         : ('p') ;
-fragment Rr         : ('r') ;
-fragment Ss         : ('s') ;
-fragment Tt         : ('t') ;
-fragment Uu         : ('u') ;
-fragment Ww         : ('w') ;
-fragment Xx         : ('x') ;
-fragment Yy         : ('y') ;
-fragment Zz         : ('z') ;
-fragment Qq         : ('q') ;
-fragment Vv         : ('v') ;
 
 //ALL LETERS
-fragment LOWERCASE  : [a-z] ;
-fragment UPPERCASE  : [A-Z] ;
+fragment LOWERCASE:
+    [a-z]
+    ;
+fragment UPPERCASE:
+    [A-Z]
+    ;
 
-//Bracets:
-fragment OPEN       : ('[') ;
 //Digit fragment
-fragment DIGIT      : [0-9] ;
+fragment DIGIT:
+    [0-9]
+    ;
 
-//KEY COMMANDS
-REPEAT              : Rr Ee Pp Ee Aa Tt;
-IF                  : Ii Ff;
+//COMMANDS MOVING xx1xx
+BACK:
+    'BACK'
+    |'back'
+    |'BK'
+    |'bk'
+    ;
+DISTANCE:
+    'DISTANCE'
+    | 'distance'
+    ;
+FORWARD:
+    'FORWARD'
+    | 'FD'
+    | 'forward'
+    | 'fd'
+    ;
+GLIDE:
+    'GILDE'
+    |'gilde'
+    ;
+HEADING:
+    'HEADING'
+    |'heading'
+    ;
+HOME:
+    'HOME'
+    | 'home'
+    ;
+LEFT:
+    'LEFT'
+    | 'left'
+    | 'LT'
+    | 'lt'
+    ;
+POS:
+    'POS'
+    | 'pos'
+    ;
+RIGHT:
+    'RIGHT'
+    | 'RT'
+    | 'right'
+    | 'rt'
+    ;
+SETHEADING:
+    'SETHEADING'
+    | 'setheading'
+    | 'SETH'
+    | 'seth'
+    ;
+SETPOS:
+    'SETPOS'
+    | 'setpos'
+    ;
+SETX:
+    'SETX'
+    | 'setx'
+    ;
+SETY:
+    'SETY'
+    | 'sety'
+    ;
+TOWARDS:
+    'TOWARDS'
+    | 'towards'
+    ;
+XCOR:
+    'XCOR'
+    | 'xcor'
+    ;
+YCOR:
+    'YCOR'
+    | 'ycor'
+    ;
 
-//COMMANDS MOVING
-BACK                : (B A C K | B K);
-DISTANCE            : D I S T A N C E;
-FORWARD             : (F O R W A R D | F D | 'forward' | 'fd' );
-GLIDE               : G I L D E;
-HEADING             : H E A D I N G;
-HOME                : H O M E;
-LEFT                : (L E F T | L T);
-POS                 : P O S;
-RIGHT               : (R I G H T | R T | 'right' | 'rt' );
-SETHEADING          : (S E T H E A D I N G | S E T H);
-SETPOS              : S E T P O S;
-SETX                : S E T X;
-SETY                : S E T Y;
-TOWARDS             : T O W A R D S;
-XCOR                : X C O R;
-YCOR                : Y C O R;
-//COMMANDS DRAVING
+//COMMANDS DRAVING xx2xx
+BG:
+    'BG'
+    | 'bg'
+    ;
+CG:
+    'CG'
+    | 'cg'
+    ;
+CLEAN:
+    'CLEAN'
+    | 'clean'
+    ;
+COLOR:
+    'COLOR'
+    | 'color'
+    ;
+COLORUNDER:
+    'COLORUNDER'
+    | 'colorunder'
+    ;
+FILL:
+    'FILL'
+    | 'fill'
+    ;
+FREEZEBG:
+    'FREEZEBG'
+    | 'freezebg'
+    ;
+NAMEFROMCOLOUR:
+    'NAMEFROMCOLOR'
+    | 'namefromcolor'
+    ;
+PD:
+    'PD'
+    | 'pd'
+    ;
+PE:
+    'PE'
+    | 'pe'
+    ;
+PENSIZE:
+    'PENSIZE'
+    | 'pensize'
+    ;
+PU:
+    'PU'
+    | 'pu'
+    ;
+SETBG:
+    'SETBG'
+    | 'setbg'
+    ;
+SETCOLOR:
+    'SETCOLOR'
+    | 'setcolor'
+    | 'SETC'
+    | 'setc'
+    ;
+SETPENSIZE:
+    'SETPENSIZE'
+    | 'setpensize'
+    ;
+STAMP:
+    'STAMP'
+    | 'stamp'
+    ;
+UNFREEZEBG:
+    'UNFREEZEBG'
+    | 'unfreezebg'
+    ;
+
+//commands turtle state xx3xx
+HT:
+    'HT'
+    | 'ht'
+    ;
+INBACK:
+    'INBACK'
+    | 'INBACK'
+    ;
+INFRONT:
+    'INFRONT'
+    | 'infront'
+    ;
+OPACITY:
+    'OPACITY'
+    | 'opacity'
+    ;
+SETOPACITY:
+    'SETOPACITY'
+    | 'setopacity'
+    ;
+SETSHAPE:
+    'SETSHAPE'
+    | 'setshape'
+    ;
+SETSIZE:
+    'SETSIZE'
+    | 'setsize'
+    ;
+SHAPE:
+    'SHAPE'
+    | 'shape'
+    ;
+SIZE:
+    'SIZE'
+    | 'size'
+    ;
+ST:
+    'ST'
+    | 'st'
+    ;
+
+//commands turtle (other) xx4xx
+CLICKOFF:
+    'CLICKOFF'
+    | 'clickoff'
+    ;
+CLICKON:
+    'CLICKON'
+    | 'clickon'
+    ;
+CLONE:
+    'CLONE'
+    | 'clone'
+    ;
+TELL:
+    'TELL'
+    | 'tell'
+    ;
+TOUCHINGX:
+    'TOUCHING?'
+    | 'toughing?'
+    ;
+WHO:
+    'WHO'
+    | 'who'
+    ;
+
+//commands text xx5xx
+ANNOUNCE:
+    'ANNOUNCE'
+    | 'announce'
+    ;
+ASCII:
+    'ASCII'
+    | 'ascii'
+    ;
+BOTTOM:
+    'BOTTOM'
+    | 'bottom'
+    ;
+CB:
+    'CB'
+    | 'cb'
+    ;
+CC:
+    'CC'
+    | 'cc'
+    ;
+CD:
+    'CD'
+    | 'cd'
+    ;
+CF:
+    'CF'
+    | 'cf'
+    ;
+CHAR:
+    'CHAR'
+    | 'char'
+    ;
+CLEARTEXT:
+    'CLEARTEXT'
+    | 'cleartext'
+    | 'CT'
+    | 'ct'
+    ;
+CU:
+    'CU'
+    | 'cu'
+    ;
+DELETE:
+    'DELETE'
+    | 'delate'
+    ;
+EOL:
+    'EOL'
+    | 'eol'
+    ;
+EOT:
+    'EOT?'
+    | 'eot?'
+    ;
+HIDETEXT:
+    'HIDETEXT'
+    | 'hidetext'
+    ;
+INSERT:
+    'INSERT'
+    | 'insert'
+    ;
+PRINT:
+    'PRINT'
+    | 'print'
+    | 'PR'
+    | 'pr'
+    ;
+SELECT:
+    'SELECT'
+    | 'select'
+    ;
+SELECTED:
+    'SELECTED'
+    | 'selected'
+    ;
+SHOW:
+    'SHOW'
+    | 'show'
+    ;
+SHOWTEXT:
+    'SHOWTEXT'
+    | 'showtext'
+    ;
+SOL:
+    'SOL'
+    | 'sol'
+    ;
+TEXTCOUNT:
+    'TEXTCOUNT'
+    | 'textcount'
+    ;
+TEXTITEM:
+    'TEXTITEM'
+    | 'textitem'
+    ;
+TEXTPICK:
+    'TEXTPICK'
+    | 'textpick'
+    ;
+TEXTWHO:
+    'TEXTWHO'
+    | 'textwho'
+    ;
+TOP:
+    'TOP'
+    | 'top'
+    ;
+TRANSPARENT:
+    'TRANSPARENT'
+    | 'transparent'
+    ;
+UNSELECT:
+    'UNSELECT'
+    | 'unselect'
+    ;
+
+//commands words and lists xx5xx
+BUTFIRST:
+    'BUTFIRST'
+    | 'butfirst'
+    | 'BT'
+    | 'bt'
+    ;
+BUTLAST:
+    'BUTLAST'
+    | 'butlast'
+    | 'BT'
+    | 'bt'
+    ;
+COUNT:
+    'COUNT'
+    | 'count'
+    ;
+EMPTY:
+    'EMPTY?'
+    | 'empty?'
+    ;
+EQUALX:
+    'EQUAL?'
+    | 'equal?'
+    ;
+FIRST:
+    'FIRST'
+    | 'first'
+    ;
+FPUT:
+    'FPUT'
+    | 'eput'
+    ;
+IDENTICALX:
+    'IDENTICAL?'
+    | 'identical?'
+    ;
+ITEM:
+    'ITEM'
+    | 'item'
+    ;
+LAST:
+    'LAST'
+    | 'last'
+    ;
+LIST:
+    'LIST'
+    | 'list'
+    ;
+LISTX:
+    'LIST?'
+    | 'list?'
+    ;
+LPUT:
+    'LPUT'
+    | 'lput'
+    ;
+MEMBERX:
+    'MEMBER?'
+    | 'member?'
+    ;
+NUMBER:
+    'NUMBER?'
+    | 'number?'
+    ;
+PARSE:
+    'PARSE'
+    | 'parse'
+    ;
+PICK:
+    'PICK'
+    | 'pick'
+    ;
+SENTENCE:
+    'SENTENCE'
+    | 'sentence'
+    | 'SE'
+    | 'se'
+    ;
+WORD:
+    'WORD'
+    | 'word'
+    ;
+WORDX:
+    'WORD?'
+    | 'word?'
+    ;
+//commands number and maths xx6xx
+ABS:
+    'ABS'
+    | 'abs'
+    ;
+ARCTAN:
+    'ARCTAN'
+    | 'arctan'
+    ;
+COS:
+    'COS'
+    | 'cos'
+    ;
+DIFFERENCE:
+    'DIFFERENCE'
+    | 'difrence'
+    ;
+EXP:
+    'EXP'
+    | 'exp'
+    ;
+GREATERX:
+    'GREATER?'
+    | 'greater?'
+    ;
+INT:
+    'INT'
+    | 'int'
+    ;
+LESSX:
+    'LESS?'
+    | 'less?'
+    ;
+LN:
+    'LN'
+    | 'ln'
+    ;
+LOG:
+    'LOG'
+    | 'log'
+    ;
+MINUS:
+    'MINUS'
+    | 'minus'
+    ;
+PI:
+    'PI'
+    | 'pi'
+    ;
+POWER:
+    'POWER'
+    | 'power'
+    ;
+PRODUCT:
+    'PRODUCT'
+    | 'product'
+    ;
+QUOTIENT:
+    'QUOTIENT'
+    | 'quotient'
+    ;
+RANDOM:
+    'RANDOM'
+    | 'random'
+    ;
+REMAINDER:
+    'REMAINDER'
+    | 'remainder'
+    ;
+ROUND:
+    'ROUND'
+    | 'round'
+    ;
+SIN:
+    'SIN'
+    | 'sin'
+    ;
+SQRT:
+    'SQRT'
+    | 'sqrt'
+    ;
+SUM:
+    'SUM'
+    | 'sum'
+    ;
+TAN:
+    'TAN'
+    | 'tan'
+    ;
+
+//commands Objects xx7xx
+ASK:
+    'ASK'
+    | 'ask'
+    ;
+FREEZE:
+    'FREEZE'
+    | 'freeze'
+    ;
+GET:
+    'GET'
+    | 'get'
+    ;
+NEWPAGE:
+    'NEWPAGE'
+    | 'newpage'
+    ;
+NEWSLIDER:
+    'NEWSLIDER'
+    | 'newslider'
+    ;
+NEWTEXT:
+    'NEWTEXT'
+    | 'newtext'
+    ;
+NEWTURTLE:
+    'NEWTURTLE'
+    | 'newturtle'
+    ;
+REMOVE:
+    'REMOVE'
+    | 'remove'
+    ;
+RENAME:
+    'RENAME'
+    | 'rename'
+    ;
+SET:
+    'SET'
+    | 'set'
+    ;
+TALKTO:
+    'TALKTO'
+    | 'talkto'
+    ;
+UNFREEZE:
+    'UNFREEZE'
+    | 'unfreeze'
+    ;
+
+//commands Timer xx8xx
+RESETT:
+    'RESETT'
+    | 'restt'
+    ;
+TIMER:
+    'TIMER'
+    | 'timer'
+    ;
+
+//commands Variables xx9xx
+CLEARNAME:
+    'CLEARNAME'
+    | 'clearname'
+    ;
+CLEARNAMES:
+    'CLEARNAMES'
+    | 'clearnames'
+    ;
+LET:
+    'LET'
+    | 'let'
+    ;
+MAKE:
+    'MAKE'
+    | 'make'
+    ;
+NAMEX:
+    'NAME?'
+    | 'name?'
+    ;
+NAMES:
+    'NAMES'
+    | 'names'
+    ;
+THING:
+    'THING'
+    | 'thing'
+    ;
+//commands Pages and project  xx10xx
+GETPAGE:
+    'GETPAGE'
+    | 'getpage'
+    ;
+NAMEPAGE:
+    'NAMEPAGE'
+    | 'namepage'
+    ;
+NEXTPAGE:
+    'NEXTPAGE'
+    | 'nextpage'
+    ;
+PAGELIST:
+    'PAGELIST'
+    | 'pagelist'
+    ;
+PREVPAGE:
+    'PREVPAGE'
+    | 'prevpage'
+    ;
+PROJECTSIZE:
+    'PROJECTSIZE'
+    | 'projectsize'
+    ;
+//commands logic xxx11xx
+AND:
+    'AND'
+    | 'and'
+    | '&&'
+    ;
+IF:
+    'IF'
+    | 'if'
+    ;
+IFELSE:
+    'IFELSE'
+    | 'ifelse'
+    ;
+NOT:
+    'NOT'
+    |'not'
+    | '!'
+    ;
+OR:
+    'OR'
+    | 'or'
+    | '||'
+    ;
+
+//commands interaction xxx12xx
+ANSWER:
+    'ANSWER'
+    | 'answer'
+    ;
+KEYX:
+    'KEY?'
+    | 'key?'
+    ;
+MOUSEPOS:
+    'MOUSEPOS'
+    | 'mousepos'
+    ;
+PEEKCHAR:
+    'PEEKCHAR'
+    | 'peekchar'
+    ;
+QUESTION:
+    'QUESTION'
+    | 'question'
+    ;
+READCHAR:
+    'READCHAR'
+    | 'readchar'
+    ;
+SAY:
+    'SAY'
+    | 'say'
+    ;
+SAYAS:
+    'SAYAS'
+    | 'says'
+    ;
+SKIPCHAR:
+    'SKIPCHAR'
+    | 'skipchar'
+    ;
+VOICES:
+    'VOICES'
+    | 'voices'
+    ;
+//commands Control and events xxx13xx
+BROADCAST:
+    'BROADCAST'
+    | 'broadcast'
+    ;
+CANCEL:
+    'CANCEL'
+    | 'cancel'
+    ;
+CAREFULLY:
+    'CAREFULLY'
+    | 'carefully'
+    ;
+DOLIST:
+    'DOLIST'
+    | 'dolist'
+    ;
+DOTIMES:
+    'DOTIMES'
+    | 'dotimes'
+    ;
+ERRORMESSAGE:
+    'ERRORMESSAGE'
+    | 'errormessage'
+    ;
+EVERYONE:
+    'EVERYONE'
+    | 'everyone'
+    ;
+FOREVER:
+    'FOREVER'
+    | 'forever'
+    ;
+LAUNCH:
+    'LAUNCH'
+    | 'launch'
+    ;
+OUTPUT:
+    'OUTPUT'
+    | 'output'
+    ;
+REPEAT:
+    'REPEAT'
+    | 'repeat'
+    ;
+RUN:
+    'RUN'
+    | 'run'
+    ;
+STOP:
+    'STOP'
+    | 'stop'
+    ;
+STOPALL:
+    'STOPALL'
+    | 'stopall'
+    ;
+STOPME:
+    'STOPME'
+    | 'stopme'
+    ;
+WAIT:
+    'WAIT'
+    | 'wait'
+    ;
 
 
 
-//LOGIC
-NOT                 : ('!');
-AND                 : ('&&' | Aa Nn Dd);
-OR                  : ('||' | Oo Rr);
+
+
+
+
+
+
+
 
 // DIGITS
-NEGATINATURALNUMBER : ('-') WHITESPACE DIGIT+;
-NATURALNUMBER       : DIGIT+ ;
-FLOATNUMBER         : ('-')? DIGIT+ ([.,] DIGIT+)? ;
-FLOATNUMBER2        : ('-' | '+')? ('0' | NATURALNUMBER) ([.,] DIGIT+);
+NATURALNUMBER:
+    '+'? DIGIT+
+    ;
+NEGATINATURALNUMBER:
+    '-' WHITESPACE? DIGIT+
+    ;
+FLOATNUMBER:
+    ('-'|'+')? DIGIT+ ([.,] DIGIT+)?
+    ;
 
 //ADDITIONS
-WORD                : (LOWERCASE | UPPERCASE | DIGIT |'_')+ ;
-WHITESPACE          : (' ' | '\t')+ ;
-NEWLINE             : ('\r'? '\n' | '\r')+ ;
-IFSTATMENT          : ('<' | '>' | '==');
-
+OTHERWORD:
+    (LOWERCASE | UPPERCASE | DIGIT |'_')+
+    ;
+WHITESPACE:
+    ' '
+    | '\t'
+    ;
+NEWLINE:
+    '\r'? '\n'
+    | '\r';
 
