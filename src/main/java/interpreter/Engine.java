@@ -119,7 +119,11 @@ public class Engine {
     }
 
     public void setPosition(double newX, double newY) {
+        Vector2D old = LynxCanvas.toCanvasCoordinates(currentTurtle.getPosition());
         currentTurtle.setPosition(newX, newY);
+        Vector2D current = LynxCanvas.toCanvasCoordinates(currentTurtle.getPosition());
+
+        lynxCanvas.repaintTurtle(old.x, old.y, current.x, current.y);
     }
 
     public int getRotation() {

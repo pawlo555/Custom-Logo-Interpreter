@@ -1,6 +1,7 @@
 package programme;
 
 import interpreter.Engine;
+import interpreter.Executor;
 import interpreter.Interpreter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +19,8 @@ public class Main extends Application {
         Parent root = loader.load();
         Controller controller = loader.getController();
         Engine engine = new Engine(controller.getLynxCanvas());
-        Interpreter interpreter = new Interpreter(engine);
+        Executor executor = new Executor(engine);
+        Interpreter interpreter = new Interpreter(executor);
         controller.getConsole().addListener(interpreter);
 
         stage.setTitle("Lynx translator");
