@@ -2,6 +2,8 @@ package utils;
 
 import org.junit.Test;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestVector2D {
@@ -73,6 +75,15 @@ public class TestVector2D {
         assertSame(vector2D, vector2D);
         String x = "other type";
         assertNotEquals(vector2D, x);
+        assertEquals(vector2D, vector2D);
+    }
+
+    @Test
+    public void testHashCode() {
+        Vector2D vector2D = new Vector2D(2.0,4.0);
+        int hash = Objects.hash(2.0, 4.0);
+        int hash2 = vector2D.hashCode();
+        assertEquals(hash, hash2);
     }
 
 }

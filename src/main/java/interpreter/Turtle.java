@@ -8,7 +8,7 @@ import utils.Vector2D;
 public class Turtle {
 
     private Vector2D position;
-    private final Rotation rotation = new Rotation();
+    private Rotation rotation = new Rotation();
 
     private boolean isDown = true;
     private boolean isErasing = false;
@@ -85,12 +85,12 @@ public class Turtle {
         position = new Vector2D(newX, newY);
     }
 
-    public int getRotation() {
-        return rotation.getRotation();
+    public Rotation getRotation() {
+        return rotation;
     }
 
-    public void setRotation(int degrees) {
-        rotation.setDegrees(degrees);
+    public void setRotation(Rotation rotation) {
+        this.rotation = rotation;
     }
 
     public Colour getPenColour() {

@@ -2,6 +2,7 @@ package interpreter;
 
 import programme.elements.LynxCanvas;
 import utils.Colour;
+import utils.Rotation;
 import utils.Vector2D;
 
 import java.util.HashMap;
@@ -126,12 +127,12 @@ public class Engine {
         lynxCanvas.repaintTurtle(old.x, old.y, current.x, current.y);
     }
 
-    public int getRotation() {
+    public Rotation getRotation() {
         return currentTurtle.getRotation();
     }
 
-    public void setRotation(int degrees) {
-        currentTurtle.setRotation(degrees);
+    public void setRotation(Rotation rotation) {
+        currentTurtle.setRotation(rotation);
     }
 
     public Colour getPenColour() {

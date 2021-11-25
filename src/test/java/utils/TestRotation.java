@@ -3,20 +3,23 @@ package utils;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class TestRotation {
 
     @Test
     public void testConstructor(){
+        Rotation simpleRotation = new Rotation();
         Rotation rotation = new Rotation(370);
-        assertEquals(rotation.getRotation(), 10);
+        assertEquals(0, simpleRotation.getRotation());
+        assertEquals(10, rotation.getRotation());
     }
 
     @Test
     public void testChangeRotation() {
         Rotation rotation = new Rotation(50);
         rotation.changeRotation(-60);
-        assertEquals(rotation.getRotation(), 350);
+        assertEquals(350, rotation.getRotation());
     }
 
     @Test
@@ -35,5 +38,18 @@ public class TestRotation {
         double y = 0.5;
         Vector2D trueResult = new Vector2D(x,y);
         assertEquals(trueResult, unitVector);
+    }
+
+    @Test
+    public void testEquals() {
+        Rotation rotation = new Rotation(40);
+        Rotation otherRotation = new Rotation(60);
+        Rotation anotherRotation = new Rotation(40);
+        Object object = new Object();
+
+        assertEquals(rotation, rotation);
+        assertNotEquals(rotation, object);
+        assertNotEquals(rotation, otherRotation);
+        assertEquals(rotation, anotherRotation);
     }
 }

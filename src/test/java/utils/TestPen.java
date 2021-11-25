@@ -19,6 +19,6 @@ public class TestPen {
     public void assertionTest() {
         AssertionError thrown = assertThrows(AssertionError.class, () ->new Pen(Colour.WHITE, 0));
 
-        assertEquals("Pen size need to be positive", thrown.getMessage());
+        assertEquals(Pen.ASSERTION_MESSAGE, thrown.getMessage());
     }
 }

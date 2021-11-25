@@ -5,15 +5,17 @@ package utils;
 Class to represent logic connected with turning a turtle
  */
 public class Rotation {
-    private static final int BASIC_ROTATION = 0;
+    public static final int BASIC_ROTATION = 0;
     private static final int MAX_DEGREES = 360;
 
     private int currentRotation = BASIC_ROTATION;
 
-    public Rotation() {}
+    public Rotation() {
+        setDegrees(BASIC_ROTATION);
+    }
 
     public Rotation(int startingRotation) {
-        currentRotation = startingRotation % MAX_DEGREES;
+        setDegrees(startingRotation);
     }
 
     /*
@@ -34,6 +36,17 @@ public class Rotation {
     }
 
     public void setDegrees(int degrees) {
-        currentRotation = degrees;
+        currentRotation = degrees % MAX_DEGREES;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        else if (!(other instanceof Rotation)) {
+            return false;
+        }
+        else return ((Rotation) other).currentRotation == currentRotation;
     }
 }

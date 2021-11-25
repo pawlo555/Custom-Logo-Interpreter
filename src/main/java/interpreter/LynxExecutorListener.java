@@ -17,7 +17,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterForward(LynxParser.ForwardContext ctx) {
-        double n = Double.parseDouble(ctx.stop.getText());
+        double n = Double.parseDouble(ctx.totalnumberArg().getText());
         statement = new StatementForward(n);
     }
 
@@ -28,7 +28,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterBack(LynxParser.BackContext ctx) {
-        double n = Double.parseDouble(ctx.stop.getText());
+        double n = Double.parseDouble(ctx.totalnumberArg().getText());
         statement = new StatementBack(n);
     }
 
@@ -39,7 +39,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterRight(LynxParser.RightContext ctx) {
-        int n = Integer.parseInt(ctx.stop.getText());
+        int n = Integer.parseInt(ctx.totalnumberArg().getText());
         statement = new StatementRight(n);
     }
 
@@ -50,7 +50,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterLeft(LynxParser.LeftContext ctx) {
-        int n = Integer.parseInt(ctx.stop.getText());
+        int n = Integer.parseInt(ctx.totalnumberArg().getText());
         statement = new StatementLeft(n);
     }
 
@@ -69,10 +69,9 @@ public class LynxExecutorListener extends LynxBaseListener {
         exit();
     }
 
-
     @Override
     public void enterRepeat(LynxParser.RepeatContext ctx) {
-        number = Integer.parseInt(ctx.naturalNumberArg().start.getText());
+        number = Integer.parseInt(ctx.naturalNumberArg().getText());
         isExecuting = false;
     }
 

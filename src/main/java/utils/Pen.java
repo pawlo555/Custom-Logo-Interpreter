@@ -5,13 +5,13 @@ public class Pen {
     private int size;
 
     public Pen(Colour colour, int size) {
-        this.colour = colour;
-        this.size = size;
-        penAssertion();
+        setColour(colour);
+        setSize(size);
     }
 
+    public final static String ASSERTION_MESSAGE = "Pen size need to be positive";
     private void penAssertion() {
-        assert size > 0: "Pen size need to be positive";
+        assert size > 0: ASSERTION_MESSAGE;
     }
 
     public Colour getColour() {

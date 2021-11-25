@@ -49,7 +49,7 @@ forward:
     FORWARD brakeArg totalnumberArg
     ;
 left:
-    LEFT brakeArg totalnumberArg
+    LEFT brakeArg totalnumberArg '\''
     ;
 right:
     RIGHT brakeArg totalnumberArg
