@@ -17,41 +17,17 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(LynxParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#command}.
+	 * Visit a parse tree produced by {@link LynxParser#line}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCommand(LynxParser.CommandContext ctx);
+	T visitLine(LynxParser.LineContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#numberCommand}.
+	 * Visit a parse tree produced by {@link LynxParser#cmd}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNumberCommand(LynxParser.NumberCommandContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LynxParser#bracketCommand}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBracketCommand(LynxParser.BracketCommandContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LynxParser#wordCommand}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWordCommand(LynxParser.WordCommandContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LynxParser#numberNumberCommand}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNumberNumberCommand(LynxParser.NumberNumberCommandContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LynxParser#justCommand}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitJustCommand(LynxParser.JustCommandContext ctx);
+	T visitCmd(LynxParser.CmdContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LynxParser#repeat}.
 	 * @param ctx the parse tree
@@ -59,27 +35,141 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRepeat(LynxParser.RepeatContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#insideLoop}.
+	 * Visit a parse tree produced by {@link LynxParser#back}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInsideLoop(LynxParser.InsideLoopContext ctx);
+	T visitBack(LynxParser.BackContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#multipleInside}.
+	 * Visit a parse tree produced by {@link LynxParser#forward}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMultipleInside(LynxParser.MultipleInsideContext ctx);
+	T visitForward(LynxParser.ForwardContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#oneInside}.
+	 * Visit a parse tree produced by {@link LynxParser#left}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOneInside(LynxParser.OneInsideContext ctx);
+	T visitLeft(LynxParser.LeftContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#totalnumber}.
+	 * Visit a parse tree produced by {@link LynxParser#right}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTotalnumber(LynxParser.TotalnumberContext ctx);
+	T visitRight(LynxParser.RightContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#setheading}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSetheading(LynxParser.SetheadingContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#setx}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSetx(LynxParser.SetxContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#sety}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSety(LynxParser.SetyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#setpos}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSetpos(LynxParser.SetposContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#distance}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDistance(LynxParser.DistanceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#towards}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTowards(LynxParser.TowardsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#gilde}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGilde(LynxParser.GildeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#heading}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHeading(LynxParser.HeadingContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#home}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHome(LynxParser.HomeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#pos}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPos(LynxParser.PosContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#xcor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitXcor(LynxParser.XcorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#ycor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitYcor(LynxParser.YcorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#spaceArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSpaceArg(LynxParser.SpaceArgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#newLineArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNewLineArg(LynxParser.NewLineArgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#brakeArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBrakeArg(LynxParser.BrakeArgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#naturalNumberArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNaturalNumberArg(LynxParser.NaturalNumberArgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#totalnumberArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTotalnumberArg(LynxParser.TotalnumberArgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#stringArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStringArg(LynxParser.StringArgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#endFileArg}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEndFileArg(LynxParser.EndFileArgContext ctx);
 }
