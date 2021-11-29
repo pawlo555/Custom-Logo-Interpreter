@@ -9,11 +9,9 @@ import java.util.LinkedList;
 public class LynxExecutorListener extends LynxBaseListener {
     private Statement statement;
     private Executor executor;
+    private final StatementCollector collector = new StatementCollector();
 
-
-    private boolean isExecuting = true;
-    private LinkedList<Statement> statements = new LinkedList<>();
-    private int number;
+    private final LinkedList<Integer> numbers = new LinkedList<>();
 
     @Override
     public void enterForward(LynxParser.ForwardContext ctx) {
@@ -71,25 +69,22 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterRepeat(LynxParser.RepeatContext ctx) {
-        number = Integer.parseInt(ctx.naturalNumberArg().getText());
-        isExecuting = false;
+        numbers.addFirst(Integer.parseInt(ctx.naturalNumberArg().getText()));
+        collector.startCollecting();
     }
 
     @Override
     public void exitRepeat(LynxParser.RepeatContext ctx) {
-        statement = new StatementRepeat(number, statements);
-        number = -1;
-        statements = new LinkedList<>();
-        isExecuting = true;
+        statement = new StatementRepeat(numbers.removeFirst(), collector.endCollecting());
         exit();
     }
 
     private void exit() {
-        if (isExecuting) {
+        if (!collector.isCollecting()) {
             statement.execute(executor);
         }
         else {
-            statements.addLast(statement);
+            collector.addStatement(statement);
         }
         statement = null;
     }
