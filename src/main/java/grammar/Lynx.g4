@@ -9,9 +9,9 @@ line
     : brakeArg? (spaceArg? cmd spaceArg?)+   brakeArg?
     ;
 cmd:
-    //operation commands
     repeat
-    //number commands
+    | procedure
+    //move cmd
     | forward
     | back
     | left
@@ -19,19 +19,16 @@ cmd:
     | setheading
     | setx
     | sety
-    // bracket commands
     | setpos
-    // word commands
     | distance
     | towards
-    // duble number commands
     | glide
-    // just commands
     | heading
     | home
     | pos
     | xcor
     | ycor
+    //math cmd
     | arctan
     | abs
     | cos
@@ -45,9 +42,6 @@ cmd:
     | sin
     | sqrt
     | tan
-    | clearname
-    | namex
-    | thing
     | difference
     | greaterx
     | lessx
@@ -56,17 +50,39 @@ cmd:
     | quotient
     | remainder
     | sum
-    | and
+    | pi
+    //variables cmd
+    | clearname
+    | namex
+    | thing
+    | clearnames
+    | names
+    | let
+    | make
+    //logic cmd
     | if
     | ifelse
     | not
     | or
-    | clearnames
-    | names
-    | pi
-    | let
-    | make
-    | procedure
+    | and
+    //draw cmd
+    | bg
+    | cg
+    | clean
+    | color
+    | colorrunder
+    | fill
+    | freezebg
+    | namefromcolor
+    | pd
+    | pe
+    | pensize
+    | pu
+    | setbg
+    | setcolor
+    | setpensize
+    | stamp
+    | unfreezebg
     ;
 
 
@@ -79,25 +95,25 @@ repeat:
 
 //number commands
 back:
-    BACK brakeArg totalnumberArg
+    BACK brakeArg mathStatment
     ;
 forward:
-    FORWARD brakeArg totalnumberArg
+    FORWARD brakeArg mathStatment
     ;
 left:
-    LEFT brakeArg totalnumberArg
+    LEFT brakeArg mathStatment
     ;
 right:
-    RIGHT brakeArg totalnumberArg
+    RIGHT brakeArg mathStatment
     ;
 setheading:
-    SETHEADING brakeArg totalnumberArg
+    SETHEADING brakeArg mathStatment
     ;
 setx:
-    SETX brakeArg totalnumberArg
+    SETX brakeArg mathStatment
     ;
 sety:
-    SETY brakeArg totalnumberArg
+    SETY brakeArg mathStatment
     ;
 abs:
     ABS brakeArg mathStatment
@@ -109,7 +125,7 @@ cos:
     COS brakeArg mathStatment
     ;
 exp:
-    EXP brakeArg totalnumberArg
+    EXP brakeArg mathStatment
     ;
 int:
     INT brakeArg mathStatment
@@ -124,7 +140,7 @@ minus:
     MINUS brakeArg mathStatment
     ;
 random:
-    RANDOM brakeArg naturalNumberArg
+    RANDOM brakeArg mathStatment
     ;
 round:
     ROUND brakeArg mathStatment
@@ -138,6 +154,20 @@ sqrt:
 tan:
     TAN brakeArg mathStatment
     ;
+namefromcolor:
+    NAMEFROMCOLOUR brakeArg mathStatment
+    ;
+setcolor:
+    SETCOLOR brakeArg mathStatment
+    ;
+setpensize:
+    SETPENSIZE brakeArg mathStatment
+    ;
+setbg:
+    SETBG brakeArg mathStatment
+    ;
+
+
 
 
 //bracket commands
@@ -235,6 +265,47 @@ names:
 pi:
     PI
     ;
+bg:
+    BG
+    ;
+cg:
+    CG
+    ;
+clean:
+    CLEAN
+    ;
+color:
+    COLOR
+    ;
+colorrunder:
+    COLORUNDER
+    ;
+fill:
+    FILL
+    ;
+freezebg:
+    FREEZEBG
+    ;
+pd:
+    PD
+    ;
+pe:
+    PE
+    ;
+pensize:
+    PENSIZE
+    ;
+pu:
+    PU
+    ;
+stamp:
+    STAMP
+    ;
+unfreezebg:
+    UNFREEZEBG
+    ;
+
+
 
 //list commands
 let:
@@ -323,6 +394,7 @@ anynumberArg:
     | totalnumberArg
     ;
 list:
+    '[' (brakeArg? stringArg|mathStatment)+ brakeArg? ']'
     ;
 stringArg:
     OTHERWORD
