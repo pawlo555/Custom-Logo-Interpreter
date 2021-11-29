@@ -1,15 +1,15 @@
 package programme.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import programme.elements.Console;
+import programme.elements.ErrorOutput;
 import programme.elements.LynxCanvas;
 
 public class Controller {
 
     @FXML private LynxCanvas lynxCanvas;
     @FXML private Console console;
-    @FXML private Label error_reporter;
+    @FXML private ErrorOutput error_reporter;
 
     public LynxCanvas getLynxCanvas() {
         return lynxCanvas;
@@ -35,5 +35,9 @@ public class Controller {
     @FXML
     private void clean() {
         System.out.println("Cleaning");
+    }
+
+    public ErrorOutput getErrorLabel() {
+        return error_reporter;
     }
 }

@@ -20,7 +20,7 @@ public class Main extends Application {
         Controller controller = loader.getController();
         Engine engine = new Engine(controller.getLynxCanvas());
         Executor executor = new Executor(engine);
-        Interpreter interpreter = new Interpreter(executor);
+        Interpreter interpreter = new Interpreter(executor, controller.getErrorLabel());
         controller.getConsole().addListener(interpreter);
 
         stage.setTitle("Lynx translator");

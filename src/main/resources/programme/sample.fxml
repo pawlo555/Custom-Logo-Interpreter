@@ -1,9 +1,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import programme.elements.LynxCanvas?>
 <?import programme.elements.Console?>
+<?import programme.elements.ErrorOutput?>
 <HBox fx:controller="programme.controllers.Controller"
       xmlns:fx="http://javafx.com/fxml"
       layoutX="20" layoutY="20" prefHeight="680" prefWidth="1240">
@@ -15,7 +15,7 @@
             <Button text="Clean" onAction="#clean"/>
         </HBox>
         <Console fx:id="console"/>
-        <Label fx:id="error_reporter" text="Console translator" prefHeight="100"/>
+        <ErrorOutput fx:id="error_reporter" text="Console translator" prefHeight="100"/>
     </VBox>
     <LynxCanvas fx:id="lynxCanvas"/>
 </HBox>
