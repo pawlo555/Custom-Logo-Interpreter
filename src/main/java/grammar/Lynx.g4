@@ -9,9 +9,9 @@ line
     : brakeArg? (spaceArg? cmd spaceArg?)+   brakeArg?
     ;
 cmd:
-    //operation commands
     repeat
-    //number commands
+    | procedure
+    //move cmd
     | forward
     | back
     | left
@@ -19,50 +19,156 @@ cmd:
     | setheading
     | setx
     | sety
-    // bracket commands
     | setpos
-    // word commands
     | distance
     | towards
-    // duble number commands
-    | gilde
-    // just commands
+    | glide
     | heading
     | home
     | pos
     | xcor
     | ycor
+    //math cmd
+    | arctan
+    | abs
+    | cos
+    | exp
+    | int
+    | ln
+    | log
+    | minus
+    | random
+    | round
+    | sin
+    | sqrt
+    | tan
+    | difference
+    | greaterx
+    | lessx
+    | power
+    | product
+    | quotient
+    | remainder
+    | sum
+    | pi
+    //variables cmd
+    | clearname
+    | namex
+    | thing
+    | clearnames
+    | names
+    | let
+    | make
+    //logic cmd
+    | if
+    | ifelse
+    | not
+    | or
+    | and
+    //draw cmd
+    | bg
+    | cg
+    | clean
+    | color
+    | colorrunder
+    | fill
+    | freezebg
+    | namefromcolor
+    | pd
+    | pe
+    | pensize
+    | pu
+    | setbg
+    | setcolor
+    | setpensize
+    | stamp
+    | unfreezebg
     ;
 
 
-//if                : IF WHITESPACE (NATURALNUMBER | )
-
+procedure:
+    PROCEDURE brakeArg stringArg brakeArg '['brakeArg? line+ brakeArg?']'
+    ;
 //operation commands
 repeat:
     REPEAT brakeArg naturalNumberArg brakeArg '[' line']' ;
 
 //number commands
 back:
-    BACK brakeArg totalnumberArg
+    BACK brakeArg mathStatment
     ;
 forward:
-    FORWARD brakeArg totalnumberArg
+    FORWARD brakeArg mathStatment
     ;
 left:
-    LEFT brakeArg totalnumberArg '\''
+    LEFT brakeArg mathStatment
     ;
 right:
-    RIGHT brakeArg totalnumberArg
+    RIGHT brakeArg mathStatment
     ;
 setheading:
-    SETHEADING brakeArg totalnumberArg
+    SETHEADING brakeArg mathStatment
     ;
 setx:
-    SETX brakeArg totalnumberArg
+    SETX brakeArg mathStatment
     ;
 sety:
-    SETY brakeArg totalnumberArg
+    SETY brakeArg mathStatment
     ;
+abs:
+    ABS brakeArg mathStatment
+    ;
+arctan:
+    ARCTAN brakeArg mathStatment
+    ;
+cos:
+    COS brakeArg mathStatment
+    ;
+exp:
+    EXP brakeArg mathStatment
+    ;
+int:
+    INT brakeArg mathStatment
+    ;
+ln:
+    LN brakeArg mathStatment
+    ;
+log:
+    LOG brakeArg mathStatment
+    ;
+minus:
+    MINUS brakeArg mathStatment
+    ;
+random:
+    RANDOM brakeArg mathStatment
+    ;
+round:
+    ROUND brakeArg mathStatment
+    ;
+sin:
+    SIN brakeArg mathStatment
+    ;
+sqrt:
+    SQRT brakeArg mathStatment
+    ;
+tan:
+    TAN brakeArg mathStatment
+    ;
+namefromcolor:
+    NAMEFROMCOLOUR brakeArg mathStatment
+    ;
+setcolor:
+    SETCOLOR brakeArg mathStatment
+    ;
+setpensize:
+    SETPENSIZE brakeArg mathStatment
+    ;
+setbg:
+    SETBG brakeArg mathStatment
+    ;
+
+
+
 
 //bracket commands
 setpos:
@@ -71,14 +177,67 @@ setpos:
 
 //word commands
 distance:
-    DISTANCE brakeArg stringArg
+    DISTANCE brakeArg '\''stringArg'\''
     ;
 towards:
-    TOWARDS brakeArg stringArg
+    TOWARDS brakeArg '\''stringArg'\''
+    ;
+clearname:
+    CLEARNAME brakeArg '\''stringArg'\''
+    ;
+namex:
+    NAMEX brakeArg '\''stringArg'\''
+    ;
+thing:
+    THING brakeArg '\''stringArg'\''
     ;
 
-gilde:
+//double number commands
+glide:
     GLIDE brakeArg totalnumberArg brakeArg totalnumberArg
+    ;
+difference:
+    DIFFERENCE brakeArg mathStatment brakeArg mathStatment
+    ;
+greaterx:
+    GREATERX brakeArg mathStatment brakeArg mathStatment
+    ;
+lessx:
+    LESSX brakeArg mathStatment brakeArg mathStatment
+    ;
+power:
+    POWER brakeArg mathStatment brakeArg mathStatment
+    ;
+product:
+    PRODUCT brakeArg mathStatment brakeArg mathStatment
+    ;
+quotient:
+    QUOTIENT brakeArg mathStatment brakeArg mathStatment
+    ;
+remainder:
+    REMAINDER brakeArg mathStatment brakeArg mathStatment
+    ;
+sum:
+    SUM brakeArg mathStatment brakeArg mathStatment
+    ;
+
+//double true false command
+and:
+    AND brakeArg logicStatment brakeArg logicStatment
+    ;
+
+// weird logic things
+if:
+    IF brakeArg logicStatment brakeArg '[' brakeArg? line brakeArg? ']'
+    ;
+ifelse:
+    IFELSE brakeArg logicStatment brakeArg '[' brakeArg? line brakeArg? ']' brakeArg '[' brakeArg? line brakeArg? ']'
+    ;
+not:
+    NOT brakeArg logicStatment
+    ;
+or:
+    OR brakeArg logicStatment brakeArg logicStatment
     ;
 
 //just commands
@@ -97,6 +256,121 @@ xcor:
 ycor:
     YCOR
     ;
+clearnames:
+    CLEARNAMES
+    ;
+names:
+    NAMES
+    ;
+pi:
+    PI
+    ;
+bg:
+    BG
+    ;
+cg:
+    CG
+    ;
+clean:
+    CLEAN
+    ;
+color:
+    COLOR
+    ;
+colorrunder:
+    COLORUNDER
+    ;
+fill:
+    FILL
+    ;
+freezebg:
+    FREEZEBG
+    ;
+pd:
+    PD
+    ;
+pe:
+    PE
+    ;
+pensize:
+    PENSIZE
+    ;
+pu:
+    PU
+    ;
+stamp:
+    STAMP
+    ;
+unfreezebg:
+    UNFREEZEBG
+    ;
+
+
+
+//list commands
+let:
+    LET brakeArg list
+    ;
+
+//word list commands
+make:
+    MAKE brakeArg '\''stringArg'\'' brakeArg (WORD|list)
+    ;
+
+//mathstatments
+mathStatment:
+    ((brackets brakeArg? mathSign brakeArg?)+)? brackets
+    ;
+
+brackets:
+    anynumberArg
+    | '(' brakeArg? mathStatment brakeArg?')'
+    | abs
+    | arctan
+    | cos
+    | exp
+    | int
+    | ln
+    | log
+    | minus
+    | pi
+    | power
+    | product
+    | quotient
+    | random
+    | remainder
+    | round
+    | sin
+    | sqrt
+    | sum
+    | sum
+    | tan
+    | difference
+    ;
+
+logicStatment:
+    ((logicbrackets brakeArg? logicSign brakeArg?)+)? logicbrackets
+    | greaterx
+    | lessx
+    ;
+
+logicbrackets:
+    '(' brakeArg? logicStatment  brakeArg?')'
+    | brackets
+    | and
+    | or
+    | not
+    ;
+
+
+logicSign:
+    LESSS | MORES | EQUALS | MOREEQUALS | LESSEQUALS
+    ;
+
+mathSign:
+    PLUSS | MINUSS | DIVIDES | MULTIPLYS
+    ;
+
 
 //arguments
 spaceArg:
@@ -114,6 +388,13 @@ naturalNumberArg:
 totalnumberArg:
     NATURALNUMBER
     | NEGATINATURALNUMBER
+    ;
+anynumberArg:
+    FLOATNUMBER
+    | totalnumberArg
+    ;
+list:
+    '[' (brakeArg? stringArg|mathStatment)+ brakeArg? ']'
     ;
 stringArg:
     OTHERWORD
@@ -138,7 +419,7 @@ fragment DIGIT:
     [0-9]
     ;
 
-//COMMANDS MOVING xx1xx
+//COMMANDS MOVING xx1xx DONE
 BACK:
     'BACK'
     |'back'
@@ -214,7 +495,7 @@ YCOR:
     | 'ycor'
     ;
 
-//COMMANDS DRAVING xx2xx
+//COMMANDS DRAVING xx2xx TODO
 BG:
     'BG'
     | 'bg'
@@ -286,14 +567,14 @@ UNFREEZEBG:
     | 'unfreezebg'
     ;
 
-//commands turtle state xx3xx
+//commands turtle state xx3xx TODO
 HT:
     'HT'
     | 'ht'
     ;
 INBACK:
     'INBACK'
-    | 'inback'
+    | 'INBACK'
     ;
 INFRONT:
     'INFRONT'
@@ -328,7 +609,7 @@ ST:
     | 'st'
     ;
 
-//commands turtle (other) xx4xx
+//commands turtle (other) xx4xx TODO
 CLICKOFF:
     'CLICKOFF'
     | 'clickoff'
@@ -354,7 +635,7 @@ WHO:
     | 'who'
     ;
 
-//commands text xx5xx
+//commands text xx5xx TODO
 ANNOUNCE:
     'ANNOUNCE'
     | 'announce'
@@ -472,7 +753,7 @@ UNSELECT:
     | 'unselect'
     ;
 
-//commands words and lists xx5xx
+//commands words and lists xx5xx TODO
 BUTFIRST:
     'BUTFIRST'
     | 'butfirst'
@@ -482,8 +763,8 @@ BUTFIRST:
 BUTLAST:
     'BUTLAST'
     | 'butlast'
-    | 'Bl'
-    | 'bl'
+    | 'BT'
+    | 'bt'
     ;
 COUNT:
     'COUNT'
@@ -559,7 +840,7 @@ WORDX:
     'WORD?'
     | 'word?'
     ;
-//commands number and maths xx6xx
+//commands number and maths xx6xx DONE
 ABS:
     'ABS'
     | 'abs'
@@ -649,7 +930,7 @@ TAN:
     | 'tan'
     ;
 
-//commands Objects xx7xx
+//commands Objects xx7xx TODO
 ASK:
     'ASK'
     | 'ask'
@@ -699,7 +980,7 @@ UNFREEZE:
     | 'unfreeze'
     ;
 
-//commands Timer xx8xx
+//commands Timer xx8xx TODO
 RESETT:
     'RESETT'
     | 'restt'
@@ -709,7 +990,7 @@ TIMER:
     | 'timer'
     ;
 
-//commands Variables xx9xx
+//commands Variables xx9xx DONE
 CLEARNAME:
     'CLEARNAME'
     | 'clearname'
@@ -763,7 +1044,7 @@ PROJECTSIZE:
     'PROJECTSIZE'
     | 'projectsize'
     ;
-//commands logic xxx11xx
+//commands logic xxx11xx DONE
 AND:
     'AND'
     | 'and'
@@ -894,6 +1175,12 @@ WAIT:
     'WAIT'
     | 'wait'
     ;
+PROCEDURE:
+    'PROCEDURE'
+    | 'procedure'
+    | 'PRD'
+    | 'prd'
+    ;
 
 
 
@@ -901,10 +1188,37 @@ WAIT:
 
 
 
+//MATH
+PLUSS:
+    '+'
+    ;
+MINUSS:
+    '-'
+    ;
+DIVIDES:
+    '/'
+    ;
+MULTIPLYS:
+    '*'
+    ;
 
+//Logic
 
-
-
+LESSS:
+    '<'
+    ;
+MORES:
+    '>'
+    ;
+EQUALS:
+    '=='
+    ;
+LESSEQUALS:
+    '<=' | '=<'
+    ;
+MOREEQUALS:
+    '>=' | '=>'
+    ;
 // DIGITS
 NATURALNUMBER:
     '+'? DIGIT+
@@ -927,3 +1241,5 @@ WHITESPACE:
 NEWLINE:
     '\r'? '\n'
     | '\r';
+
+
