@@ -1,7 +1,8 @@
 package interpreter;
 
 public class Executor {
-    private Engine engine;
+    private final Engine engine;
+    private final Environment environment = new Environment();
 
     public Executor(Engine engine) {
         this.engine = engine;
@@ -10,4 +11,6 @@ public class Executor {
     public Engine getEngine() {
         return engine;
     }
+
+    public Environment getEnvironment() { return environment;}
 }

@@ -34,16 +34,11 @@ public class LynxCanvas extends Group {
     }
 
     public void paintTurtle(double x, double y) {
-        System.out.println("Paint turtle");
         GraphicsContext gc = foreground.getGraphicsContext2D();
         gc.fillRect(x-TURTLE_SIZE/2, y-TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
     }
 
     public void repaintTurtle(double x, double y, double newX, double newY) {
-        System.out.println(x);
-        System.out.println(y);
-        System.out.println(newX);
-        System.out.println(newY);
         removeTurtle(x, y);
         paintTurtle(newX, newY);
     }

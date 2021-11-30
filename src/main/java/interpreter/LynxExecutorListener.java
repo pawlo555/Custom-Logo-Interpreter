@@ -15,7 +15,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterForward(LynxParser.ForwardContext ctx) {
-        double n = Double.parseDouble(ctx.totalnumberArg().getText());
+        double n = Double.parseDouble(ctx.mathStatment().getText());
         statement = new StatementForward(n);
     }
 
@@ -26,7 +26,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterBack(LynxParser.BackContext ctx) {
-        double n = Double.parseDouble(ctx.totalnumberArg().getText());
+        double n = Double.parseDouble(ctx.mathStatment().getText());
         statement = new StatementBack(n);
     }
 
@@ -37,7 +37,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterRight(LynxParser.RightContext ctx) {
-        int n = Integer.parseInt(ctx.totalnumberArg().getText());
+        int n = Integer.parseInt(ctx.mathStatment().getText());
         statement = new StatementRight(n);
     }
 
@@ -48,7 +48,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterLeft(LynxParser.LeftContext ctx) {
-        int n = Integer.parseInt(ctx.totalnumberArg().getText());
+        int n = Integer.parseInt(ctx.mathStatment().getText());
         statement = new StatementLeft(n);
     }
 
@@ -76,6 +76,38 @@ public class LynxExecutorListener extends LynxBaseListener {
     @Override
     public void exitRepeat(LynxParser.RepeatContext ctx) {
         statement = new StatementRepeat(numbers.removeFirst(), collector.endCollecting());
+        exit();
+    }
+
+    @Override
+    public void enterProcedure(LynxParser.ProcedureContext ctx) {
+        collector.startCollecting();
+    }
+
+    @Override
+    public void exitProcedure(LynxParser.ProcedureContext ctx) {
+        String name = ctx.stringArg().getText();
+        Procedure procedure = new Procedure(name, collector.endCollecting());
+        statement = new StatementProcedureCreation(name, procedure);
+        exit();
+    }
+
+    @Override
+    public void exitProcedureCall(LynxParser.ProcedureCallContext ctx) {
+        String name = ctx.stringArg().getText();
+        statement = new StatementProcedureCall(name);
+        exit();
+    }
+
+    @Override
+    public void exitPd(LynxParser.PdContext ctx) {
+        statement = new StatementPenDown();
+        exit();
+    }
+
+    @Override
+    public void exitPu(LynxParser.PuContext ctx) {
+        statement = new StatementPenUp();
         exit();
     }
 

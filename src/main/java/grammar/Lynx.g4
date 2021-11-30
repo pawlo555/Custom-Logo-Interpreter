@@ -11,6 +11,7 @@ line
 cmd:
     repeat
     | procedure
+    | procedureCall
     //move cmd
     | forward
     | back
@@ -33,7 +34,7 @@ cmd:
     | abs
     | cos
     | exp
-    | int
+    | intC
     | ln
     | log
     | minus
@@ -60,7 +61,7 @@ cmd:
     | let
     | make
     //logic cmd
-    | if
+    | ifC
     | ifelse
     | not
     | or
@@ -89,6 +90,9 @@ cmd:
 procedure:
     PROCEDURE brakeArg stringArg brakeArg '['brakeArg? line+ brakeArg?']'
     ;
+
+procedureCall:
+    CALL brakeArg stringArg;
 //operation commands
 repeat:
     REPEAT brakeArg naturalNumberArg brakeArg '[' line']' ;
@@ -127,7 +131,7 @@ cos:
 exp:
     EXP brakeArg mathStatment
     ;
-int:
+intC:
     INT brakeArg mathStatment
     ;
 ln:
@@ -227,7 +231,7 @@ and:
     ;
 
 // weird logic things
-if:
+ifC:
     IF brakeArg logicStatment brakeArg '[' brakeArg? line brakeArg? ']'
     ;
 ifelse:
@@ -329,7 +333,7 @@ brackets:
     | arctan
     | cos
     | exp
-    | int
+    | intC
     | ln
     | log
     | minus
@@ -574,7 +578,7 @@ HT:
     ;
 INBACK:
     'INBACK'
-    | 'INBACK'
+    | 'inback'
     ;
 INFRONT:
     'INFRONT'
@@ -763,8 +767,8 @@ BUTFIRST:
 BUTLAST:
     'BUTLAST'
     | 'butlast'
-    | 'BT'
-    | 'bt'
+    | 'BL'
+    | 'bl'
     ;
 COUNT:
     'COUNT'
@@ -1182,7 +1186,9 @@ PROCEDURE:
     | 'prd'
     ;
 
-
+CALL :
+    'CALL'
+    | 'call';
 
 
 
@@ -1241,5 +1247,3 @@ WHITESPACE:
 NEWLINE:
     '\r'? '\n'
     | '\r';
-
-
