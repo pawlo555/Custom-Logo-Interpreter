@@ -227,21 +227,21 @@ sum:
 
 //double true false command
 and:
-    AND brakeArg logicStatment brakeArg logicStatment
+    AND brakeArg logicStatement brakeArg logicStatement
     ;
 
 // weird logic things
 ifC:
-    IF brakeArg logicStatment brakeArg '[' brakeArg? line brakeArg? ']'
+    IF brakeArg logicStatement brakeArg '[' brakeArg? line brakeArg? ']'
     ;
 ifelse:
-    IFELSE brakeArg logicStatment brakeArg '[' brakeArg? line brakeArg? ']' brakeArg '[' brakeArg? line brakeArg? ']'
+    IFELSE brakeArg logicStatement brakeArg '[' brakeArg? line brakeArg? ']' brakeArg '[' brakeArg? line brakeArg? ']'
     ;
 not:
-    NOT brakeArg logicStatment
+    NOT brakeArg logicStatement
     ;
 or:
-    OR brakeArg logicStatment brakeArg logicStatment
+    OR brakeArg logicStatement brakeArg logicStatement
     ;
 
 //just commands
@@ -352,14 +352,14 @@ brackets:
     | difference
     ;
 
-logicStatment:
+logicStatement:
     ((logicbrackets brakeArg? logicSign brakeArg?)+)? logicbrackets
     | greaterx
     | lessx
     ;
 
 logicbrackets:
-    '(' brakeArg? logicStatment  brakeArg?')'
+    '(' brakeArg? logicStatement  brakeArg?')'
     | brackets
     | and
     | or
@@ -1167,10 +1167,7 @@ STOP:
     'STOP'
     | 'stop'
     ;
-STOPALL:
-    'STOPALL'
-    | 'stopall'
-    ;
+STOPALL:  'STOPALL' | 'stopall';
 STOPME:
     'STOPME'
     | 'stopme'
