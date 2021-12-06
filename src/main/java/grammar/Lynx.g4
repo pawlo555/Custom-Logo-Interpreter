@@ -12,7 +12,6 @@ cmd:
     repeat
     | procedure
     | procedureCall
-    //move cmd
     | forward
     | back
     | left
@@ -23,35 +22,11 @@ cmd:
     | setpos
     | distance
     | towards
-    | glide
     | heading
     | home
     | pos
     | xcor
     | ycor
-    //math cmd
-    | arctan
-    | abs
-    | cos
-    | exp
-    | intC
-    | ln
-    | log
-    | minus
-    | random
-    | round
-    | sin
-    | sqrt
-    | tan
-    | difference
-    | greaterx
-    | lessx
-    | power
-    | product
-    | quotient
-    | remainder
-    | sum
-    | pi
     //variables cmd
     | clearname
     | namex
@@ -61,11 +36,8 @@ cmd:
     | let
     | make
     //logic cmd
-    | ifC
+    | ifc
     | ifelse
-    | not
-    | or
-    | and
     //draw cmd
     | bg
     | cg
@@ -86,97 +58,114 @@ cmd:
     | unfreezebg
     ;
 
+// math statements
+
+mathStatement:
+    mathSentence;
+
+mathSentence:
+    ('(' brakeArg? mathSentence brakeArg?')')
+    | mathSentence brakeArg? doubleArgMathOperator brakeArg? mathSentence
+    | singleArgMathOperator brakeArg? mathSentence
+    | mathValue;
+
+mathValue:
+    FLOATNUMBER
+    | NATURALNUMBER
+    | BOOLEAN
+    | variableName;
+
+singleArgMathOperator:
+    ABS
+    | ARCTAN
+    | COS
+    | INT
+    | LN
+    | MINUS
+    | RANDOM
+    | ROUND
+    | SIN
+    | SQRT
+    | TAN
+    | NOT
+    ;
+
+doubleArgMathOperator:
+    DIFFERENCE
+    | POWER
+    | QUOTIENT
+    | REMAINDER
+    | SUM
+    | MINUS
+    | PRODUCT
+    | DIVISION
+    | COMPARISON
+    | EXP
+    | LOG
+    | OR
+    | AND
+    ;
+
+stringArg:
+    OTHERWORD
+    ;
+
+//arguments
+variableName:
+    ':' OTHERWORD;
+
+variableValue:
+    mathStatement | stringArg;
+
 
 procedure:
-    PROCEDURE brakeArg stringArg brakeArg '['brakeArg? line+ brakeArg?']'
+    PROCEDURE brakeArg stringArg brakeArg (variableName brakeArg)* '['brakeArg? line+ brakeArg?']'
     ;
 
 procedureCall:
-    CALL brakeArg stringArg;
+    CALL brakeArg stringArg (brakeArg variableValue)* brakeArg?;
 //operation commands
 repeat:
     REPEAT brakeArg naturalNumberArg brakeArg '[' line']' ;
 
 //number commands
 back:
-    BACK brakeArg mathStatment
+    BACK brakeArg mathStatement
     ;
 forward:
-    FORWARD brakeArg mathStatment
+    FORWARD brakeArg mathStatement
     ;
 left:
-    LEFT brakeArg mathStatment
+    LEFT brakeArg mathStatement
     ;
 right:
-    RIGHT brakeArg mathStatment
+    RIGHT brakeArg mathStatement
     ;
 setheading:
-    SETHEADING brakeArg mathStatment
+    SETHEADING brakeArg mathStatement
     ;
 setx:
-    SETX brakeArg mathStatment
+    SETX brakeArg mathStatement
     ;
 sety:
-    SETY brakeArg mathStatment
-    ;
-abs:
-    ABS brakeArg mathStatment
-    ;
-arctan:
-    ARCTAN brakeArg mathStatment
-    ;
-cos:
-    COS brakeArg mathStatment
-    ;
-exp:
-    EXP brakeArg mathStatment
-    ;
-intC:
-    INT brakeArg mathStatment
-    ;
-ln:
-    LN brakeArg mathStatment
-    ;
-log:
-    LOG brakeArg mathStatment
-    ;
-minus:
-    MINUS brakeArg mathStatment
-    ;
-random:
-    RANDOM brakeArg mathStatment
-    ;
-round:
-    ROUND brakeArg mathStatment
-    ;
-sin:
-    SIN brakeArg mathStatment
-    ;
-sqrt:
-    SQRT brakeArg mathStatment
-    ;
-tan:
-    TAN brakeArg mathStatment
+    SETY brakeArg mathStatement
     ;
 namefromcolor:
-    NAMEFROMCOLOUR brakeArg mathStatment
+    NAMEFROMCOLOUR brakeArg mathStatement
     ;
 setcolor:
-    SETCOLOR brakeArg mathStatment
+    SETCOLOR brakeArg mathStatement
     ;
 setpensize:
-    SETPENSIZE brakeArg mathStatment
+    SETPENSIZE brakeArg mathStatement
     ;
 setbg:
-    SETBG brakeArg mathStatment
+    SETBG brakeArg mathStatement
     ;
-
-
-
 
 //bracket commands
 setpos:
-    SETPOS brakeArg  '[' brakeArg totalnumberArg brakeArg ',' brakeArg totalnumberArg  brakeArg']'
+    SETPOS brakeArg  '[' brakeArg mathStatement brakeArg ',' brakeArg mathStatement  brakeArg']'
     ;
 
 //word commands
@@ -196,52 +185,11 @@ thing:
     THING brakeArg '\''stringArg'\''
     ;
 
-//double number commands
-glide:
-    GLIDE brakeArg totalnumberArg brakeArg totalnumberArg
-    ;
-difference:
-    DIFFERENCE brakeArg mathStatment brakeArg mathStatment
-    ;
-greaterx:
-    GREATERX brakeArg mathStatment brakeArg mathStatment
-    ;
-lessx:
-    LESSX brakeArg mathStatment brakeArg mathStatment
-    ;
-power:
-    POWER brakeArg mathStatment brakeArg mathStatment
-    ;
-product:
-    PRODUCT brakeArg mathStatment brakeArg mathStatment
-    ;
-quotient:
-    QUOTIENT brakeArg mathStatment brakeArg mathStatment
-    ;
-remainder:
-    REMAINDER brakeArg mathStatment brakeArg mathStatment
-    ;
-sum:
-    SUM brakeArg mathStatment brakeArg mathStatment
-    ;
-
-//double true false command
-and:
-    AND brakeArg logicStatement brakeArg logicStatement
-    ;
-
-// weird logic things
-ifC:
-    IF brakeArg logicStatement brakeArg '[' brakeArg? line brakeArg? ']'
+ifc:
+    IF brakeArg mathStatement brakeArg '[' brakeArg? line brakeArg? ']'
     ;
 ifelse:
-    IFELSE brakeArg logicStatement brakeArg '[' brakeArg? line brakeArg? ']' brakeArg '[' brakeArg? line brakeArg? ']'
-    ;
-not:
-    NOT brakeArg logicStatement
-    ;
-or:
-    OR brakeArg logicStatement brakeArg logicStatement
+    IFELSE brakeArg mathStatement brakeArg '[' brakeArg? line brakeArg? ']' brakeArg '[' brakeArg? line brakeArg? ']'
     ;
 
 //just commands
@@ -265,9 +213,6 @@ clearnames:
     ;
 names:
     NAMES
-    ;
-pi:
-    PI
     ;
 bg:
     BG
@@ -313,7 +258,7 @@ unfreezebg:
 
 //list commands
 let:
-    LET brakeArg list
+    LET brakeArg variableName brakeArg variableValue brakeArg?
     ;
 
 //word list commands
@@ -321,62 +266,6 @@ make:
     MAKE brakeArg '\''stringArg'\'' brakeArg (WORD|list)
     ;
 
-//mathstatments
-mathStatment:
-    ((brackets brakeArg? mathSign brakeArg?)+)? brackets
-    ;
-
-brackets:
-    anynumberArg
-    | '(' brakeArg? mathStatment brakeArg?')'
-    | abs
-    | arctan
-    | cos
-    | exp
-    | intC
-    | ln
-    | log
-    | minus
-    | pi
-    | power
-    | product
-    | quotient
-    | random
-    | remainder
-    | round
-    | sin
-    | sqrt
-    | sum
-    | sum
-    | tan
-    | difference
-    ;
-
-logicStatement:
-    ((logicbrackets brakeArg? logicSign brakeArg?)+)? logicbrackets
-    | greaterx
-    | lessx
-    ;
-
-logicbrackets:
-    '(' brakeArg? logicStatement  brakeArg?')'
-    | brackets
-    | and
-    | or
-    | not
-    ;
-
-
-logicSign:
-    LESSS | MORES | EQUALS | MOREEQUALS | LESSEQUALS
-    ;
-
-mathSign:
-    PLUSS | MINUSS | DIVIDES | MULTIPLYS
-    ;
-
-
-//arguments
 spaceArg:
     (WHITESPACE)+
     ;
@@ -387,29 +276,17 @@ brakeArg:
     (spaceArg | newLineArg)+
     ;
 naturalNumberArg:
-    NATURALNUMBER
-    ;
-totalnumberArg:
-    NATURALNUMBER
-    | NEGATINATURALNUMBER
-    ;
-anynumberArg:
-    FLOATNUMBER
-    | totalnumberArg
+    NATURALNUMBER | variableName
     ;
 list:
-    '[' (brakeArg? stringArg|mathStatment)+ brakeArg? ']'
-    ;
-stringArg:
-    OTHERWORD
+    '[' (brakeArg? mathStatement)+ brakeArg? ']'
     ;
 endFileArg:
     EOF
     ;
 
 
-// LEXER
-
+//LEXER
 //ALL LETERS
 fragment LOWERCASE:
     [a-z]
@@ -439,10 +316,6 @@ FORWARD:
     | 'FD'
     | 'forward'
     | 'fd'
-    ;
-GLIDE:
-    'GILDE'
-    |'gilde'
     ;
 HEADING:
     'HEADING'
@@ -858,24 +731,15 @@ COS:
     | 'cos'
     ;
 DIFFERENCE:
-    'DIFFERENCE'
-    | 'difrence'
+    '!='
     ;
 EXP:
     'EXP'
     | 'exp'
     ;
-GREATERX:
-    'GREATER?'
-    | 'greater?'
-    ;
 INT:
     'INT'
     | 'int'
-    ;
-LESSX:
-    'LESS?'
-    | 'less?'
     ;
 LN:
     'LN'
@@ -886,20 +750,18 @@ LOG:
     | 'log'
     ;
 MINUS:
-    'MINUS'
-    | 'minus'
+    '-'
     ;
 PI:
     'PI'
     | 'pi'
     ;
 POWER:
-    'POWER'
-    | 'power'
+    'POW'
+    | 'pow'
     ;
 PRODUCT:
-    'PRODUCT'
-    | 'product'
+    '*'
     ;
 QUOTIENT:
     'QUOTIENT'
@@ -926,13 +788,22 @@ SQRT:
     | 'sqrt'
     ;
 SUM:
-    'SUM'
-    | 'sum'
+    '+'
     ;
 TAN:
     'TAN'
     | 'tan'
     ;
+COMPARISON:
+    '=='
+    | '<='
+    | '>='
+    | '=<'
+    | '=>'
+    | '<'
+    | '>'
+    ;
+
 
 //commands Objects xx7xx TODO
 ASK:
@@ -1188,50 +1059,20 @@ CALL :
     | 'call';
 
 
-
-
-
-//MATH
-PLUSS:
-    '+'
-    ;
-MINUSS:
-    '-'
-    ;
-DIVIDES:
+DIVISION:
     '/'
     ;
-MULTIPLYS:
-    '*'
-    ;
 
-//Logic
-
-LESSS:
-    '<'
-    ;
-MORES:
-    '>'
-    ;
-EQUALS:
-    '=='
-    ;
-LESSEQUALS:
-    '<=' | '=<'
-    ;
-MOREEQUALS:
-    '>=' | '=>'
-    ;
-// DIGITS
 NATURALNUMBER:
-    '+'? DIGIT+
-    ;
-NEGATINATURALNUMBER:
-    '-' WHITESPACE? DIGIT+
-    ;
+    DIGIT+;
 FLOATNUMBER:
-    ('-'|'+')? DIGIT+ ([.,] DIGIT+)?
-    ;
+    DIGIT+ ([.,] DIGIT+)?;
+
+BOOLEAN:
+    'true'
+    | 'True'
+    | 'false'
+    | 'False';
 
 //ADDITIONS
 OTHERWORD:

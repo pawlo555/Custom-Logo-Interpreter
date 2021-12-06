@@ -38,6 +38,86 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitCmd(LynxParser.CmdContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LynxParser#mathStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterMathStatement(LynxParser.MathStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#mathStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitMathStatement(LynxParser.MathStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterMathSentence(LynxParser.MathSentenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitMathSentence(LynxParser.MathSentenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LynxParser#mathValue}.
+	 * @param ctx the parse tree
+	 */
+	void enterMathValue(LynxParser.MathValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#mathValue}.
+	 * @param ctx the parse tree
+	 */
+	void exitMathValue(LynxParser.MathValueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingleArgMathOperator(LynxParser.SingleArgMathOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingleArgMathOperator(LynxParser.SingleArgMathOperatorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterDoubleArgMathOperator(LynxParser.DoubleArgMathOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitDoubleArgMathOperator(LynxParser.DoubleArgMathOperatorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LynxParser#stringArg}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringArg(LynxParser.StringArgContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#stringArg}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringArg(LynxParser.StringArgContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LynxParser#variableName}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableName(LynxParser.VariableNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#variableName}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableName(LynxParser.VariableNameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LynxParser#variableValue}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableValue(LynxParser.VariableValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#variableValue}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableValue(LynxParser.VariableValueContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LynxParser#procedure}.
 	 * @param ctx the parse tree
 	 */
@@ -137,136 +217,6 @@ public interface LynxListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSety(LynxParser.SetyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#abs}.
-	 * @param ctx the parse tree
-	 */
-	void enterAbs(LynxParser.AbsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#abs}.
-	 * @param ctx the parse tree
-	 */
-	void exitAbs(LynxParser.AbsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#arctan}.
-	 * @param ctx the parse tree
-	 */
-	void enterArctan(LynxParser.ArctanContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#arctan}.
-	 * @param ctx the parse tree
-	 */
-	void exitArctan(LynxParser.ArctanContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#cos}.
-	 * @param ctx the parse tree
-	 */
-	void enterCos(LynxParser.CosContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#cos}.
-	 * @param ctx the parse tree
-	 */
-	void exitCos(LynxParser.CosContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#exp}.
-	 * @param ctx the parse tree
-	 */
-	void enterExp(LynxParser.ExpContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#exp}.
-	 * @param ctx the parse tree
-	 */
-	void exitExp(LynxParser.ExpContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#intC}.
-	 * @param ctx the parse tree
-	 */
-	void enterIntC(LynxParser.IntCContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#intC}.
-	 * @param ctx the parse tree
-	 */
-	void exitIntC(LynxParser.IntCContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#ln}.
-	 * @param ctx the parse tree
-	 */
-	void enterLn(LynxParser.LnContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#ln}.
-	 * @param ctx the parse tree
-	 */
-	void exitLn(LynxParser.LnContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#log}.
-	 * @param ctx the parse tree
-	 */
-	void enterLog(LynxParser.LogContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#log}.
-	 * @param ctx the parse tree
-	 */
-	void exitLog(LynxParser.LogContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#minus}.
-	 * @param ctx the parse tree
-	 */
-	void enterMinus(LynxParser.MinusContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#minus}.
-	 * @param ctx the parse tree
-	 */
-	void exitMinus(LynxParser.MinusContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#random}.
-	 * @param ctx the parse tree
-	 */
-	void enterRandom(LynxParser.RandomContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#random}.
-	 * @param ctx the parse tree
-	 */
-	void exitRandom(LynxParser.RandomContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#round}.
-	 * @param ctx the parse tree
-	 */
-	void enterRound(LynxParser.RoundContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#round}.
-	 * @param ctx the parse tree
-	 */
-	void exitRound(LynxParser.RoundContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#sin}.
-	 * @param ctx the parse tree
-	 */
-	void enterSin(LynxParser.SinContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#sin}.
-	 * @param ctx the parse tree
-	 */
-	void exitSin(LynxParser.SinContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#sqrt}.
-	 * @param ctx the parse tree
-	 */
-	void enterSqrt(LynxParser.SqrtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#sqrt}.
-	 * @param ctx the parse tree
-	 */
-	void exitSqrt(LynxParser.SqrtContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#tan}.
-	 * @param ctx the parse tree
-	 */
-	void enterTan(LynxParser.TanContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#tan}.
-	 * @param ctx the parse tree
-	 */
-	void exitTan(LynxParser.TanContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#namefromcolor}.
 	 * @param ctx the parse tree
@@ -368,115 +318,15 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitThing(LynxParser.ThingContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LynxParser#glide}.
+	 * Enter a parse tree produced by {@link LynxParser#ifc}.
 	 * @param ctx the parse tree
 	 */
-	void enterGlide(LynxParser.GlideContext ctx);
+	void enterIfc(LynxParser.IfcContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LynxParser#glide}.
+	 * Exit a parse tree produced by {@link LynxParser#ifc}.
 	 * @param ctx the parse tree
 	 */
-	void exitGlide(LynxParser.GlideContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#difference}.
-	 * @param ctx the parse tree
-	 */
-	void enterDifference(LynxParser.DifferenceContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#difference}.
-	 * @param ctx the parse tree
-	 */
-	void exitDifference(LynxParser.DifferenceContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#greaterx}.
-	 * @param ctx the parse tree
-	 */
-	void enterGreaterx(LynxParser.GreaterxContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#greaterx}.
-	 * @param ctx the parse tree
-	 */
-	void exitGreaterx(LynxParser.GreaterxContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#lessx}.
-	 * @param ctx the parse tree
-	 */
-	void enterLessx(LynxParser.LessxContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#lessx}.
-	 * @param ctx the parse tree
-	 */
-	void exitLessx(LynxParser.LessxContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#power}.
-	 * @param ctx the parse tree
-	 */
-	void enterPower(LynxParser.PowerContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#power}.
-	 * @param ctx the parse tree
-	 */
-	void exitPower(LynxParser.PowerContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#product}.
-	 * @param ctx the parse tree
-	 */
-	void enterProduct(LynxParser.ProductContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#product}.
-	 * @param ctx the parse tree
-	 */
-	void exitProduct(LynxParser.ProductContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#quotient}.
-	 * @param ctx the parse tree
-	 */
-	void enterQuotient(LynxParser.QuotientContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#quotient}.
-	 * @param ctx the parse tree
-	 */
-	void exitQuotient(LynxParser.QuotientContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#remainder}.
-	 * @param ctx the parse tree
-	 */
-	void enterRemainder(LynxParser.RemainderContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#remainder}.
-	 * @param ctx the parse tree
-	 */
-	void exitRemainder(LynxParser.RemainderContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#sum}.
-	 * @param ctx the parse tree
-	 */
-	void enterSum(LynxParser.SumContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#sum}.
-	 * @param ctx the parse tree
-	 */
-	void exitSum(LynxParser.SumContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#and}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnd(LynxParser.AndContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#and}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnd(LynxParser.AndContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#ifC}.
-	 * @param ctx the parse tree
-	 */
-	void enterIfC(LynxParser.IfCContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#ifC}.
-	 * @param ctx the parse tree
-	 */
-	void exitIfC(LynxParser.IfCContext ctx);
+	void exitIfc(LynxParser.IfcContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#ifelse}.
 	 * @param ctx the parse tree
@@ -487,26 +337,6 @@ public interface LynxListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIfelse(LynxParser.IfelseContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#not}.
-	 * @param ctx the parse tree
-	 */
-	void enterNot(LynxParser.NotContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#not}.
-	 * @param ctx the parse tree
-	 */
-	void exitNot(LynxParser.NotContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#or}.
-	 * @param ctx the parse tree
-	 */
-	void enterOr(LynxParser.OrContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#or}.
-	 * @param ctx the parse tree
-	 */
-	void exitOr(LynxParser.OrContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#heading}.
 	 * @param ctx the parse tree
@@ -577,16 +407,6 @@ public interface LynxListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNames(LynxParser.NamesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#pi}.
-	 * @param ctx the parse tree
-	 */
-	void enterPi(LynxParser.PiContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#pi}.
-	 * @param ctx the parse tree
-	 */
-	void exitPi(LynxParser.PiContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#bg}.
 	 * @param ctx the parse tree
@@ -738,66 +558,6 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitMake(LynxParser.MakeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LynxParser#mathStatment}.
-	 * @param ctx the parse tree
-	 */
-	void enterMathStatment(LynxParser.MathStatmentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#mathStatment}.
-	 * @param ctx the parse tree
-	 */
-	void exitMathStatment(LynxParser.MathStatmentContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#brackets}.
-	 * @param ctx the parse tree
-	 */
-	void enterBrackets(LynxParser.BracketsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#brackets}.
-	 * @param ctx the parse tree
-	 */
-	void exitBrackets(LynxParser.BracketsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#logicStatment}.
-	 * @param ctx the parse tree
-	 */
-	void enterLogicStatment(LynxParser.LogicStatmentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#logicStatment}.
-	 * @param ctx the parse tree
-	 */
-	void exitLogicStatment(LynxParser.LogicStatmentContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#logicbrackets}.
-	 * @param ctx the parse tree
-	 */
-	void enterLogicbrackets(LynxParser.LogicbracketsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#logicbrackets}.
-	 * @param ctx the parse tree
-	 */
-	void exitLogicbrackets(LynxParser.LogicbracketsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#logicSign}.
-	 * @param ctx the parse tree
-	 */
-	void enterLogicSign(LynxParser.LogicSignContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#logicSign}.
-	 * @param ctx the parse tree
-	 */
-	void exitLogicSign(LynxParser.LogicSignContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#mathSign}.
-	 * @param ctx the parse tree
-	 */
-	void enterMathSign(LynxParser.MathSignContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#mathSign}.
-	 * @param ctx the parse tree
-	 */
-	void exitMathSign(LynxParser.MathSignContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LynxParser#spaceArg}.
 	 * @param ctx the parse tree
 	 */
@@ -838,26 +598,6 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitNaturalNumberArg(LynxParser.NaturalNumberArgContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LynxParser#totalnumberArg}.
-	 * @param ctx the parse tree
-	 */
-	void enterTotalnumberArg(LynxParser.TotalnumberArgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#totalnumberArg}.
-	 * @param ctx the parse tree
-	 */
-	void exitTotalnumberArg(LynxParser.TotalnumberArgContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#anynumberArg}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnynumberArg(LynxParser.AnynumberArgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#anynumberArg}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnynumberArg(LynxParser.AnynumberArgContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LynxParser#list}.
 	 * @param ctx the parse tree
 	 */
@@ -867,16 +607,6 @@ public interface LynxListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitList(LynxParser.ListContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#stringArg}.
-	 * @param ctx the parse tree
-	 */
-	void enterStringArg(LynxParser.StringArgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#stringArg}.
-	 * @param ctx the parse tree
-	 */
-	void exitStringArg(LynxParser.StringArgContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#endFileArg}.
 	 * @param ctx the parse tree

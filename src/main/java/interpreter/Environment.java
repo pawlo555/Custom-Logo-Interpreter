@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class Environment {
 
     HashMap<String, Procedure> procedureHashMap = new HashMap<>();
-    LinkedList<HashMap<String, Variable>> variableHashMap = new LinkedList<>();
+    LinkedList<HashMap<String, VariableValue>> variableHashMap = new LinkedList<>();
 
     public Environment() {
         variableHashMap.addFirst(new HashMap<>());
@@ -25,8 +25,8 @@ public class Environment {
         return procedureHashMap.get(name);
     }
 
-    public Variable getVariable(String name) {
-        for (HashMap<String, Variable> map: variableHashMap) {
+    public VariableValue getVariable(String name) {
+        for (HashMap<String, VariableValue> map: variableHashMap) {
             if (map.containsKey(name)) {
                 return map.get(name);
             }
@@ -34,8 +34,8 @@ public class Environment {
         throw new IllegalStateException("There is no declared variable named:" + name);
     }
 
-    public void addVariable(String name, Variable variable) {
-        variableHashMap.getFirst().put(name, variable);
+    public void addVariable(String name, VariableValue variableValue) {
+        variableHashMap.getFirst().put(name, variableValue);
     }
 
     public void enterBlock() {
@@ -47,12 +47,12 @@ public class Environment {
     }
 
     public String getStringVariable(String name) {
-        Variable variable = getVariable(name);
-        return variable.getStringValue();
+        VariableValue variableValue = getVariable(name);
+        return variableValue.getStringValue();
     }
 
     public double getNumericVariable(String name) {
-        Variable variable = getVariable(name);
-        return variable.getNumericValue();
+        VariableValue variableValue = getVariable(name);
+        return variableValue.getDoubleValue();
     }
 }

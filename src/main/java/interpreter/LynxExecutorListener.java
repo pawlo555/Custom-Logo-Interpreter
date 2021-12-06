@@ -14,19 +14,14 @@ public class LynxExecutorListener extends LynxBaseListener {
     private final LinkedList<Integer> numbers = new LinkedList<>();
 
     @Override
-    public void enterForward(LynxParser.ForwardContext ctx) {
-        double n = Double.parseDouble(ctx.mathStatment().getText());
-        statement = new StatementForward(n);
-    }
-
-    @Override
     public void exitForward(LynxParser.ForwardContext ctx) {
+        statement = new StatementForward(ctx.mathStatement().getText());
         exit();
     }
 
     @Override
     public void enterBack(LynxParser.BackContext ctx) {
-        double n = Double.parseDouble(ctx.mathStatment().getText());
+        double n = Double.parseDouble(ctx.mathStatement().getText());
         statement = new StatementBack(n);
     }
 
@@ -37,7 +32,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterRight(LynxParser.RightContext ctx) {
-        int n = Integer.parseInt(ctx.mathStatment().getText());
+        int n = Integer.parseInt(ctx.mathStatement().getText());
         statement = new StatementRight(n);
     }
 
@@ -48,7 +43,7 @@ public class LynxExecutorListener extends LynxBaseListener {
 
     @Override
     public void enterLeft(LynxParser.LeftContext ctx) {
-        int n = Integer.parseInt(ctx.mathStatment().getText());
+        int n = Integer.parseInt(ctx.mathStatement().getText());
         statement = new StatementLeft(n);
     }
 
@@ -58,12 +53,8 @@ public class LynxExecutorListener extends LynxBaseListener {
     }
 
     @Override
-    public void enterHome(LynxParser.HomeContext ctx) {
-        statement = new StatementHome();
-    }
-
-    @Override
     public void exitHome(LynxParser.HomeContext ctx) {
+        statement = new StatementHome();
         exit();
     }
 
@@ -87,15 +78,24 @@ public class LynxExecutorListener extends LynxBaseListener {
     @Override
     public void exitProcedure(LynxParser.ProcedureContext ctx) {
         String name = ctx.stringArg().getText();
-        Procedure procedure = new Procedure(name, collector.endCollecting());
+        Procedure procedure = new Procedure(name, collector.endCollecting(), new LinkedList<>());
         statement = new StatementProcedureCreation(name, procedure);
         exit();
     }
 
     @Override
+    public void exitLet(LynxParser.LetContext ctx) {
+        String name = ctx.variableName().getText();
+        VariableValue variableValue = new VariableValue(ctx.variableValue().getText());
+        statement = new StatementLet(name, variableValue);
+        exit();
+    }
+
+
+    @Override
     public void exitProcedureCall(LynxParser.ProcedureCallContext ctx) {
         String name = ctx.stringArg().getText();
-        statement = new StatementProcedureCall(name);
+        statement = new StatementProcedureCall(name, new LinkedList<>());
         exit();
     }
 
