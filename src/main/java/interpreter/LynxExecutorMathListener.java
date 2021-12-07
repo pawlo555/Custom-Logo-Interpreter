@@ -1,15 +1,14 @@
 package interpreter;
 
-import grammar.LynxBaseListener;
 import grammar.LynxParser;
 import interpreter.statements.*;
 
 import java.util.LinkedList;
 
-public class LynxExecutorListener extends LynxBaseListener {
+public class LynxExecutorMathListener extends LynxMathListener {
     private Statement statement;
     private Executor executor;
-    private final StatementCollector collector = new StatementCollector();
+    private final StatementCollector statementCollector = new StatementCollector();
 
     private final LinkedList<Integer> numbers = new LinkedList<>();
 
@@ -18,6 +17,8 @@ public class LynxExecutorListener extends LynxBaseListener {
         statement = new StatementForward(ctx.mathStatement().getText());
         exit();
     }
+
+
 
     @Override
     public void enterBack(LynxParser.BackContext ctx) {
@@ -61,24 +62,24 @@ public class LynxExecutorListener extends LynxBaseListener {
     @Override
     public void enterRepeat(LynxParser.RepeatContext ctx) {
         numbers.addFirst(Integer.parseInt(ctx.naturalNumberArg().getText()));
-        collector.startCollecting();
+        statementCollector.startCollecting();
     }
 
     @Override
     public void exitRepeat(LynxParser.RepeatContext ctx) {
-        statement = new StatementRepeat(numbers.removeFirst(), collector.endCollecting());
+        statement = new StatementRepeat(numbers.removeFirst(), statementCollector.endCollecting());
         exit();
     }
 
     @Override
     public void enterProcedure(LynxParser.ProcedureContext ctx) {
-        collector.startCollecting();
+        statementCollector.startCollecting();
     }
 
     @Override
     public void exitProcedure(LynxParser.ProcedureContext ctx) {
         String name = ctx.stringArg().getText();
-        Procedure procedure = new Procedure(name, collector.endCollecting(), new LinkedList<>());
+        Procedure procedure = new Procedure(name, statementCollector.endCollecting(), new LinkedList<>());
         statement = new StatementProcedureCreation(name, procedure);
         exit();
     }
@@ -112,11 +113,11 @@ public class LynxExecutorListener extends LynxBaseListener {
     }
 
     private void exit() {
-        if (!collector.isCollecting()) {
+        if (!statementCollector.isCollecting()) {
             statement.execute(executor);
         }
         else {
-            collector.addStatement(statement);
+            statementCollector.addStatement(statement);
         }
         statement = null;
     }

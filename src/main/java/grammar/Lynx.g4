@@ -64,10 +64,10 @@ mathStatement:
     mathSentence;
 
 mathSentence:
-    ('(' brakeArg? mathSentence brakeArg?')')
-    | mathSentence brakeArg? doubleArgMathOperator brakeArg? mathSentence
-    | singleArgMathOperator brakeArg? mathSentence
-    | mathValue;
+    ('(' brakeArg? mathSentence brakeArg?')') # brakets
+    | mathSentence brakeArg? doubleArgMathOperator brakeArg? mathSentence # doubleArgs
+    | singleArgMathOperator brakeArg? mathSentence # singleArgs
+    | mathValue # value;
 
 mathValue:
     FLOATNUMBER
@@ -76,34 +76,34 @@ mathValue:
     | variableName;
 
 singleArgMathOperator:
-    ABS
-    | ARCTAN
-    | COS
-    | INT
-    | LN
-    | MINUS
-    | RANDOM
-    | ROUND
-    | SIN
-    | SQRT
-    | TAN
-    | NOT
+    ABS # abs
+    | ARCTAN # arctan
+    | COS # cos
+    | INT # int1
+    | LN # ln
+    | MINUS # minusSingle
+    | RANDOM # random
+    | ROUND # round
+    | SIN # sin
+    | SQRT # sqrt
+    | TAN # tan
+    | NOT # not
     ;
 
 doubleArgMathOperator:
-    DIFFERENCE
-    | POWER
-    | QUOTIENT
-    | REMAINDER
-    | SUM
-    | MINUS
-    | PRODUCT
-    | DIVISION
-    | COMPARISON
-    | EXP
-    | LOG
-    | OR
-    | AND
+    DIFFERENCE # difference
+    | POWER # power
+    | QUOTIENT # quotient
+    | REMAINDER # remainder
+    | SUM # sum
+    | MINUS # minus
+    | PRODUCT #product
+    | DIVISION # division
+    | COMPARISON # comparison
+    | EXP # exp
+    | LOG # log
+    | OR # or
+    | AND # and
     ;
 
 stringArg:
@@ -284,7 +284,6 @@ list:
 endFileArg:
     EOF
     ;
-
 
 //LEXER
 //ALL LETERS
@@ -1076,7 +1075,7 @@ BOOLEAN:
 
 //ADDITIONS
 OTHERWORD:
-    (LOWERCASE | UPPERCASE | DIGIT |'_')+
+    (LOWERCASE | UPPERCASE |'_')+
     ;
 WHITESPACE:
     ' '

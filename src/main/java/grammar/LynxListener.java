@@ -48,15 +48,53 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitMathStatement(LynxParser.MathStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LynxParser#mathSentence}.
+	 * Enter a parse tree produced by the {@code Brakets}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
 	 * @param ctx the parse tree
 	 */
-	void enterMathSentence(LynxParser.MathSentenceContext ctx);
+	void enterBrakets(LynxParser.BraketsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LynxParser#mathSentence}.
+	 * Exit a parse tree produced by the {@code Brakets}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
 	 * @param ctx the parse tree
 	 */
-	void exitMathSentence(LynxParser.MathSentenceContext ctx);
+	void exitBrakets(LynxParser.BraketsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Value}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(LynxParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Value}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(LynxParser.ValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DoubleArgs}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterDoubleArgs(LynxParser.DoubleArgsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DoubleArgs}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitDoubleArgs(LynxParser.DoubleArgsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code SingleArgs}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingleArgs(LynxParser.SingleArgsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code SingleArgs}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingleArgs(LynxParser.SingleArgsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#mathValue}.
 	 * @param ctx the parse tree
@@ -68,25 +106,305 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitMathValue(LynxParser.MathValueContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LynxParser#singleArgMathOperator}.
+	 * Enter a parse tree produced by the {@code abs}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
 	 * @param ctx the parse tree
 	 */
-	void enterSingleArgMathOperator(LynxParser.SingleArgMathOperatorContext ctx);
+	void enterAbs(LynxParser.AbsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LynxParser#singleArgMathOperator}.
+	 * Exit a parse tree produced by the {@code abs}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
 	 * @param ctx the parse tree
 	 */
-	void exitSingleArgMathOperator(LynxParser.SingleArgMathOperatorContext ctx);
+	void exitAbs(LynxParser.AbsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LynxParser#doubleArgMathOperator}.
+	 * Enter a parse tree produced by the {@code arctan}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
 	 * @param ctx the parse tree
 	 */
-	void enterDoubleArgMathOperator(LynxParser.DoubleArgMathOperatorContext ctx);
+	void enterArctan(LynxParser.ArctanContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LynxParser#doubleArgMathOperator}.
+	 * Exit a parse tree produced by the {@code arctan}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
 	 * @param ctx the parse tree
 	 */
-	void exitDoubleArgMathOperator(LynxParser.DoubleArgMathOperatorContext ctx);
+	void exitArctan(LynxParser.ArctanContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code cos}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterCos(LynxParser.CosContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code cos}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitCos(LynxParser.CosContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code int1}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterInt1(LynxParser.Int1Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code int1}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitInt1(LynxParser.Int1Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ln}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterLn(LynxParser.LnContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ln}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitLn(LynxParser.LnContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code minusSingle}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterMinusSingle(LynxParser.MinusSingleContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code minusSingle}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitMinusSingle(LynxParser.MinusSingleContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code random}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterRandom(LynxParser.RandomContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code random}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitRandom(LynxParser.RandomContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code round}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterRound(LynxParser.RoundContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code round}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitRound(LynxParser.RoundContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code sin}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterSin(LynxParser.SinContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code sin}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitSin(LynxParser.SinContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code sqrt}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterSqrt(LynxParser.SqrtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code sqrt}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitSqrt(LynxParser.SqrtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code tan}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterTan(LynxParser.TanContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code tan}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitTan(LynxParser.TanContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code not}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterNot(LynxParser.NotContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code not}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitNot(LynxParser.NotContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code difference}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterDifference(LynxParser.DifferenceContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code difference}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitDifference(LynxParser.DifferenceContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code power}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterPower(LynxParser.PowerContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code power}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitPower(LynxParser.PowerContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code quotient}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterQuotient(LynxParser.QuotientContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code quotient}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitQuotient(LynxParser.QuotientContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code remainder}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterRemainder(LynxParser.RemainderContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code remainder}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitRemainder(LynxParser.RemainderContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code sum}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterSum(LynxParser.SumContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code sum}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitSum(LynxParser.SumContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code minus}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterMinus(LynxParser.MinusContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code minus}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitMinus(LynxParser.MinusContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code product}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterProduct(LynxParser.ProductContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code product}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitProduct(LynxParser.ProductContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code division}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterDivision(LynxParser.DivisionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code division}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitDivision(LynxParser.DivisionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code comparison}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterComparison(LynxParser.ComparisonContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code comparison}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitComparison(LynxParser.ComparisonContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code exp}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterExp(LynxParser.ExpContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code exp}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitExp(LynxParser.ExpContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code log}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterLog(LynxParser.LogContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code log}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitLog(LynxParser.LogContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code or}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterOr(LynxParser.OrContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code or}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitOr(LynxParser.OrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code and}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnd(LynxParser.AndContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code and}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnd(LynxParser.AndContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#stringArg}.
 	 * @param ctx the parse tree

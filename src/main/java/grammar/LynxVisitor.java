@@ -35,11 +35,33 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMathStatement(LynxParser.MathStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#mathSentence}.
+	 * Visit a parse tree produced by the {@code Brakets}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMathSentence(LynxParser.MathSentenceContext ctx);
+	T visitBrakets(LynxParser.BraketsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Value}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitValue(LynxParser.ValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code DoubleArgs}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDoubleArgs(LynxParser.DoubleArgsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code SingleArgs}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSingleArgs(LynxParser.SingleArgsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LynxParser#mathValue}.
 	 * @param ctx the parse tree
@@ -47,17 +69,180 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMathValue(LynxParser.MathValueContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#singleArgMathOperator}.
+	 * Visit a parse tree produced by the {@code abs}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSingleArgMathOperator(LynxParser.SingleArgMathOperatorContext ctx);
+	T visitAbs(LynxParser.AbsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LynxParser#doubleArgMathOperator}.
+	 * Visit a parse tree produced by the {@code arctan}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDoubleArgMathOperator(LynxParser.DoubleArgMathOperatorContext ctx);
+	T visitArctan(LynxParser.ArctanContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code cos}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCos(LynxParser.CosContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code int1}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInt1(LynxParser.Int1Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ln}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLn(LynxParser.LnContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code minusSingle}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMinusSingle(LynxParser.MinusSingleContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code random}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRandom(LynxParser.RandomContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code round}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRound(LynxParser.RoundContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code sin}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSin(LynxParser.SinContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code sqrt}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSqrt(LynxParser.SqrtContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code tan}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTan(LynxParser.TanContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code not}
+	 * labeled alternative in {@link LynxParser#singleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNot(LynxParser.NotContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code difference}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDifference(LynxParser.DifferenceContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code power}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPower(LynxParser.PowerContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code quotient}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuotient(LynxParser.QuotientContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code remainder}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRemainder(LynxParser.RemainderContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code sum}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSum(LynxParser.SumContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code minus}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMinus(LynxParser.MinusContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code product}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProduct(LynxParser.ProductContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code division}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDivision(LynxParser.DivisionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code comparison}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComparison(LynxParser.ComparisonContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code exp}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExp(LynxParser.ExpContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code log}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLog(LynxParser.LogContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code or}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOr(LynxParser.OrContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code and}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAnd(LynxParser.AndContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LynxParser#stringArg}.
 	 * @param ctx the parse tree
