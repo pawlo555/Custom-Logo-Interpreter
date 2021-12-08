@@ -35,7 +35,7 @@ public class LynxMathListener extends LynxBaseListener {
     }
 
     public MathValue getMathStatement() {
-        return new MathValue();
+        return new MathValue("cos");
     }
 
     @Override

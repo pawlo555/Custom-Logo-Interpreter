@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="LynxTranslator" target="11" />
+      <module name="LynxTranslator" target="14" />
     </bytecodeTargetLevel>
   </component>
 </project>
