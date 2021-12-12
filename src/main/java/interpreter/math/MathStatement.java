@@ -1,13 +1,19 @@
 package interpreter.math;
 
+import interpreter.Environment;
+import interpreter.VariableValue;
+import interpreter.math.operations.*;
+
 import java.util.LinkedList;
 import java.util.Stack;
 
 public class MathStatement {
-
     private final LinkedList<String> elementsInReverseNotation = new LinkedList<>();
+    private final Environment environment;
 
-    public MathStatement(LinkedList<String> elements) {
+    public MathStatement(LinkedList<String> elements, Environment environment) {
+        this.environment = environment;
+
         Stack<String> operators = new Stack<>();
         for(String element: elements) {
             if (MathElement.isValue(element)) {
@@ -50,12 +56,62 @@ public class MathStatement {
                             break;
                         }
                 }
-                operators.peek();
+                operators.push(element);
             }
         }
+        System.out.println(operators);
+        while (!operators.isEmpty()) {
+            elementsInReverseNotation.addLast(operators.pop());
+        }
+        System.out.println(Operators.PLUS.toString());
+        System.out.println(elementsInReverseNotation);
     }
 
-    public void evaluate() {
-        System.out.println(elementsInReverseNotation);
+    public MathValue evaluate() {
+        Stack<MathValue> valuesStack = new Stack<>();
+        for (String element: elementsInReverseNotation) {
+            if (MathElement.isValue(element)) {
+                MathValue value = convertToValue(element);
+                valuesStack.push(value);
+            }
+            else {
+                Operators operator = Operators.valueOf(element);
+                Operation operation;
+                int howManyArgumentsTakes = operator.howManyArgumentsTakes();
+                if (howManyArgumentsTakes == 1) {
+                    MathValue value = valuesStack.pop();
+                    operation = SingleOperationFactory.factorOperation(operator, value);
+                }
+                else {
+                    MathValue firstValue = valuesStack.pop();
+                    MathValue secondValue = valuesStack.pop();
+                    operation = DoubleOperatorFactory.factorOperation(operator, firstValue, secondValue);
+                }
+                MathValue evaluatedValue = operation.evaluate();
+                valuesStack.push(evaluatedValue);
+            }
+        }
+        MathValue result = valuesStack.pop();
+        System.out.println(result);
+        return result;
+    }
+
+    public MathValue convertToValue(String string) {
+        if (VariableValue.isVariable(string)) {
+            string = environment.getStringVariable(string);
+        }
+        Integer integer = MathElement.parseInt(string);
+        if (integer != null) {
+            return new MathValue(integer);
+        }
+        Double doubleValue = MathElement.parseDouble(string);
+        if (doubleValue != null) {
+            return new MathValue(doubleValue);
+        }
+        Boolean booleanValue = MathElement.parseBoolean(string);
+        if (booleanValue != null) {
+            return new MathValue(booleanValue);
+        }
+        throw new IllegalStateException("Value: " + string +" cannot be parsed to MathValue");
     }
 }

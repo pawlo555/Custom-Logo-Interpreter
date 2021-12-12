@@ -34,4 +34,8 @@ public class VariableValue {
     public String getStringValue() {
         return stringValue;
     }
+
+    public static boolean isVariable(String string) {
+        return string.charAt(0) == ':';
+    }
 }

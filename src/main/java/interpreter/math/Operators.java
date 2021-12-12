@@ -6,7 +6,10 @@ public enum Operators {
 
 
     public int howManyArgumentsTakes() {
-        return 1;
+        return switch(this) {
+            case LN, MINUS_SINGLE -> 1;
+            case MULTIPLY, PLUS, MINUS, LOG -> 2;
+        };
     }
 
     public boolean isRightCumulate() {

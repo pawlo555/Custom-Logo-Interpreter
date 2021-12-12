@@ -3,7 +3,6 @@ package interpreter;
 import grammar.LynxBaseListener;
 import grammar.LynxParser;
 import interpreter.math.MathStatementCollector;
-import interpreter.math.MathValue;
 
 
 public class LynxMathListener extends LynxBaseListener {
@@ -32,10 +31,6 @@ public class LynxMathListener extends LynxBaseListener {
     @Override
     public void exitBrakets(LynxParser.BraketsContext ctx) {
         mathCollector.collect(")");
-    }
-
-    public MathValue getMathStatement() {
-        return new MathValue("cos");
     }
 
     @Override
