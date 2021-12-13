@@ -3,35 +3,19 @@ package interpreter.statements;
 import interpreter.Executor;
 import interpreter.Statement;
 import interpreter.VariableValue;
+import interpreter.math.MathStatement;
+import interpreter.math.MathValue;
 
 public class StatementForward implements Statement {
-    private final VariableValue variableValue;
-    private final String variableName;
+    private final MathStatement mathStatement;
 
-    public StatementForward(String variableName) {
-        if(variableName.charAt(0) == ':') {
-            this.variableName = variableName;
-            this.variableValue = null;
-        }
-        else {
-            this.variableValue = new VariableValue(variableName);
-            this.variableName = null;
-        }
+    public StatementForward(MathStatement mathStatement) {
+        this.mathStatement = mathStatement;
     }
 
     @Override
     public void execute(Executor executor) {
-        double value = getValue(executor);
-        executor.getEngine().forward(value);
-    }
-
-    private double getValue(Executor executor) {
-        if (variableValue != null) {
-            return variableValue.getDoubleValue();
-        }
-        else {
-            assert variableName != null: "Forward - dont specify correct value";
-            return executor.getEnvironment().getVariable(variableName).getDoubleValue();
-        }
+        MathValue value = mathStatement.evaluate(executor.getEnvironment());
+        executor.getEngine().forward(value.getDoubleValue());
     }
 }

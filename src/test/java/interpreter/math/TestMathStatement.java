@@ -17,8 +17,8 @@ public class TestMathStatement {
         linkedList.addLast("2");
         linkedList.addLast("PLUS");
         linkedList.addLast("2");
-        MathStatement statement = new MathStatement(linkedList, null);
-        MathValue value = statement.evaluate();
+        MathStatement statement = new MathStatement(linkedList);
+        MathValue value = statement.evaluate(null);
 
         assertEquals(6, value.getIntValue());
 

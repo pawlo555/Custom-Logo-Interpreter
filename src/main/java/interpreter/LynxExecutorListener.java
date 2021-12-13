@@ -5,51 +5,33 @@ import interpreter.statements.*;
 
 import java.util.LinkedList;
 
-public class LynxExecutorMathListener extends LynxMathListener {
+public class LynxExecutorListener extends LynxMathListener {
     private Statement statement;
     private Executor executor;
     private final StatementCollector statementCollector = new StatementCollector();
 
-    private final LinkedList<Integer> numbers = new LinkedList<>();
 
     @Override
     public void exitForward(LynxParser.ForwardContext ctx) {
-        statement = new StatementForward(ctx.mathStatement().getText());
+        statement = new StatementForward(mathCollector.getMathStatement());
         exit();
-    }
-
-
-
-    @Override
-    public void enterBack(LynxParser.BackContext ctx) {
-        double n = Double.parseDouble(ctx.mathStatement().getText());
-        statement = new StatementBack(n);
     }
 
     @Override
     public void exitBack(LynxParser.BackContext ctx) {
+        statement = new StatementBack(mathCollector.getMathStatement());
         exit();
-    }
-
-    @Override
-    public void enterRight(LynxParser.RightContext ctx) {
-        int n = Integer.parseInt(ctx.mathStatement().getText());
-        statement = new StatementRight(n);
     }
 
     @Override
     public void exitRight(LynxParser.RightContext ctx) {
+        statement = new StatementBack(mathCollector.getMathStatement());
         exit();
     }
 
     @Override
-    public void enterLeft(LynxParser.LeftContext ctx) {
-        int n = Integer.parseInt(ctx.mathStatement().getText());
-        statement = new StatementLeft(n);
-    }
-
-    @Override
     public void exitLeft(LynxParser.LeftContext ctx) {
+        statement = new StatementBack(mathCollector.getMathStatement());
         exit();
     }
 
@@ -61,13 +43,12 @@ public class LynxExecutorMathListener extends LynxMathListener {
 
     @Override
     public void enterRepeat(LynxParser.RepeatContext ctx) {
-        numbers.addFirst(Integer.parseInt(ctx.naturalNumberArg().getText()));
         statementCollector.startCollecting();
     }
 
     @Override
     public void exitRepeat(LynxParser.RepeatContext ctx) {
-        statement = new StatementRepeat(numbers.removeFirst(), statementCollector.endCollecting());
+        statement = new StatementRepeat(mathCollector.getMathStatement(), statementCollector.endCollecting());
         exit();
     }
 

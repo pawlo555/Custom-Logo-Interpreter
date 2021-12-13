@@ -59,7 +59,7 @@ public class Interpreter implements ConsoleListener {
     }
 
     private void walkTheTree(ParseTree tree) {
-        LynxExecutorMathListener listener = new LynxExecutorMathListener();
+        LynxExecutorListener listener = new LynxExecutorListener();
         listener.setExecutor(executor);
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(listener, tree);

@@ -3,18 +3,23 @@ package interpreter.math;
 import java.util.LinkedList;
 
 public class MathStatementCollector {
-    LinkedList<String> statements;
-
+    LinkedList<String> statementElements;
+    LinkedList<MathStatement> statements = new LinkedList<>();
 
     public void startCollecting() {
-        statements = new LinkedList<>();
-    };
+        statementElements = new LinkedList<>();
+    }
 
     public void endCollecting() {
-        System.out.println(statements);
-    };
+        statements.addLast(new MathStatement(statementElements));
+
+    }
 
     public void collect(String value) {
-        statements.addLast(value);
+        statementElements.addLast(value);
+    }
+
+    public MathStatement getMathStatement() {
+        return statements.removeFirst();
     }
 }

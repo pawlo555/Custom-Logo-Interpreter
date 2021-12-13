@@ -9,10 +9,8 @@ import java.util.Stack;
 
 public class MathStatement {
     private final LinkedList<String> elementsInReverseNotation = new LinkedList<>();
-    private final Environment environment;
 
-    public MathStatement(LinkedList<String> elements, Environment environment) {
-        this.environment = environment;
+    public MathStatement(LinkedList<String> elements) {
 
         Stack<String> operators = new Stack<>();
         for(String element: elements) {
@@ -67,11 +65,11 @@ public class MathStatement {
         System.out.println(elementsInReverseNotation);
     }
 
-    public MathValue evaluate() {
+    public MathValue evaluate(Environment environment) {
         Stack<MathValue> valuesStack = new Stack<>();
         for (String element: elementsInReverseNotation) {
             if (MathElement.isValue(element)) {
-                MathValue value = convertToValue(element);
+                MathValue value = convertToValue(element, environment);
                 valuesStack.push(value);
             }
             else {
@@ -96,7 +94,7 @@ public class MathStatement {
         return result;
     }
 
-    public MathValue convertToValue(String string) {
+    public MathValue convertToValue(String string, Environment environment) {
         if (VariableValue.isVariable(string)) {
             string = environment.getStringVariable(string);
         }

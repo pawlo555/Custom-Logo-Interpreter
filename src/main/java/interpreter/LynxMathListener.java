@@ -3,10 +3,11 @@ package interpreter;
 import grammar.LynxBaseListener;
 import grammar.LynxParser;
 import interpreter.math.MathStatementCollector;
+import interpreter.math.Operators;
 
 
 public class LynxMathListener extends LynxBaseListener {
-    private final MathStatementCollector mathCollector = new MathStatementCollector();
+    protected final MathStatementCollector mathCollector = new MathStatementCollector();
 
     @Override
     public void enterMathStatement(LynxParser.MathStatementContext ctx) {
@@ -55,7 +56,7 @@ public class LynxMathListener extends LynxBaseListener {
 
     @Override
     public void enterLn(LynxParser.LnContext ctx) {
-        mathCollector.collect("ln");
+        mathCollector.collect(Operators.LN.name());
     }
 
     @Override
@@ -115,12 +116,12 @@ public class LynxMathListener extends LynxBaseListener {
 
     @Override
     public void enterSum(LynxParser.SumContext ctx) {
-        mathCollector.collect("sum");
+        mathCollector.collect(Operators.PLUS.name());
     }
 
     @Override
     public void enterMinus(LynxParser.MinusContext ctx) {
-        mathCollector.collect("-");
+        mathCollector.collect(Operators.MINUS.name());
     }
 
     @Override

@@ -2,16 +2,19 @@ package interpreter.statements;
 
 import interpreter.Executor;
 import interpreter.Statement;
+import interpreter.math.MathStatement;
+import interpreter.math.MathValue;
 
 public class StatementBack implements Statement {
-    private final double n;
+    private final MathStatement mathStatement;
 
-    public StatementBack(double n) {
-        this.n = n;
+    public StatementBack(MathStatement mathStatement) {
+        this.mathStatement = mathStatement;
     }
 
     @Override
     public void execute(Executor executor) {
-        executor.getEngine().backward(n);
+        MathValue value = mathStatement.evaluate(executor.getEnvironment());
+        executor.getEngine().backward(value.getDoubleValue());
     }
 }
