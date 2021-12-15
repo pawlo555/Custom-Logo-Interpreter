@@ -48,53 +48,53 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitMathStatement(LynxParser.MathStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Brakets}
-	 * labeled alternative in {@link LynxParser#mathSentence}.
-	 * @param ctx the parse tree
-	 */
-	void enterBrakets(LynxParser.BraketsContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Brakets}
-	 * labeled alternative in {@link LynxParser#mathSentence}.
-	 * @param ctx the parse tree
-	 */
-	void exitBrakets(LynxParser.BraketsContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Value}
-	 * labeled alternative in {@link LynxParser#mathSentence}.
-	 * @param ctx the parse tree
-	 */
-	void enterValue(LynxParser.ValueContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Value}
-	 * labeled alternative in {@link LynxParser#mathSentence}.
-	 * @param ctx the parse tree
-	 */
-	void exitValue(LynxParser.ValueContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code DoubleArgs}
-	 * labeled alternative in {@link LynxParser#mathSentence}.
-	 * @param ctx the parse tree
-	 */
-	void enterDoubleArgs(LynxParser.DoubleArgsContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code DoubleArgs}
-	 * labeled alternative in {@link LynxParser#mathSentence}.
-	 * @param ctx the parse tree
-	 */
-	void exitDoubleArgs(LynxParser.DoubleArgsContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code SingleArgs}
+	 * Enter a parse tree produced by the {@code singleArgs}
 	 * labeled alternative in {@link LynxParser#mathSentence}.
 	 * @param ctx the parse tree
 	 */
 	void enterSingleArgs(LynxParser.SingleArgsContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code SingleArgs}
+	 * Exit a parse tree produced by the {@code singleArgs}
 	 * labeled alternative in {@link LynxParser#mathSentence}.
 	 * @param ctx the parse tree
 	 */
 	void exitSingleArgs(LynxParser.SingleArgsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code doubleArgs}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterDoubleArgs(LynxParser.DoubleArgsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code doubleArgs}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitDoubleArgs(LynxParser.DoubleArgsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code value}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(LynxParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code value}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(LynxParser.ValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code brakets}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void enterBrakets(LynxParser.BraketsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code brakets}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 */
+	void exitBrakets(LynxParser.BraketsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#mathValue}.
 	 * @param ctx the parse tree
@@ -425,16 +425,6 @@ public interface LynxListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVariableName(LynxParser.VariableNameContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#variableValue}.
-	 * @param ctx the parse tree
-	 */
-	void enterVariableValue(LynxParser.VariableValueContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#variableValue}.
-	 * @param ctx the parse tree
-	 */
-	void exitVariableValue(LynxParser.VariableValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#procedure}.
 	 * @param ctx the parse tree

@@ -114,19 +114,15 @@ stringArg:
 variableName:
     ':' OTHERWORD;
 
-variableValue:
-    mathStatement | stringArg;
-
-
 procedure:
     PROCEDURE brakeArg stringArg brakeArg (variableName brakeArg)* '['brakeArg? line+ brakeArg?']'
     ;
 
 procedureCall:
-    CALL brakeArg stringArg (brakeArg variableValue)* brakeArg?;
+    CALL brakeArg stringArg (brakeArg mathStatement)* brakeArg?;
 //operation commands
 repeat:
-    REPEAT brakeArg naturalNumberArg brakeArg '[' line']' ;
+    REPEAT brakeArg mathStatement brakeArg '[' line']' ;
 
 //number commands
 back:
@@ -258,7 +254,7 @@ unfreezebg:
 
 //list commands
 let:
-    LET brakeArg variableName brakeArg variableValue brakeArg?
+    LET brakeArg variableName brakeArg mathStatement brakeArg?
     ;
 
 //word list commands

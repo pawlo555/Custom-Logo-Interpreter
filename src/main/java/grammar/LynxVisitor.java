@@ -35,33 +35,33 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMathStatement(LynxParser.MathStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Brakets}
+	 * Visit a parse tree produced by the {@code singleArgs}
 	 * labeled alternative in {@link LynxParser#mathSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBrakets(LynxParser.BraketsContext ctx);
+	T visitSingleArgs(LynxParser.SingleArgsContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Value}
-	 * labeled alternative in {@link LynxParser#mathSentence}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitValue(LynxParser.ValueContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code DoubleArgs}
+	 * Visit a parse tree produced by the {@code doubleArgs}
 	 * labeled alternative in {@link LynxParser#mathSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitDoubleArgs(LynxParser.DoubleArgsContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code SingleArgs}
+	 * Visit a parse tree produced by the {@code value}
 	 * labeled alternative in {@link LynxParser#mathSentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSingleArgs(LynxParser.SingleArgsContext ctx);
+	T visitValue(LynxParser.ValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code brakets}
+	 * labeled alternative in {@link LynxParser#mathSentence}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBrakets(LynxParser.BraketsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LynxParser#mathValue}.
 	 * @param ctx the parse tree
@@ -255,12 +255,6 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVariableName(LynxParser.VariableNameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LynxParser#variableValue}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVariableValue(LynxParser.VariableValueContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LynxParser#procedure}.
 	 * @param ctx the parse tree

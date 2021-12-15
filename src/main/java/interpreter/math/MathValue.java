@@ -1,7 +1,5 @@
 package interpreter.math;
 
-import interpreter.Environment;
-
 public class MathValue {
 
     private final Integer intValue;
@@ -76,6 +74,22 @@ public class MathValue {
         }
         else if (doubleValue != null) {
             return doubleValue == 1.0;
+        }
+        else {
+            throw new IllegalStateException("Math value don't have value");
+        }
+    }
+
+    @Override
+    public String toString() {
+        if (intValue != null) {
+            return intValue.toString();
+        }
+        else if (doubleValue != null) {
+            return doubleValue.toString();
+        }
+        else if (booleanValue != null) {
+            return booleanValue.toString();
         }
         else {
             throw new IllegalStateException("Math value don't have value");

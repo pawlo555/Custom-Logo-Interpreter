@@ -35,23 +35,19 @@ public class LynxMathListener extends LynxBaseListener {
     }
 
     @Override
-    public void enterAbs(LynxParser.AbsContext ctx) {
-        mathCollector.collect("abs");
-    }
+    public void enterAbs(LynxParser.AbsContext ctx) { mathCollector.collect(Operators.ABS.name()); }
 
     @Override
-    public void enterArctan(LynxParser.ArctanContext ctx) {
-        mathCollector.collect("arctan");
-    }
+    public void enterArctan(LynxParser.ArctanContext ctx) { mathCollector.collect(Operators.ARCTAN.name()); }
 
     @Override
     public void enterCos(LynxParser.CosContext ctx) {
-        mathCollector.collect("cos");
+        mathCollector.collect(Operators.COS.name());
     }
 
     @Override
     public void enterInt1(LynxParser.Int1Context ctx) {
-        mathCollector.collect("int");
+        mathCollector.collect(Operators.INT.name());
     }
 
     @Override
@@ -60,58 +56,50 @@ public class LynxMathListener extends LynxBaseListener {
     }
 
     @Override
-    public void enterMinusSingle(LynxParser.MinusSingleContext ctx) {
-        mathCollector.collect("-single");
-    }
+    public void enterMinusSingle(LynxParser.MinusSingleContext ctx) { mathCollector.collect(Operators.MINUS_SINGLE.name());}
 
     @Override
-    public void enterRandom(LynxParser.RandomContext ctx) {
-        mathCollector.collect("rand");
-    }
+    public void enterRandom(LynxParser.RandomContext ctx) { mathCollector.collect(Operators.RAND.name()); }
 
     @Override
     public void enterRound(LynxParser.RoundContext ctx) {
-        mathCollector.collect("round");
+        mathCollector.collect(Operators.ROUND.name());
     }
 
     @Override
     public void enterSin(LynxParser.SinContext ctx) {
-        mathCollector.collect("sin");
+        mathCollector.collect(Operators.SIN.name());
     }
 
     @Override
     public void enterSqrt(LynxParser.SqrtContext ctx) {
-        mathCollector.collect("sqrt");
+        mathCollector.collect(Operators.SQRT.name());
     }
 
     @Override
     public void enterTan(LynxParser.TanContext ctx) {
-        mathCollector.collect("tan");
+        mathCollector.collect(Operators.TAN.name());
     }
 
     @Override
     public void enterNot(LynxParser.NotContext ctx) {
-        mathCollector.collect("not");
+        mathCollector.collect(Operators.NOT.name());
     }
 
     @Override
-    public void enterDifference(LynxParser.DifferenceContext ctx) {
-        mathCollector.collect("-");
-    }
+    public void enterDifference(LynxParser.DifferenceContext ctx) { mathCollector.collect(Operators.DIFFERENCE.name()); }
 
     @Override
-    public void enterPower(LynxParser.PowerContext ctx) {
-        mathCollector.collect("pow");
-    }
+    public void enterPower(LynxParser.PowerContext ctx) { mathCollector.collect(Operators.POW.name()); }
 
     @Override
     public void enterQuotient(LynxParser.QuotientContext ctx) {
-        mathCollector.collect("quot");
+        mathCollector.collect(Operators.QUOT.name());
     }
 
     @Override
     public void enterRemainder(LynxParser.RemainderContext ctx) {
-        mathCollector.collect("remainder");
+        mathCollector.collect(Operators.REMAINDER.name());
     }
 
     @Override
@@ -126,37 +114,35 @@ public class LynxMathListener extends LynxBaseListener {
 
     @Override
     public void enterProduct(LynxParser.ProductContext ctx) {
-        mathCollector.collect("*");
+        mathCollector.collect(Operators.MULTIPLY.name());
     }
 
     @Override
-    public void enterDivision(LynxParser.DivisionContext ctx) {
-        mathCollector.collect("/");
-    }
+    public void enterDivision(LynxParser.DivisionContext ctx) { mathCollector.collect(Operators.DIVIDE.name()); }
 
     // TODO all other comparisons
     @Override
     public void enterComparison(LynxParser.ComparisonContext ctx) {
-        mathCollector.collect("comp");
+        mathCollector.collect(Operators.COMP.name());
     }
 
     @Override
     public void enterExp(LynxParser.ExpContext ctx) {
-        mathCollector.collect("exp");
+        mathCollector.collect(Operators.EXP.name());
     }
 
     @Override
     public void enterLog(LynxParser.LogContext ctx) {
-        mathCollector.collect("log");
+        mathCollector.collect(Operators.LOG.name());
     }
 
     @Override
     public void enterOr(LynxParser.OrContext ctx) {
-        mathCollector.collect("or");
+        mathCollector.collect(Operators.OR.name());
     }
 
     @Override
     public void enterAnd(LynxParser.AndContext ctx) {
-        mathCollector.collect("and");
+        mathCollector.collect(Operators.AND.name());
     }
 }

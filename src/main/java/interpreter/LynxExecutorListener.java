@@ -1,6 +1,7 @@
 package interpreter;
 
 import grammar.LynxParser;
+import interpreter.math.MathStatement;
 import interpreter.statements.*;
 
 import java.util.LinkedList;
@@ -25,13 +26,13 @@ public class LynxExecutorListener extends LynxMathListener {
 
     @Override
     public void exitRight(LynxParser.RightContext ctx) {
-        statement = new StatementBack(mathCollector.getMathStatement());
+        statement = new StatementRight(mathCollector.getMathStatement());
         exit();
     }
 
     @Override
     public void exitLeft(LynxParser.LeftContext ctx) {
-        statement = new StatementBack(mathCollector.getMathStatement());
+        statement = new StatementLeft(mathCollector.getMathStatement());
         exit();
     }
 
@@ -48,7 +49,9 @@ public class LynxExecutorListener extends LynxMathListener {
 
     @Override
     public void exitRepeat(LynxParser.RepeatContext ctx) {
-        statement = new StatementRepeat(mathCollector.getMathStatement(), statementCollector.endCollecting());
+        MathStatement statementMath = mathCollector.getMathStatement();
+        System.out.println(statementMath.toString());
+        statement = new StatementRepeat(statementMath, statementCollector.endCollecting());
         exit();
     }
 
@@ -60,7 +63,11 @@ public class LynxExecutorListener extends LynxMathListener {
     @Override
     public void exitProcedure(LynxParser.ProcedureContext ctx) {
         String name = ctx.stringArg().getText();
-        Procedure procedure = new Procedure(name, statementCollector.endCollecting(), new LinkedList<>());
+        LinkedList<String> variableNames = new LinkedList<>();
+        for (LynxParser.VariableNameContext variableNameContext: ctx.variableName()) {
+            variableNames.addLast(variableNameContext.toString());
+        }
+        Procedure procedure = new Procedure(name, statementCollector.endCollecting(), variableNames);
         statement = new StatementProcedureCreation(name, procedure);
         exit();
     }
@@ -68,8 +75,8 @@ public class LynxExecutorListener extends LynxMathListener {
     @Override
     public void exitLet(LynxParser.LetContext ctx) {
         String name = ctx.variableName().getText();
-        VariableValue variableValue = new VariableValue(ctx.variableValue().getText());
-        statement = new StatementLet(name, variableValue);
+        MathStatement mathStatement = mathCollector.getMathStatement();
+        statement = new StatementLet(name, mathStatement);
         exit();
     }
 

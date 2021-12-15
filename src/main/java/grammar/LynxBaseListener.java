@@ -64,25 +64,13 @@ public class LynxBaseListener implements LynxListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBrakets(LynxParser.BraketsContext ctx) { }
+	@Override public void enterSingleArgs(LynxParser.SingleArgsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBrakets(LynxParser.BraketsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterValue(LynxParser.ValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitValue(LynxParser.ValueContext ctx) { }
+	@Override public void exitSingleArgs(LynxParser.SingleArgsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -100,13 +88,25 @@ public class LynxBaseListener implements LynxListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSingleArgs(LynxParser.SingleArgsContext ctx) { }
+	@Override public void enterValue(LynxParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSingleArgs(LynxParser.SingleArgsContext ctx) { }
+	@Override public void exitValue(LynxParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBrakets(LynxParser.BraketsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBrakets(LynxParser.BraketsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -443,18 +443,6 @@ public class LynxBaseListener implements LynxListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVariableName(LynxParser.VariableNameContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVariableValue(LynxParser.VariableValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVariableValue(LynxParser.VariableValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

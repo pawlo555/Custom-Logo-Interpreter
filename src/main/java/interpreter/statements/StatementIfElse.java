@@ -1,25 +1,26 @@
 package interpreter.statements;
 
-import interpreter.ConditionStatement;
 import interpreter.Executor;
 import interpreter.Statement;
+import interpreter.math.MathStatement;
 
 import java.util.List;
 
 public class StatementIfElse implements Statement {
-    private final ConditionStatement conditionStatement;
+    private final MathStatement mathStatement;
     private final List<Statement> trueStatementList;
     private final List<Statement> falseStatementList;
 
-    public StatementIfElse(ConditionStatement conditionStatement, List<Statement> trueStatementList, List<Statement> falseStatementList) {
-        this.conditionStatement = conditionStatement;
+    public StatementIfElse(MathStatement mathStatement, List<Statement> trueStatementList, List<Statement> falseStatementList) {
+        this.mathStatement = mathStatement;
         this.trueStatementList = trueStatementList;
         this.falseStatementList = falseStatementList;
     }
 
     @Override
     public void execute(Executor executor) {
-        if (conditionStatement.getBooleanValue(executor)) {
+        boolean value = mathStatement.evaluate(executor.getEnvironment()).getBooleanValue();
+        if (value) {
             for (Statement statement : trueStatementList) {
                 statement.execute(executor);
             }
