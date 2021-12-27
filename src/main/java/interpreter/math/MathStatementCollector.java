@@ -12,7 +12,6 @@ public class MathStatementCollector {
 
     public void endCollecting() {
         statements.addLast(new MathStatement(statementElements));
-
     }
 
     public void collect(String value) {
@@ -20,6 +19,6 @@ public class MathStatementCollector {
     }
 
     public MathStatement getMathStatement() {
-        return statements.removeFirst();
+        return statements.removeLast();
     }
 }

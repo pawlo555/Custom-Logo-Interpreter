@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ErrorListener extends BaseErrorListener {
 
-    private ArrayList<String> errors = new ArrayList<>();
+    private final ArrayList<String> errors = new ArrayList<>();
 
     @Override
     public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {

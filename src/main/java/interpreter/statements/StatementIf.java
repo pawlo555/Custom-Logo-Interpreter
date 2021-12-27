@@ -1,23 +1,24 @@
 package interpreter.statements;
 
-import interpreter.ConditionStatement;
 import interpreter.Executor;
 import interpreter.Statement;
+import interpreter.math.MathStatement;
 
 import java.util.List;
 
 public class StatementIf implements Statement {
-    private ConditionStatement conditionStatement;
-    private List<Statement> statementList;
+    private final MathStatement mathStatement;
+    private final List<Statement> statementList;
 
-    public StatementIf(ConditionStatement conditionStatement, List<Statement> statementList) {
-        this.conditionStatement = conditionStatement;
+    public StatementIf(MathStatement mathStatement, List<Statement> statementList) {
+        this.mathStatement = mathStatement;
         this.statementList = statementList;
     }
 
     @Override
     public void execute(Executor executor) {
-        if (conditionStatement.getBooleanValue(executor)) {
+        boolean value = mathStatement.evaluate(executor.getEnvironment()).getBooleanValue();
+        if (value) {
             for (Statement statement: statementList) {
                 statement.execute(executor);
             }

@@ -1,15 +1,17 @@
 package interpreter;
 
+import interpreter.engine.CanvasEngine;
+
 public class Executor {
-    private final Engine engine;
+    private final CanvasEngine canvasEngine;
     private final Environment environment = new Environment();
 
-    public Executor(Engine engine) {
-        this.engine = engine;
+    public Executor(CanvasEngine canvasEngine) {
+        this.canvasEngine = canvasEngine;
     }
 
-    public Engine getEngine() {
-        return engine;
+    public CanvasEngine getEngine() {
+        return canvasEngine;
     }
 
     public Environment getEnvironment() { return environment;}

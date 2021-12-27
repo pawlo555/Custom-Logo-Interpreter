@@ -35,6 +35,8 @@ public class Rotation {
         return currentRotation;
     }
 
+    public int getRotationOnCanvas() {return (-currentRotation + MAX_DEGREES) % MAX_DEGREES;}
+
     public void setDegrees(int degrees) {
         currentRotation = degrees % MAX_DEGREES;
     }

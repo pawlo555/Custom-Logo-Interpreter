@@ -10,6 +10,9 @@ public class MinusDoubleOperation extends DoubleOperatorOperation {
 
     @Override
     public MathValue evaluate() {
-        return null;
+        int firstValue = secondElement.getIntValue();
+        int secondValue = firstElement.getIntValue();
+
+        return new MathValue(firstValue-secondValue);
     }
 }
