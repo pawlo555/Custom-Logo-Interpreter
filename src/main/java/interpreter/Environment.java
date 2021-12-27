@@ -3,7 +3,9 @@ package interpreter;
 import interpreter.statements.Procedure;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class Environment {
 
@@ -44,6 +46,14 @@ public class Environment {
 
     public void exitBlock() {
         variableHashMap.removeFirst();
+    }
+
+    public Set<String> getVariablesNames() {
+        Set<String> variablesNamesSet = new HashSet<>();
+        for (HashMap<String, VariableValue> variablesHashMap: variableHashMap) {
+            variablesNamesSet.addAll(variablesHashMap.keySet());
+        }
+        return variablesNamesSet;
     }
 
     public String getStringVariable(String name) {

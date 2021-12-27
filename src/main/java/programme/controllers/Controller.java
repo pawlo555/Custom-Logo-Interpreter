@@ -5,13 +5,11 @@ import javafx.fxml.FXML;
 import programme.elements.Console;
 import programme.elements.ErrorOutput;
 import programme.elements.LynxCanvas;
-import programme.elements.ProgramFile;
 
 public class Controller {
 
     @FXML private LynxCanvas lynxCanvas;
     @FXML private Console console;
-    @FXML private ProgramFile programFile;
     @FXML private ErrorOutput error_reporter;
 
     public Interpreter interpreter;
