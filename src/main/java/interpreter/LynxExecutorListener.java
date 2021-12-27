@@ -65,7 +65,7 @@ public class LynxExecutorListener extends LynxMathListener {
         String name = ctx.stringArg().getText();
         LinkedList<String> variableNames = new LinkedList<>();
         for (LynxParser.VariableNameContext variableNameContext: ctx.variableName()) {
-            variableNames.addLast(variableNameContext.toString());
+            variableNames.addLast(variableNameContext.getText());
         }
         Procedure procedure = new Procedure(name, statementCollector.endCollecting(), variableNames);
         statement = new StatementProcedureCreation(name, procedure);
@@ -84,7 +84,12 @@ public class LynxExecutorListener extends LynxMathListener {
     @Override
     public void exitProcedureCall(LynxParser.ProcedureCallContext ctx) {
         String name = ctx.stringArg().getText();
-        statement = new StatementProcedureCall(name, new LinkedList<>());
+        ctx.mathStatement();
+        LinkedList<MathStatement> mathStatementList = new LinkedList<>();
+        for (int i=0; i<ctx.mathStatement().size(); i++) {
+            mathStatementList.addLast(mathCollector.getMathStatement());
+        }
+        statement = new StatementProcedureCall(name, mathStatementList);
         exit();
     }
 

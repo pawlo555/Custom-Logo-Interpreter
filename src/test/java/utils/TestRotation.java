@@ -41,6 +41,21 @@ public class TestRotation {
     }
 
     @Test
+    public void testRotationOnCanvas() {
+        Rotation rotation = new Rotation(0);
+        assertEquals(0, rotation.getRotationOnCanvas());
+
+        Rotation rotation2 = new Rotation(180);
+        assertEquals(180, rotation2.getRotationOnCanvas());
+
+        Rotation rotation3 = new Rotation(90);
+        assertEquals(270, rotation3.getRotationOnCanvas());
+
+        Rotation rotation4 = new Rotation(45);
+        assertEquals(360-45, rotation4.getRotationOnCanvas());
+    }
+
+    @Test
     public void testEquals() {
         Rotation rotation = new Rotation(40);
         Rotation otherRotation = new Rotation(60);
