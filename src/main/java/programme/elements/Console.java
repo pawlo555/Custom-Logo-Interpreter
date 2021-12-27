@@ -19,9 +19,9 @@ public class Console extends VBox {
     private final List<ConsoleListener> listeners = new ArrayList<>();
 
     public Console() {
-        this.setPrefSize(340, 600);
+        this.setPrefSize(440, 600);
         prevCommands.setPrefSize(540, 560);
-        currentCommand.setPrefSize(340, 20);
+        currentCommand.setPrefSize(440, 20);
         this.getChildren().addAll(prevCommands, currentCommand);
         this.setFillWidth(true);
         newCommand();

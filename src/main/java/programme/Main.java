@@ -23,8 +23,11 @@ public class Main extends Application {
         Interpreter interpreter = new Interpreter(executor, controller.getErrorLabel());
         controller.getConsole().addListener(interpreter);
 
+
         stage.setTitle("Lynx translator");
-        stage.setScene(new Scene(root, 1280, 720));
+        Scene scene = new Scene(root, 1300, 720);
+        scene.getStylesheets().add(getClass().getResource("lynxStyle.css").toString());
+        stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
     }

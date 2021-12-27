@@ -11,7 +11,7 @@ import utils.Vector2D;
 
 
 public class LynxCanvas extends Group {
-    private final static double WIDTH = 900;
+    private final static double WIDTH = 800;
     private final static double HEIGHT = 680;
     private final static double TURTLE_SIZE = 20.;
     private final static String TURTLE_PATH = "turtle.png";

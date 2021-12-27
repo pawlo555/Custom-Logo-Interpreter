@@ -60,9 +60,4 @@ public class Environment {
         VariableValue variableValue = getVariable(name);
         return variableValue.getStringValue();
     }
-
-    public double getNumericVariable(String name) {
-        VariableValue variableValue = getVariable(name);
-        return variableValue.getDoubleValue();
-    }
 }

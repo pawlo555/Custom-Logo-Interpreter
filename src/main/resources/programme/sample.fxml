@@ -9,22 +9,22 @@
 <?import javafx.scene.control.TextArea?>
 <HBox fx:controller="programme.controllers.Controller"
       xmlns:fx="http://javafx.com/fxml"
-      layoutX="20" layoutY="20" prefHeight="680" prefWidth="1240">
-    <VBox maxWidth="440">
+      layoutX="20" layoutY="20" prefHeight="700" prefWidth="1240" maxHeight="700" maxWidth="1260">
+    <VBox prefWidth="440">
         <HBox prefHeight="30">
             <Button text="Commands" onAction="#loadConsole"/>
             <Button text="Procedures" onAction="#loadProcedures"/>
             <Button text="Variables state" onAction="#loadEnvironment"/>
             <Button text="Load file" onAction="#loadFile"/>
             <Button text="Clean" onAction="#clean"/>
-        </HBox>
+        </HBox >
         <Pane>
             <Console fx:id="console"/>
             <VBox fx:id="programmeVBox" visible="false">
                 <TextArea fx:id="programmeContent" />
                 <Button text="Execute" onAction="#executeProgramme" />
             </VBox>
-            <VariablesDisplayer fx:id="environment" prefHeight="100" prefWidth="100" visible="false"/>
+            <VariablesDisplayer fx:id="environment" visible="false"/>
         </Pane >
         <ErrorOutput fx:id="error_reporter" text="Console translator" prefHeight="100"/>
     </VBox>
