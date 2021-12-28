@@ -4,9 +4,14 @@ import interpreter.Interpreter;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import programme.elements.Console;
 import programme.elements.ErrorOutput;
 import programme.elements.LynxCanvas;
+import programme.elements.VariablesDisplayer;
+
+import java.io.*;
 
 public class Controller {
 
@@ -15,15 +20,13 @@ public class Controller {
     @FXML private ErrorOutput error_reporter;
     @FXML private TextArea programmeContent;
     @FXML private VBox programmeVBox;
-    @FXML private TextArea environment;
+    @FXML private VariablesDisplayer environment;
 
     public Interpreter interpreter;
 
     public LynxCanvas getLynxCanvas() {
         return lynxCanvas;
     }
-
-    public Console getConsole() {return console;}
 
     @FXML
     private void loadConsole() {
@@ -48,18 +51,39 @@ public class Controller {
     }
 
     @FXML
-    private void loadFile() {
-        System.out.println("Loading file");
+    private void loadFile() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.setTitle("Choose a file");
+        File file = fileChooser.showOpenDialog(new Stage());
+        if (file != null) {
+            openFile(file);
+        }
     }
 
     @FXML
     private void clean() {
-        System.out.println("Cleaning");
+        interpreter.getExecutor().getEnvironment().clean();
     }
 
     @FXML
     private void executeProgramme() {
-        System.out.println("Execute programme");
+        String programme = programmeContent.getText();
+        interpreter.executeCode(programme);
+        environment.displayEnvironment();
+    }
+
+    private void openFile(File file) throws IOException {
+        FileReader reader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        StringBuilder builder = new StringBuilder();
+        String line;
+        line = bufferedReader.readLine();
+        while (line != null) {
+            builder.append(line).append("\n");
+            line = bufferedReader.readLine();
+        }
+        programmeContent.setText(builder.toString());
     }
 
     public ErrorOutput getErrorLabel() {
@@ -68,5 +92,8 @@ public class Controller {
 
     public void setInterpreter(Interpreter interpreter) {
         this.interpreter = interpreter;
+        this.console.addListener(interpreter);
+        this.environment.setEnvironment(interpreter.getExecutor().getEnvironment());
+        this.console.addListener(this.environment);
     }
 }

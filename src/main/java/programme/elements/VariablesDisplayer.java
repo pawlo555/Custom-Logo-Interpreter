@@ -1,30 +1,52 @@
 package programme.elements;
 
+import interpreter.ConsoleListener;
 import interpreter.Environment;
 import javafx.scene.control.TextArea;
 
-import java.util.List;
 import java.util.Set;
 
-public class VariablesDisplayer extends TextArea {
+public class VariablesDisplayer extends TextArea implements ConsoleListener {
 
     private Environment environment;
 
-    private void displayVariables() {
+    public void displayEnvironment() {
+        String variables = displayVariables();
+        String procedures = displayProcedures();
+        String environmentAsString = variables + "\n" + procedures;
+        System.out.println("DISPLAYING");
+        this.setText(environmentAsString);
+    }
+
+    private String displayVariables() {
         StringBuilder environmentStateBuilder = new StringBuilder();
         Set<String> variablesNames = environment.getVariablesNames();
         for (String variableName: variablesNames) {
             String value = environment.getVariable(variableName).getStringValue();
-            environmentStateBuilder.append(environmentStateBuilder)
+            environmentStateBuilder.append(variableName)
                     .append(" : ")
                     .append(value)
                     .append("\n");
         }
-        this.setText(environmentStateBuilder.toString());
+        return environmentStateBuilder.toString();
     }
 
+    private String displayProcedures() {
+        StringBuilder proceduresBuilder = new StringBuilder();
+        for (String procedureName: environment.getProceduresNames()) {
+            proceduresBuilder.append(procedureName)
+                    .append(" : ")
+                    .append(environment.getProcedure(procedureName).toString());
+            }
+        return proceduresBuilder.toString();
+    }
 
-    private void setEnvironment(Environment environment) {
+    public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+    @Override
+    public void executeCode(String command) {
+        displayEnvironment();
     }
 }

@@ -21,8 +21,7 @@ public class Main extends Application {
         CanvasEngine canvasEngine = new CanvasEngine(controller.getLynxCanvas());
         Executor executor = new Executor(canvasEngine);
         Interpreter interpreter = new Interpreter(executor, controller.getErrorLabel());
-        controller.getConsole().addListener(interpreter);
-
+        controller.setInterpreter(interpreter);
 
         stage.setTitle("Lynx translator");
         Scene scene = new Scene(root, 1300, 720);

@@ -52,6 +52,6 @@ public class Console extends VBox {
     }
 
     private void notifyObservers(String command) {
-        listeners.forEach( (ConsoleListener listener) -> listener.enterPressed(command));
+        listeners.forEach( (ConsoleListener listener) -> listener.executeCode(command));
     }
 }

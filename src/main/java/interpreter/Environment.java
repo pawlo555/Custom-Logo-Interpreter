@@ -9,8 +9,8 @@ import java.util.Set;
 
 public class Environment {
 
-    HashMap<String, Procedure> procedureHashMap = new HashMap<>();
-    LinkedList<HashMap<String, VariableValue>> variableHashMap = new LinkedList<>();
+    private final HashMap<String, Procedure> procedureHashMap = new HashMap<>();
+    private final LinkedList<HashMap<String, VariableValue>> variableHashMap = new LinkedList<>();
 
     public Environment() {
         variableHashMap.addFirst(new HashMap<>());
@@ -33,7 +33,7 @@ public class Environment {
                 return map.get(name);
             }
         }
-        throw new IllegalStateException("There is no declared variable named:" + name);
+        throw new IllegalStateException("There is no declared variable named: " + name);
     }
 
     public void addVariable(String name, VariableValue variableValue) {
@@ -56,8 +56,17 @@ public class Environment {
         return variablesNamesSet;
     }
 
+    public Set<String> getProceduresNames() {
+        return procedureHashMap.keySet();
+    }
+
     public String getStringVariable(String name) {
         VariableValue variableValue = getVariable(name);
         return variableValue.getStringValue();
+    }
+
+    public void clean() {
+        procedureHashMap.clear();
+        variableHashMap.clear();
     }
 }

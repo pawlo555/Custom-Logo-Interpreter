@@ -17,7 +17,7 @@ public class Interpreter implements ConsoleListener {
         this.error_output = error_output;
     }
 
-    public void parseCommands(String command) {
+    private void parseCommands(String command) {
         LynxParser parser = generateParser(command);
         ErrorListener errorListener = addErrorListenerToParser(parser);
         System.out.println(errorListener.hasErrors());
@@ -26,7 +26,7 @@ public class Interpreter implements ConsoleListener {
         checkParserErrors(errorListener);
     }
 
-    public void enterPressed(String command) {
+    public void executeCode(String command) {
         try {
             parseCommands(command);
         } catch (Exception exception) {
@@ -51,7 +51,6 @@ public class Interpreter implements ConsoleListener {
 
     private void checkParserErrors(ErrorListener errorListener) {
         if (errorListener.hasErrors()) {
-            System.out.println("XD");
             String message = errorListener.getErrors();
             errorListener.clearErrors();
             throw new IllegalArgumentException(message);
@@ -63,5 +62,9 @@ public class Interpreter implements ConsoleListener {
         listener.setExecutor(executor);
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(listener, tree);
+    }
+
+    public Executor getExecutor() {
+        return executor;
     }
 }

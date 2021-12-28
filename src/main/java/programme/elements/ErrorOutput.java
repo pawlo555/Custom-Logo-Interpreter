@@ -8,8 +8,4 @@ public class ErrorOutput extends TextArea {
         super();
         setEditable(false);
     }
-
-    public void putNewText(String s) {
-
-    }
 }
