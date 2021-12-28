@@ -20,7 +20,7 @@ public class Console extends VBox {
 
     public Console() {
         this.setPrefSize(440, 600);
-        prevCommands.setPrefSize(540, 560);
+        prevCommands.setPrefSize(440, 560);
         currentCommand.setPrefSize(440, 20);
         this.getChildren().addAll(prevCommands, currentCommand);
         this.setFillWidth(true);

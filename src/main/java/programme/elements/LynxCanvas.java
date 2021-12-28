@@ -23,8 +23,6 @@ public class LynxCanvas extends Group {
         super();
         foreground = new Canvas(WIDTH, HEIGHT);
         background = new Canvas(WIDTH, HEIGHT);
-        GraphicsContext gc = foreground.getGraphicsContext2D();
-        gc.setFill(Color.RED);
 
         this.getChildren().add(background);
         this.getChildren().add(foreground);

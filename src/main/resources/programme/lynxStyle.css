@@ -1,7 +1,19 @@
 HBox {
-    -fx-background-color: red;
+    -fx-spacing: 5;
 }
 
 Button {
-    -fx-background-color: violet;
+    -fx-spacing: 5;
+}
+
+.centerElements {
+    -fx-alignment: center;
+}
+
+LynxCanvas {
+    -fx-spacing: 5;
+}
+
+VariablesDisplayer {
+    -fx-spacing: 5;
 }
