@@ -23,7 +23,17 @@ public class MathValue {
         doubleValue = null;
         booleanValue = element;
     }
-
+    public int checkValue(){
+        if(intValue != null){
+            return 1;
+        }
+        else if(doubleValue != null){
+            return 0;
+        }
+        else{
+            return -1;
+        }
+    }
 
     public double getDoubleValue() {
         if (doubleValue != null) {

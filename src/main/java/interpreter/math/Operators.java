@@ -9,8 +9,8 @@ public enum Operators {
 
     public int howManyArgumentsTakes() {
         return switch(this) {
-            case LN, MINUS_SINGLE,ABS,ARCTAN,COS,INT,RAND,ROUND,SIN,SQRT,TAN,NOT -> 1;
-            case MULTIPLY,PLUS,MINUS,LOG,DIVIDE,DIFFERENCE,QUOT,AND,OR,EXP,COMP,REMAINDER,POW  -> 2;
+            case LN, MINUS_SINGLE,ABS,ARCTAN,COS,INT,RAND,ROUND,SIN,SQRT,TAN,NOT,EXP -> 1;
+            case MULTIPLY,PLUS,MINUS,LOG,DIVIDE,DIFFERENCE,QUOT,AND,OR,COMP,REMAINDER,POW  -> 2;
         };
     }
 

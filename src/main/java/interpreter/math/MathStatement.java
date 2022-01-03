@@ -2,7 +2,9 @@ package interpreter.math;
 
 import interpreter.Environment;
 import interpreter.VariableValue;
-import interpreter.math.operations.*;
+import interpreter.math.operations.doubleOperation.DoubleOperatorFactory;
+import interpreter.math.operations.operationInterface.Operation;
+import interpreter.math.operations.singleOperation.SingleOperationFactory;
 
 import java.util.LinkedList;
 import java.util.Stack;
