@@ -1,4 +1,4 @@
-// Generated from C:/Studia/Kompilatory/LynxTranslator/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
+// Generated from C:/LynxTrnaslator-main2/LynxTranslator-main/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -274,6 +274,12 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRepeat(LynxParser.RepeatContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LynxParser#while1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhile1(LynxParser.While1Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link LynxParser#back}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -513,6 +519,12 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLet(LynxParser.LetContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LynxParser#assign}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssign(LynxParser.AssignContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LynxParser#make}.
 	 * @param ctx the parse tree

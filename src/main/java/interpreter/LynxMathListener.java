@@ -145,4 +145,6 @@ public class LynxMathListener extends LynxBaseListener {
     public void enterAnd(LynxParser.AndContext ctx) {
         mathCollector.collect(Operators.AND.name());
     }
+
+
 }

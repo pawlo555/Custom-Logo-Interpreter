@@ -1,4 +1,4 @@
-// Generated from C:/Studia/Kompilatory/LynxTranslator/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
+// Generated from C:/LynxTrnaslator-main2/LynxTranslator-main/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
 package grammar;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -484,6 +484,18 @@ public class LynxBaseListener implements LynxListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterWhile1(LynxParser.While1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhile1(LynxParser.While1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBack(LynxParser.BackContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -959,6 +971,18 @@ public class LynxBaseListener implements LynxListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLet(LynxParser.LetContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAssign(LynxParser.AssignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAssign(LynxParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

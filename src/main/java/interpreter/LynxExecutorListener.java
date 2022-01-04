@@ -56,6 +56,20 @@ public class LynxExecutorListener extends LynxMathListener {
     }
 
     @Override
+    public void enterWhile1(LynxParser.While1Context ctx) {
+        statementCollector.startCollecting();
+    }
+
+    @Override
+    public void exitWhile1(LynxParser.While1Context ctx) {
+        MathStatement statementMath = mathCollector.getMathStatement();
+        System.out.println(statementMath.toString());
+        statement = new StatementWhile(statementMath, statementCollector.endCollecting());
+        exit();
+    }
+
+
+    @Override
     public void enterProcedure(LynxParser.ProcedureContext ctx) {
         statementCollector.startCollecting();
     }
@@ -74,6 +88,14 @@ public class LynxExecutorListener extends LynxMathListener {
 
     @Override
     public void exitLet(LynxParser.LetContext ctx) {
+        String name = ctx.variableName().getText();
+        MathStatement mathStatement = mathCollector.getMathStatement();
+        statement = new StatementLet(name, mathStatement);
+        exit();
+    }
+
+    @Override
+    public void exitAssign(LynxParser.AssignContext ctx) {
         String name = ctx.variableName().getText();
         MathStatement mathStatement = mathCollector.getMathStatement();
         statement = new StatementLet(name, mathStatement);

@@ -1,4 +1,4 @@
-// Generated from C:/Studia/Kompilatory/LynxTranslator/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
+// Generated from C:/LynxTrnaslator-main2/LynxTranslator-main/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -456,6 +456,16 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitRepeat(LynxParser.RepeatContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LynxParser#while1}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhile1(LynxParser.While1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#while1}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhile1(LynxParser.While1Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link LynxParser#back}.
 	 * @param ctx the parse tree
 	 */
@@ -855,6 +865,16 @@ public interface LynxListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLet(LynxParser.LetContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LynxParser#assign}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssign(LynxParser.AssignContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LynxParser#assign}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssign(LynxParser.AssignContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#make}.
 	 * @param ctx the parse tree

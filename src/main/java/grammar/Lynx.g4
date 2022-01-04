@@ -10,6 +10,7 @@ line
     ;
 cmd:
     repeat
+    | while1
     | procedure
     | procedureCall
     | forward
@@ -34,6 +35,7 @@ cmd:
     | clearnames
     | names
     | let
+    | assign
     | make
     //logic cmd
     | ifc
@@ -123,6 +125,9 @@ procedureCall:
 //operation commands
 repeat:
     REPEAT brakeArg mathStatement brakeArg '[' line']' ;
+
+while1:
+    WHILE brakeArg mathStatement brakeArg '[' line']' ;
 
 //number commands
 back:
@@ -255,6 +260,10 @@ unfreezebg:
 //list commands
 let:
     LET brakeArg variableName brakeArg mathStatement brakeArg?
+    ;
+
+assign:
+    ASSIGN brakeArg variableName brakeArg mathStatement brakeArg?
     ;
 
 //word list commands
@@ -873,6 +882,10 @@ LET:
     'LET'
     | 'let'
     ;
+ASSIGN:
+    'ASSIGN'
+    | 'assign'
+    ;
 MAKE:
     'MAKE'
     | 'make'
@@ -1024,6 +1037,11 @@ OUTPUT:
 REPEAT:
     'REPEAT'
     | 'repeat'
+    ;
+
+WHILE:
+    'WHILE'
+    | 'while'
     ;
 RUN:
     'RUN'
