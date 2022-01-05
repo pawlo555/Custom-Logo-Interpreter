@@ -122,9 +122,19 @@ public class LynxMathListener extends LynxBaseListener {
 
     // TODO all other comparisons
     @Override
-    public void enterComparison(LynxParser.ComparisonContext ctx) {
-        mathCollector.collect(Operators.COMP.name());
-    }
+    public void enterComparisonEquals(LynxParser.ComparisonEqualsContext ctx) { mathCollector.collect(Operators.COMP.name()); }
+
+    @Override
+    public void enterComparisonSmaller(LynxParser.ComparisonSmallerContext ctx) { mathCollector.collect(Operators.COMPSMALLER.name()); }
+
+    @Override
+    public void enterComparisonSmallerEquals(LynxParser.ComparisonSmallerEqualsContext ctx) { mathCollector.collect(Operators.COMPSMALLEREQUALS.name()); }
+
+    @Override
+    public void enterComparisonBigger(LynxParser.ComparisonBiggerContext ctx) { mathCollector.collect(Operators.COMPBIGGER.name()); }
+
+    @Override
+    public void enterComparisonBiggerEquals(LynxParser.ComparisonBiggerEqualsContext ctx) { mathCollector.collect(Operators.COMPBIGGEREQUALS.name()); }
 
     @Override
     public void enterExp(LynxParser.ExpContext ctx) {

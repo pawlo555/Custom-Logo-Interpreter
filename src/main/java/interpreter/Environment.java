@@ -36,16 +36,6 @@ public class Environment {
         throw new IllegalStateException("There is no declared variable named: " + name);
     }
 
-    public void assignVariable(String name, VariableValue variableValue) {
-        for (HashMap<String, VariableValue> map: variableHashMap) {
-            if (map.containsKey(name)) {
-                map.put(name, variableValue);
-                return;
-            }
-        }
-        throw new IllegalStateException("There is no variable named: " + name + " to assign value");
-    }
-
     public void addVariable(String name, VariableValue variableValue) {
         variableHashMap.getFirst().put(name, variableValue);
     }
@@ -78,6 +68,5 @@ public class Environment {
     public void clean() {
         procedureHashMap.clear();
         variableHashMap.clear();
-        variableHashMap.addFirst(new HashMap<>());
     }
 }

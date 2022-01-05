@@ -101,7 +101,11 @@ doubleArgMathOperator:
     | MINUS # minus
     | PRODUCT #product
     | DIVISION # division
-    | COMPARISON # comparison
+    | COMPARISONEQUALS # comparisonEquals
+    | COMPARISONBIGGER # comparisonBigger
+    | COMPARISONSMALLER # comparisonSmaller
+    | COMPARISONBIGGEREQUALS # comparisonBiggerEquals
+    | COMPARISONSMALLEREQUALS # comparisonSmallerEquals
     | EXP # exp
     | LOG # log
     | OR # or
@@ -279,6 +283,9 @@ newLineArg:
     ;
 brakeArg:
     (spaceArg | newLineArg)+
+    ;
+naturalNumberArg:
+    NATURALNUMBER | variableName
     ;
 list:
     '[' (brakeArg? mathStatement)+ brakeArg? ']'
@@ -795,14 +802,26 @@ TAN:
     'TAN'
     | 'tan'
     ;
-COMPARISON:
+COMPARISONEQUALS:
     '=='
     | '<='
     | '>='
     | '=<'
     | '=>'
-    | '<'
-    | '>'
+    ;
+COMPARISONBIGGER:
+    '>'
+    ;
+COMPARISONSMALLER:
+    '<'
+    ;
+COMPARISONSMALLEREQUALS:
+    | '<='
+    | '=<'
+    ;
+COMPARISONBIGGEREQUALS:
+    | '>='
+    | '=>'
     ;
 
 

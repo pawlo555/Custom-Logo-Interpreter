@@ -14,6 +14,7 @@ public class VariablesDisplayer extends TextArea implements ConsoleListener {
         String variables = displayVariables();
         String procedures = displayProcedures();
         String environmentAsString = variables + "\n" + procedures;
+        System.out.println("DISPLAYING");
         this.setText(environmentAsString);
     }
 

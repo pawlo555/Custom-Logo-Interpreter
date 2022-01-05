@@ -346,17 +346,65 @@ public interface LynxListener extends ParseTreeListener {
 	 */
 	void exitDivision(LynxParser.DivisionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code comparison}
+	 * Enter a parse tree produced by the {@code comparisonEquals}
 	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
 	 * @param ctx the parse tree
 	 */
-	void enterComparison(LynxParser.ComparisonContext ctx);
+	void enterComparisonEquals(LynxParser.ComparisonEqualsContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code comparison}
+	 * Exit a parse tree produced by the {@code comparisonEquals}
 	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
 	 * @param ctx the parse tree
 	 */
-	void exitComparison(LynxParser.ComparisonContext ctx);
+	void exitComparisonEquals(LynxParser.ComparisonEqualsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code comparisonBigger}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterComparisonBigger(LynxParser.ComparisonBiggerContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code comparisonBigger}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitComparisonBigger(LynxParser.ComparisonBiggerContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code comparisonSmaller}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterComparisonSmaller(LynxParser.ComparisonSmallerContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code comparisonSmaller}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitComparisonSmaller(LynxParser.ComparisonSmallerContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code comparisonBiggerEquals}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterComparisonBiggerEquals(LynxParser.ComparisonBiggerEqualsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code comparisonBiggerEquals}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitComparisonBiggerEquals(LynxParser.ComparisonBiggerEqualsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code comparisonSmallerEquals}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterComparisonSmallerEquals(LynxParser.ComparisonSmallerEqualsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code comparisonSmallerEquals}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitComparisonSmallerEquals(LynxParser.ComparisonSmallerEqualsContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code exp}
 	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.

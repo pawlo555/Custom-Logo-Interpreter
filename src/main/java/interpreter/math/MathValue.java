@@ -80,10 +80,10 @@ public class MathValue {
             return booleanValue;
         }
         else if (intValue != null) {
-            return intValue != 0;
+            return intValue == 1;
         }
         else if (doubleValue != null) {
-            return doubleValue != 0;
+            return doubleValue == 1.0;
         }
         else {
             throw new IllegalStateException("Math value don't have value");

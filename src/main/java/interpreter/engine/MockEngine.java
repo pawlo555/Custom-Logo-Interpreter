@@ -141,8 +141,4 @@ public class MockEngine implements Engine{
     public void setTurtleColour(Colour turtleColor) {
 
     }
-
-    public void cleanBackground() {
-
-    }
 }
