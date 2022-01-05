@@ -280,9 +280,6 @@ newLineArg:
 brakeArg:
     (spaceArg | newLineArg)+
     ;
-naturalNumberArg:
-    NATURALNUMBER | variableName
-    ;
 list:
     '[' (brakeArg? mathStatement)+ brakeArg? ']'
     ;

@@ -21,15 +21,12 @@ public class StatementProcedureCall implements Statement {
     @Override
     public void execute(Executor executor) {
         Procedure procedure = executor.getEnvironment().getProcedure(name);
-        System.out.println("Print:" + procedure.variableNamesList.toString());
         assert procedure.variableNamesList.size() == mathStatements.size():
                 "Number of procedure arguments is different than passed arguments";
         executor.getEnvironment().enterBlock();
         for (int i = 0; i< mathStatements.size(); i++) {
-            System.out.println("Adding variable");
             MathValue value = mathStatements.get(i).evaluate(executor.getEnvironment());
-            System.out.println("Value: " + value);
-            System.out.println("Variable name:" + procedure.variableNamesList.get(i));
+
             executor.getEnvironment().addVariable(procedure.variableNamesList.get(i),
                     new VariableValue(value.toString()));
         }

@@ -17,7 +17,6 @@ public class MathStatement {
         Stack<String> operators = new Stack<>();
         for(String element: elements) {
             if (MathElement.isValue(element)) {
-                System.out.println("Dodaje zwykły" + element);
                 elementsInReverseNotation.addLast(element);
             }
             else if (element.equals("(")) {
@@ -29,7 +28,6 @@ public class MathStatement {
                 }
                 String operator = operators.pop();
                 while (!operator.equals(Operators.LEFT_BRACKET.name())) {
-                    System.out.println("Dodaje po (: " + element);
                     elementsInReverseNotation.addLast(operator);
                     if (operators.isEmpty()) {
                         throw new IllegalStateException("Brakets mismatch");
@@ -45,7 +43,6 @@ public class MathStatement {
                     Operators operator = Operators.valueOf(operatorString);
                     if (isRightCumulative) {
                         if (priority < operator.getPriority()) {
-                            System.out.println("Dodaje " + element);
                             elementsInReverseNotation.addLast(operators.pop());
                         }
                         else {
@@ -53,7 +50,6 @@ public class MathStatement {
                         }
                     }
                     else if (priority <= operator.getPriority()){
-                        System.out.println("Dodaje " + element);
                         elementsInReverseNotation.addLast(operators.pop());
                         }
                         else {
@@ -63,12 +59,9 @@ public class MathStatement {
                 operators.push(element);
             }
         }
-        System.out.println(operators);
         while (!operators.isEmpty()) {
-            System.out.println("Dodaje " + operators.peek());
             elementsInReverseNotation.addLast(operators.pop());
         }
-        System.out.println(elementsInReverseNotation);
     }
 
     public MathValue evaluate(Environment environment) {
@@ -95,9 +88,7 @@ public class MathStatement {
                 valuesStack.push(evaluatedValue);
             }
         }
-        MathValue result = valuesStack.pop();
-        System.out.println(result);
-        return result;
+        return valuesStack.pop();
     }
 
     public MathValue convertToValue(String string, Environment environment) {

@@ -79,6 +79,5 @@ public class Environment {
         procedureHashMap.clear();
         variableHashMap.clear();
         variableHashMap.addFirst(new HashMap<>());
-        System.out.println("Hash map: " + variableHashMap);
     }
 }

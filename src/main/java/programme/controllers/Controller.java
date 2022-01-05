@@ -40,7 +40,6 @@ public class Controller {
         console.setVisible(false);
         programmeVBox.setVisible(true);
         environment.setVisible(false);
-        System.out.println("Loading procedures");
     }
 
     @FXML

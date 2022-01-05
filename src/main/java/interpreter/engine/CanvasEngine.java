@@ -120,7 +120,7 @@ public class CanvasEngine implements Engine {
     }
 
     public void setPosition(double newX, double newY) {
-        Vector2D old = LynxCanvas.toCanvasCoordinates(currentTurtle.getPosition());
+        Vector2D old = currentTurtle.getPosition();
         int oldAngle = currentTurtle.getRotation().getRotationOnCanvas();
         currentTurtle.setPosition(newX, newY);
         lynxCanvas.repaintTurtle(old, oldAngle, currentTurtle);
@@ -156,5 +156,9 @@ public class CanvasEngine implements Engine {
 
     public void setTurtleColour(Colour turtleColor) {
         currentTurtle.setTurtleColour(turtleColor);
+    }
+
+    public void cleanBackground() {
+        this.lynxCanvas.clean();
     }
 }

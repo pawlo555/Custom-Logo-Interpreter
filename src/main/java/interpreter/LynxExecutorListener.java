@@ -43,6 +43,12 @@ public class LynxExecutorListener extends LynxMathListener {
     }
 
     @Override
+    public void exitClean(LynxParser.CleanContext ctx) {
+        statement = new StatementClean();
+        exit();
+    }
+
+    @Override
     public void enterRepeat(LynxParser.RepeatContext ctx) {
         statementCollector.startCollecting();
     }
@@ -50,7 +56,6 @@ public class LynxExecutorListener extends LynxMathListener {
     @Override
     public void exitRepeat(LynxParser.RepeatContext ctx) {
         MathStatement statementMath = mathCollector.getMathStatement();
-        System.out.println(statementMath.toString());
         statement = new StatementRepeat(statementMath, statementCollector.endCollecting());
         exit();
     }
@@ -63,7 +68,6 @@ public class LynxExecutorListener extends LynxMathListener {
     @Override
     public void exitWhile1(LynxParser.While1Context ctx) {
         MathStatement statementMath = mathCollector.getMathStatement();
-        System.out.println(statementMath.toString());
         statement = new StatementWhile(statementMath, statementCollector.endCollecting());
         exit();
     }
@@ -124,6 +128,17 @@ public class LynxExecutorListener extends LynxMathListener {
     @Override
     public void exitPu(LynxParser.PuContext ctx) {
         statement = new StatementPenUp();
+        exit();
+    }
+
+    @Override
+    public void enterIfc(LynxParser.IfcContext ctx) {
+        statementCollector.startCollecting();
+    }
+
+    @Override
+    public void exitIfc(LynxParser.IfcContext ctx) {
+        statement = new StatementIf(mathCollector.getMathStatement(), statementCollector.endCollecting());
         exit();
     }
 
