@@ -7,6 +7,17 @@ import utils.Vector2D;
 
 // TODO write all methods and add getters about data
 public class MockEngine implements Engine{
+
+    private int forwardTimes = 0;
+    private int backTimes = 0;
+    private int leftTimes = 0;
+    private int rightTimes = 0;
+
+    private double forwardAmount = 0.0;
+    private double backAmount = 0.0;
+    private double leftAmount = 0;
+    private double rightAmount = 0;
+
     @Override
     public void changeTurtle(String newTurtleName) {
 
@@ -54,22 +65,26 @@ public class MockEngine implements Engine{
 
     @Override
     public void forward(double n) {
-
+        forwardTimes++;
+        forwardAmount += n;
     }
 
     @Override
     public void backward(double n) {
-
+        backTimes++;
+        backAmount += n;
     }
 
     @Override
     public void right(int degrees) {
-
+        rightTimes++;
+        rightAmount += degrees;
     }
 
     @Override
     public void left(int degrees) {
-
+        leftTimes++;
+        leftAmount += degrees;
     }
 
     @Override
@@ -145,4 +160,37 @@ public class MockEngine implements Engine{
     public void cleanBackground() {
 
     }
+
+    public double getBackAmount() {
+        return backAmount;
+    }
+
+    public double getForwardAmount() {
+        return forwardAmount;
+    }
+
+    public double getLeftAmount() {
+        return leftAmount;
+    }
+
+    public double getRightAmount() {
+        return rightAmount;
+    }
+
+    public int getBackTimes() {
+        return backTimes;
+    }
+
+    public int getForwardTimes() {
+        return forwardTimes;
+    }
+
+    public int getLeftTimes() {
+        return leftTimes;
+    }
+
+    public int getRightTimes() {
+        return rightTimes;
+    }
 }
+
