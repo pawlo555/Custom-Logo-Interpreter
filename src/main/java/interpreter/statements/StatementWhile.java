@@ -17,7 +17,7 @@ public class StatementWhile implements Statement {
 
     @Override
     public void execute(Executor executor) {
-        while (conditionStatement.evaluate(executor.getEnvironment()).getBooleanValue()) {
+        while (conditionStatement.evaluate(executor.getEnvironment()).getIntValue() != 1) {
             for(Statement statement: statementList) {
                 statement.execute(executor);
             }

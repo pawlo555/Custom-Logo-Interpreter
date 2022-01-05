@@ -364,13 +364,61 @@ public class LynxBaseListener implements LynxListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComparison(LynxParser.ComparisonContext ctx) { }
+	@Override public void enterComparisonEquals(LynxParser.ComparisonEqualsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComparison(LynxParser.ComparisonContext ctx) { }
+	@Override public void exitComparisonEquals(LynxParser.ComparisonEqualsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComparisonBigger(LynxParser.ComparisonBiggerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComparisonBigger(LynxParser.ComparisonBiggerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComparisonSmaller(LynxParser.ComparisonSmallerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComparisonSmaller(LynxParser.ComparisonSmallerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComparisonBiggerEquals(LynxParser.ComparisonBiggerEqualsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComparisonBiggerEquals(LynxParser.ComparisonBiggerEqualsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComparisonSmallerEquals(LynxParser.ComparisonSmallerEqualsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComparisonSmallerEquals(LynxParser.ComparisonSmallerEqualsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -20,6 +20,7 @@ public class Interpreter implements ConsoleListener {
     private void parseCommands(String command) {
         LynxParser parser = generateParser(command);
         ErrorListener errorListener = addErrorListenerToParser(parser);
+        System.out.println(errorListener.hasErrors());
         ParseTree tree = parser.program();
         walkTheTree(tree);
         checkParserErrors(errorListener);
@@ -29,6 +30,7 @@ public class Interpreter implements ConsoleListener {
         try {
             parseCommands(command);
         } catch (Exception exception) {
+            System.out.println("In catch");
             error_output.setText(exception.getMessage());
         }
     }

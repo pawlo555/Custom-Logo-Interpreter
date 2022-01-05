@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import utils.Vector2D;
 
@@ -70,18 +71,15 @@ public class LynxCanvas extends Group {
     private void drawRotatedImage(GraphicsContext gc, Image image,  double angle, double x, double y) {
         gc.save(); // saves the current state on stack, including the current transform
         rotate(gc, angle, x  , y );
-        gc.drawImage(image, x-TURTLE_SIZE/2, y-TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
+        gc.drawImage(image, x- TURTLE_SIZE/2, y- TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
         gc.restore(); // back to original state (before rotation)
     }
 
     private void removeRotatedTurtle(GraphicsContext gc, double angle, double x, double y) {
         gc.save(); // saves the current state on stack, including the current transform
         rotate(gc, angle, x  , y);
-        gc.clearRect(x-TURTLE_SIZE/2, y-TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
+        gc.clearRect(x- TURTLE_SIZE/2, y- TURTLE_SIZE/2, TURTLE_SIZE, TURTLE_SIZE);
         gc.restore(); // back to original state (before rotation)
     }
 
-    public void clean() {
-        this.background.getGraphicsContext2D().clearRect(0,0, WIDTH, HEIGHT);
-    }
 }

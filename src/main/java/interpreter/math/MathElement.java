@@ -13,7 +13,7 @@ public class MathElement {
     }
 
     public static boolean isValue(String name) {
-        return !isOperator(name) && !name.equals("(") && !name.equals(")");
+        return !isOperator(name);
     }
 
     public static Double parseDouble(String string) {

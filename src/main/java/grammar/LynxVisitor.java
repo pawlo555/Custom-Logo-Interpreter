@@ -209,12 +209,40 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDivision(LynxParser.DivisionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code comparison}
+	 * Visit a parse tree produced by the {@code comparisonEquals}
 	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitComparison(LynxParser.ComparisonContext ctx);
+	T visitComparisonEquals(LynxParser.ComparisonEqualsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code comparisonBigger}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComparisonBigger(LynxParser.ComparisonBiggerContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code comparisonSmaller}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComparisonSmaller(LynxParser.ComparisonSmallerContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code comparisonBiggerEquals}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComparisonBiggerEquals(LynxParser.ComparisonBiggerEqualsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code comparisonSmallerEquals}
+	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComparisonSmallerEquals(LynxParser.ComparisonSmallerEqualsContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code exp}
 	 * labeled alternative in {@link LynxParser#doubleArgMathOperator}.
