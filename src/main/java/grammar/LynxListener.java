@@ -1,4 +1,4 @@
-// Generated from C:/LynxTrnaslator-main2/LynxTranslator-main/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
+// Generated from C:/Studia/Kompilatory/LynxTranslator/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -963,16 +963,6 @@ public interface LynxListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBrakeArg(LynxParser.BrakeArgContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LynxParser#naturalNumberArg}.
-	 * @param ctx the parse tree
-	 */
-	void enterNaturalNumberArg(LynxParser.NaturalNumberArgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LynxParser#naturalNumberArg}.
-	 * @param ctx the parse tree
-	 */
-	void exitNaturalNumberArg(LynxParser.NaturalNumberArgContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LynxParser#list}.
 	 * @param ctx the parse tree

@@ -40,6 +40,17 @@ public class Environment {
         variableHashMap.getFirst().put(name, variableValue);
     }
 
+    public void assignVariable(String name, VariableValue variableValue) {
+        for (HashMap<String, VariableValue> map: variableHashMap) {
+            if (map.containsKey(name)) {
+                map.put(name, variableValue);
+                return;
+            }
+        }
+        throw new IllegalStateException("There is no variable named: " + name + " to assign value");
+    }
+
+
     public void enterBlock() {
         variableHashMap.addFirst(new HashMap<>());
     }

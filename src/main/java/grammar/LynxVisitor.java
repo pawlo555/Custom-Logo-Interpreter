@@ -1,4 +1,4 @@
-// Generated from C:/LynxTrnaslator-main2/LynxTranslator-main/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
+// Generated from C:/Studia/Kompilatory/LynxTranslator/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -577,12 +577,6 @@ public interface LynxVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBrakeArg(LynxParser.BrakeArgContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LynxParser#naturalNumberArg}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNaturalNumberArg(LynxParser.NaturalNumberArgContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LynxParser#list}.
 	 * @param ctx the parse tree

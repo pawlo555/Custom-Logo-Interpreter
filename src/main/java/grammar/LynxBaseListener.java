@@ -1,4 +1,4 @@
-// Generated from C:/LynxTrnaslator-main2/LynxTranslator-main/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
+// Generated from C:/Studia/Kompilatory/LynxTranslator/src/main/java/grammar\Lynx.g4 by ANTLR 4.9.2
 package grammar;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -1079,18 +1079,6 @@ public class LynxBaseListener implements LynxListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBrakeArg(LynxParser.BrakeArgContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNaturalNumberArg(LynxParser.NaturalNumberArgContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNaturalNumberArg(LynxParser.NaturalNumberArgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

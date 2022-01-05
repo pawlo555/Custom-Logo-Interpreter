@@ -17,7 +17,7 @@ public class CompSmallerEqualsOperation extends DoubleOperatorOperation {
         if(firstCheckValue == 0 || secondCheckValue == 0){
             double first = firstElement.getDoubleValue();
             double second = secondElement.getDoubleValue();
-            if(first <= second){
+            if(first >= second){
                 return new MathValue(true);
             }
             return new MathValue(false);
@@ -25,7 +25,7 @@ public class CompSmallerEqualsOperation extends DoubleOperatorOperation {
         else{
             int first = firstElement.getIntValue();
             int second = secondElement.getIntValue();
-            if(first <= second){
+            if(first >= second){
                 return new MathValue(true);
             }
             return new MathValue(false);

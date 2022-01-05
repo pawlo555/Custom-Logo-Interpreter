@@ -20,14 +20,14 @@ public class MathStatement {
                 elementsInReverseNotation.addLast(element);
             }
             else if (element.equals("(")) {
-                operators.push(element);
+                operators.push(Operators.LEFT_BRACKET.name());
             }
             else if (element.equals(")")){
                 if (operators.isEmpty()) {
                     throw new IllegalStateException("Brakets mismatch");
                 }
                 String operator = operators.pop();
-                while (!operator.equals(")")) {
+                while (!operator.equals(Operators.LEFT_BRACKET.name())) {
                     elementsInReverseNotation.addLast(operator);
                     if (operators.isEmpty()) {
                         throw new IllegalStateException("Brakets mismatch");
@@ -59,12 +59,9 @@ public class MathStatement {
                 operators.push(element);
             }
         }
-        System.out.println(operators);
         while (!operators.isEmpty()) {
             elementsInReverseNotation.addLast(operators.pop());
         }
-        System.out.println(Operators.PLUS.toString());
-        System.out.println(elementsInReverseNotation);
     }
 
     public MathValue evaluate(Environment environment) {
@@ -91,9 +88,7 @@ public class MathStatement {
                 valuesStack.push(evaluatedValue);
             }
         }
-        MathValue result = valuesStack.pop();
-        System.out.println(result);
-        return result;
+        return valuesStack.pop();
     }
 
     public MathValue convertToValue(String string, Environment environment) {

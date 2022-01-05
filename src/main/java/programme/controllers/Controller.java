@@ -40,7 +40,6 @@ public class Controller {
         console.setVisible(false);
         programmeVBox.setVisible(true);
         environment.setVisible(false);
-        System.out.println("Loading procedures");
     }
 
     @FXML
@@ -64,6 +63,7 @@ public class Controller {
     @FXML
     private void clean() {
         interpreter.getExecutor().getEnvironment().clean();
+        environment.displayEnvironment();
     }
 
     @FXML

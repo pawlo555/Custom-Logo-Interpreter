@@ -60,4 +60,6 @@ public interface Engine {
     Colour getTurtleColour();
 
     void setTurtleColour(Colour turtleColor);
+
+    void cleanBackground();
 }

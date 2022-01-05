@@ -11,10 +11,10 @@ public class DoubleOperatorFactory {
             case PLUS -> new AddOperation(firstValue, secondValue);
             case MINUS -> new MinusDoubleOperation(firstValue, secondValue);
             case COMP -> new CompereOperation(firstValue, secondValue);
-            case COMPSMALLER -> new CompereOperation(firstValue, secondValue);
-            case COMPSMALLEREQUALS -> new CompereOperation(firstValue, secondValue);
-            case COMPBIGGER -> new CompereOperation(firstValue, secondValue);
-            case COMPBIGGEREQUALS -> new CompereOperation(firstValue, secondValue);
+            case COMPSMALLER -> new CompSmallerOperation(firstValue, secondValue);
+            case COMPSMALLEREQUALS -> new CompSmallerEqualsOperation(firstValue, secondValue);
+            case COMPBIGGER -> new CompBiggerOperation(firstValue, secondValue);
+            case COMPBIGGEREQUALS -> new CompBiggerEqualsOperation(firstValue, secondValue);
             case AND -> new AndOperation(firstValue, secondValue);
             case OR -> new OrOperation(firstValue, secondValue);
             case REMAINDER -> new RemainderOperation(firstValue, secondValue);

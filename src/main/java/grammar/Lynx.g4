@@ -284,9 +284,6 @@ newLineArg:
 brakeArg:
     (spaceArg | newLineArg)+
     ;
-naturalNumberArg:
-    NATURALNUMBER | variableName
-    ;
 list:
     '[' (brakeArg? mathStatement)+ brakeArg? ']'
     ;
@@ -804,10 +801,6 @@ TAN:
     ;
 COMPARISONEQUALS:
     '=='
-    | '<='
-    | '>='
-    | '=<'
-    | '=>'
     ;
 COMPARISONBIGGER:
     '>'
@@ -816,11 +809,11 @@ COMPARISONSMALLER:
     '<'
     ;
 COMPARISONSMALLEREQUALS:
-    | '<='
+    '<='
     | '=<'
     ;
 COMPARISONBIGGEREQUALS:
-    | '>='
+    '>='
     | '=>'
     ;
 

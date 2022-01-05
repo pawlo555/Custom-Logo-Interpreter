@@ -82,4 +82,7 @@ public class LynxCanvas extends Group {
         gc.restore(); // back to original state (before rotation)
     }
 
+    public void clean() {
+        background.getGraphicsContext2D().clearRect(0,0, WIDTH, HEIGHT);
+    }
 }
