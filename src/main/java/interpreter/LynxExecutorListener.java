@@ -98,7 +98,7 @@ public class LynxExecutorListener extends LynxMathListener {
     public void exitAssign(LynxParser.AssignContext ctx) {
         String name = ctx.variableName().getText();
         MathStatement mathStatement = mathCollector.getMathStatement();
-        statement = new StatementLet(name, mathStatement);
+        statement = new StatementAssign(name, mathStatement);
         exit();
     }
 

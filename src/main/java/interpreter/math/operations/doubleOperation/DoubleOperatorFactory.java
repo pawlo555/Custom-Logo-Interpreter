@@ -17,6 +17,7 @@ public class DoubleOperatorFactory {
             case DIVIDE -> new DivideOperation(firstValue, secondValue);
             case POW -> new PowerOperation(firstValue, secondValue);
             case LOG -> new LogOperation(firstValue, secondValue);
+            case MULTIPLY -> new MultiplyOperation(firstValue, secondValue);
             default -> throw new IllegalStateException("Unsupported operator");
         };
     }

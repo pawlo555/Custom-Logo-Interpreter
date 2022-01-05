@@ -1,6 +1,5 @@
 package interpreter.math;
 
-import interpreter.Turtle;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -15,13 +14,12 @@ public class TestMathStatement {
         linkedList.addLast("2");
         linkedList.addLast("PLUS");
         linkedList.addLast("2");
-        linkedList.addLast("PLUS");
+        linkedList.addLast(Operators.PLUS.name());
         linkedList.addLast("2");
         MathStatement statement = new MathStatement(linkedList);
         MathValue value = statement.evaluate(null);
 
         assertEquals(6, value.getIntValue());
-
     }
 
     @Test
@@ -34,7 +32,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(4, value.getIntValue());
-
     }
 
     @Test
@@ -46,7 +43,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(5, value.getIntValue());
-
     }
 
     @Test
@@ -58,21 +54,18 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(5.7, value.getDoubleValue());
-
-
     }
 
     @Test
     public void testComp() {
         LinkedList<String> linkedList = new LinkedList<>();
         linkedList.addLast("2");
-        linkedList.addLast("==");
+        linkedList.addLast(Operators.COMP.name());
         linkedList.addLast("2");
         MathStatement statement = new MathStatement(linkedList);
         MathValue value = statement.evaluate(null);
 
-        assertEquals(true, value.getBooleanValue());
-
+        assertTrue(value.getBooleanValue());
     }
 
     @Test
@@ -84,8 +77,7 @@ public class TestMathStatement {
         MathStatement statement = new MathStatement(linkedList);
         MathValue value = statement.evaluate(null);
 
-        assertEquals(true, value.getBooleanValue());
-
+        assertTrue(value.getBooleanValue());
     }
 
     @Test
@@ -97,20 +89,18 @@ public class TestMathStatement {
         MathStatement statement = new MathStatement(linkedList);
         MathValue value = statement.evaluate(null);
 
-        assertEquals(false, value.getBooleanValue());
-
+        assertFalse(value.getBooleanValue());
     }
 
     @Test
     public void testMinusSingle() {
         LinkedList<String> linkedList = new LinkedList<>();
-        linkedList.addLast("-");
+        linkedList.addLast(Operators.MINUS_SINGLE.name());
         linkedList.addLast("5.0");
         MathStatement statement = new MathStatement(linkedList);
         MathValue value = statement.evaluate(null);
 
         assertEquals(-5, value.getDoubleValue());
-
     }
 
     @Test
@@ -121,8 +111,7 @@ public class TestMathStatement {
         MathStatement statement = new MathStatement(linkedList);
         MathValue value = statement.evaluate(null);
 
-        assertEquals(false, value.getBooleanValue());
-
+        assertFalse(value.getBooleanValue());
     }
 
     @Test
@@ -135,7 +124,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(2, value.getIntValue());
-
     }
 
     @Test
@@ -148,20 +136,18 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(2, value.getIntValue());
-
     }
 
     @Test
     public void testMultiply() {
         LinkedList<String> linkedList = new LinkedList<>();
         linkedList.addLast("32");
-        linkedList.addLast("MULTIPLY");
+        linkedList.addLast(Operators.MULTIPLY.name());
         linkedList.addLast("2");
         MathStatement statement = new MathStatement(linkedList);
         MathValue value = statement.evaluate(null);
 
         assertEquals(64, value.getIntValue());
-
     }
 
     @Test
@@ -174,7 +160,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(8, value.getIntValue());
-
     }
 
     @Test
@@ -186,7 +171,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(1, value.getDoubleValue());
-
     }
 
     @Test
@@ -199,7 +183,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(1, value.getDoubleValue());
-
     }
 
     @Test
@@ -211,7 +194,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(0, value.getDoubleValue());
-
     }
 
     @Test
@@ -223,7 +205,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(3, value.getDoubleValue());
-
     }
 
     @Test
@@ -235,7 +216,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(1, value.getDoubleValue());
-
     }
 
     @Test
@@ -247,7 +227,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(3, value.getDoubleValue());
-
     }
 
     @Test
@@ -259,7 +238,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(0, value.getDoubleValue());
-
     }
 
     @Test
@@ -271,7 +249,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(2, value.getDoubleValue());
-
     }
 
     @Test
@@ -283,7 +260,6 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(0, value.getDoubleValue());
-
     }
 
     @Test
@@ -295,6 +271,36 @@ public class TestMathStatement {
         MathValue value = statement.evaluate(null);
 
         assertEquals(0, value.getDoubleValue());
-
     }
+
+    @Test
+    public void simplePriority() {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.addLast("2");
+        linkedList.addLast(Operators.PLUS.name());
+        linkedList.addLast("2");
+        linkedList.addLast(Operators.MULTIPLY.name());
+        linkedList.addLast("2");
+        MathStatement statement = new MathStatement(linkedList);
+        MathValue value = statement.evaluate(null);
+
+        assertEquals(6, value.getDoubleValue());
+    }
+
+    @Test
+    public void simpleBrackets() {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.addLast("(");
+        linkedList.addLast("2");
+        linkedList.addLast(Operators.PLUS.name());
+        linkedList.addLast("2");
+        linkedList.addLast(")");
+        linkedList.addLast(Operators.MULTIPLY.name());
+        linkedList.addLast("2");
+        MathStatement statement = new MathStatement(linkedList);
+        MathValue value = statement.evaluate(null);
+
+        assertEquals(8, value.getDoubleValue());
+    }
+
 }

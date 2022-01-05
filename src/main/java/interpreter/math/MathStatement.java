@@ -17,17 +17,19 @@ public class MathStatement {
         Stack<String> operators = new Stack<>();
         for(String element: elements) {
             if (MathElement.isValue(element)) {
+                System.out.println("Dodaje zwykły" + element);
                 elementsInReverseNotation.addLast(element);
             }
             else if (element.equals("(")) {
-                operators.push(element);
+                operators.push(Operators.LEFT_BRACKET.name());
             }
             else if (element.equals(")")){
                 if (operators.isEmpty()) {
                     throw new IllegalStateException("Brakets mismatch");
                 }
                 String operator = operators.pop();
-                while (!operator.equals(")")) {
+                while (!operator.equals(Operators.LEFT_BRACKET.name())) {
+                    System.out.println("Dodaje po (: " + element);
                     elementsInReverseNotation.addLast(operator);
                     if (operators.isEmpty()) {
                         throw new IllegalStateException("Brakets mismatch");
@@ -43,6 +45,7 @@ public class MathStatement {
                     Operators operator = Operators.valueOf(operatorString);
                     if (isRightCumulative) {
                         if (priority < operator.getPriority()) {
+                            System.out.println("Dodaje " + element);
                             elementsInReverseNotation.addLast(operators.pop());
                         }
                         else {
@@ -50,6 +53,7 @@ public class MathStatement {
                         }
                     }
                     else if (priority <= operator.getPriority()){
+                        System.out.println("Dodaje " + element);
                         elementsInReverseNotation.addLast(operators.pop());
                         }
                         else {
@@ -61,9 +65,9 @@ public class MathStatement {
         }
         System.out.println(operators);
         while (!operators.isEmpty()) {
+            System.out.println("Dodaje " + operators.peek());
             elementsInReverseNotation.addLast(operators.pop());
         }
-        System.out.println(Operators.PLUS.toString());
         System.out.println(elementsInReverseNotation);
     }
 

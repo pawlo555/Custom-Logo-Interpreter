@@ -64,6 +64,7 @@ public class Controller {
     @FXML
     private void clean() {
         interpreter.getExecutor().getEnvironment().clean();
+        environment.displayEnvironment();
     }
 
     @FXML

@@ -20,7 +20,7 @@ public class StatementAssign implements Statement {
     public void execute(Executor executor) {
         MathValue mathValue = this.mathStatement.evaluate(executor.getEnvironment());
         VariableValue variableValue = new VariableValue(mathValue.toString());
-        executor.getEnvironment().addVariable(variableName, variableValue);
+        executor.getEnvironment().assignVariable(variableName, variableValue);
     }
 
 }
