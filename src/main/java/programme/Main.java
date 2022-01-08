@@ -24,7 +24,7 @@ public class Main extends Application {
         controller.setInterpreter(interpreter);
 
         stage.setTitle("Logo translator");
-        Scene scene = new Scene(root, 1300, 720);
+        Scene scene = new Scene(root, 1360, 760);
         scene.getStylesheets().add(getClass().getResource("logoStyle.css").toString());
         stage.setScene(scene);
         stage.setResizable(false);

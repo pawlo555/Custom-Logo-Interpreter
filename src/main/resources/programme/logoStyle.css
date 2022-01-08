@@ -17,3 +17,8 @@ LynxCanvas {
 VariablesDisplayer {
     -fx-spacing: 5;
 }
+
+.centerBox {
+    -fx-padding: 20;
+    -fx-spacing: 10
+}

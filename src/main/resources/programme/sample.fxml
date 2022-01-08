@@ -8,7 +8,8 @@
 <?import javafx.scene.control.TextArea?>
 <HBox fx:controller="programme.controllers.Controller"
       xmlns:fx="http://javafx.com/fxml"
-      layoutX="20" layoutY="20" prefHeight="700" prefWidth="200" maxHeight="700" maxWidth="500"
+      styleClass="centerBox"
+      prefHeight="680" maxHeight="700"
       fillHeight="false">
     <VBox prefWidth="440">
         <HBox styleClass="centerElements" prefHeight="30">
@@ -19,12 +20,12 @@
             <Button text="Clean" onAction="#clean"/>
         </HBox >
         <Pane>
-            <Console fx:id="console" prefWidth="440" prefHeight="600"/>
-            <VBox styleClass="centerElements" fx:id="programmeVBox" prefWidth="440" prefHeight="600" visible="false" >
+            <Console fx:id="console" prefWidth="440" prefHeight="580"/>
+            <VBox styleClass="centerElements" fx:id="programmeVBox" prefWidth="440" prefHeight="580" visible="false" >
                 <TextArea fx:id="programmeContent" prefWidth="440" prefHeight="560"/>
                 <Button  text="Execute" onAction="#executeProgramme" />
             </VBox>
-            <VariablesDisplayer prefWidth="440" prefHeight="600" fx:id="environment" visible="false" editable="false"/>
+            <VariablesDisplayer prefWidth="440" prefHeight="500" fx:id="environment" visible="false" editable="false"/>
         </Pane >
         <TextArea fx:id="errorReporter" text="Console translator" prefHeight="100" prefWidth="440" editable="false"/>
     </VBox>
