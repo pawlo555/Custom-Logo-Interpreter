@@ -18,7 +18,7 @@ public class TestStatementLeft {
         LinkedList<String> mathElements = new LinkedList<>();
         mathElements.addLast("90");
 
-        StatementLeft left = new StatementLeft(new MathStatement(mathElements));
+        StatementLeft left = new StatementLeft(null, new MathStatement(mathElements));
         left.execute(executor);
 
         assertEquals(1, engine.getLeftTimes());
@@ -33,7 +33,7 @@ public class TestStatementLeft {
         mathElements.addLast("45");
 
         for (int i=0; i<4; i++) {
-            StatementLeft left = new StatementLeft(new MathStatement(mathElements));
+            StatementLeft left = new StatementLeft(null, new MathStatement(mathElements));
             left.execute(executor);
         }
 

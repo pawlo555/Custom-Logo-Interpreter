@@ -1,12 +1,16 @@
 package interpreter.statements;
 
 import interpreter.Executor;
-import interpreter.Statement;
+import org.antlr.v4.runtime.ParserRuleContext;
 
-public class StatementPenUp implements Statement {
+public class StatementPenUp extends AbstractStatement {
+
+    public StatementPenUp(ParserRuleContext ctx) {
+        super(ctx);
+    }
 
     @Override
-    public void execute(Executor executor) {
+    public void customExecute(Executor executor) {
         executor.getEngine().setUp();
     }
 }

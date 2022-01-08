@@ -1,5 +1,7 @@
 package interpreter;
 
+import interpreter.statements.Statement;
+
 import java.util.LinkedList;
 import java.util.Queue;
 

@@ -18,7 +18,7 @@ public class TestStatementForward {
         LinkedList<String> mathElements = new LinkedList<>();
         mathElements.addLast("100");
 
-        StatementForward forward = new StatementForward(new MathStatement(mathElements));
+        StatementForward forward = new StatementForward(null, new MathStatement(mathElements));
         forward.execute(executor);
 
         assertEquals(1, engine.getForwardTimes());
@@ -32,10 +32,10 @@ public class TestStatementForward {
         LinkedList<String> mathElements = new LinkedList<>();
         mathElements.addLast("50");
 
-        StatementForward forward = new StatementForward(new MathStatement(mathElements));
+        StatementForward forward = new StatementForward(null, new MathStatement(mathElements));
         forward.execute(executor);
 
-        StatementForward secondForward = new StatementForward(new MathStatement(mathElements));
+        StatementForward secondForward = new StatementForward(null, new MathStatement(mathElements));
         secondForward.execute(executor);
 
         assertEquals(2, engine.getForwardTimes());

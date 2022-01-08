@@ -18,7 +18,7 @@ public class TestBackStatement {
         LinkedList<String> mathElements = new LinkedList<>();
         mathElements.addLast("100");
 
-        StatementBack back = new StatementBack(new MathStatement(mathElements));
+        StatementBack back = new StatementBack(null, new MathStatement(mathElements));
         back.execute(executor);
 
         assertEquals(1, engine.getBackTimes());
@@ -33,7 +33,7 @@ public class TestBackStatement {
         mathElements.addLast("50");
 
         for (int i=0; i<10; i++) {
-            StatementBack back = new StatementBack(new MathStatement(mathElements));
+            StatementBack back = new StatementBack(null, new MathStatement( mathElements));
             back.execute(executor);
         }
 

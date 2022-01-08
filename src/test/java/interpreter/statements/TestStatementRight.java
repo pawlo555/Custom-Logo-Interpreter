@@ -17,7 +17,7 @@ public class TestStatementRight {
         LinkedList<String> mathElements = new LinkedList<>();
         mathElements.addLast("90");
 
-        StatementRight right = new StatementRight(new MathStatement(mathElements));
+        StatementRight right = new StatementRight(null, new MathStatement(mathElements));
         right.execute(executor);
 
         assertEquals(1, engine.getRightTimes());
@@ -32,7 +32,7 @@ public class TestStatementRight {
         mathElements.addLast("90");
 
         for (int i=0; i<2; i++) {
-            StatementRight right = new StatementRight(new MathStatement(mathElements));
+            StatementRight right = new StatementRight(null, new MathStatement(mathElements));
             right.execute(executor);
         }
 

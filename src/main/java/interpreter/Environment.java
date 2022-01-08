@@ -22,7 +22,7 @@ public class Environment {
 
     public Procedure getProcedure(String name) {
         if (!procedureHashMap.containsKey(name)) {
-            throw new IllegalArgumentException("There is no procedure named: " + name);
+            throw new IllegalStateException("There is no procedure named: " + name);
         }
         return procedureHashMap.get(name);
     }
@@ -73,6 +73,7 @@ public class Environment {
 
     public String getStringVariable(String name) {
         VariableValue variableValue = getVariable(name);
+        System.out.println("Tutaj");
         return variableValue.getStringValue();
     }
 

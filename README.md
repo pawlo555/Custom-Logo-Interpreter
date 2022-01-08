@@ -1,11 +1,11 @@
 # Custom Logo interpreter
 
 - create executable jar/exe - Michał
-- add if else instruction - Paweł
+- add if else instruction - Paweł - DONE
 - add commands that returning value (eg. getX) - Michał/Paweł
 - assign on multiple scopes - Paweł
 - add line output when error - Michał/Paweł 
 - change repository name to Custom-Logo-Interpreter - Paweł
 - multiple turtles (add, remove, change turtle commands) - Michał
 - commands to change pen size and color (optionally turtle color) - Michał
-- clean grammar from unused commands - or implementing - Michał
+- implement easy commands as setting turtle visible - Michał

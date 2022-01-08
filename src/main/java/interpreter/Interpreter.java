@@ -2,20 +2,19 @@ package interpreter;
 
 import grammar.LogoParser;
 import grammar.LogoLexer;
-import grammar.LogoParser;
+import javafx.scene.control.TextArea;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import programme.elements.ErrorOutput;
 
 public class Interpreter implements ConsoleListener {
 
     private final Executor executor;
-    private final ErrorOutput error_output;
+    private final TextArea errorOutput;
 
-    public Interpreter(Executor executor, ErrorOutput error_output) {
+    public Interpreter(Executor executor, TextArea errorOutput) {
         this.executor = executor;
-        this.error_output = error_output;
+        this.errorOutput = errorOutput;
     }
 
     private void parseCommands(String command) {
@@ -29,8 +28,9 @@ public class Interpreter implements ConsoleListener {
     public void executeCode(String command) {
         try {
             parseCommands(command);
+            errorOutput.setText(" ");
         } catch (Exception exception) {
-            error_output.setText(exception.getMessage());
+            errorOutput.setText(exception.getMessage());
         }
     }
 
@@ -51,8 +51,9 @@ public class Interpreter implements ConsoleListener {
     private void checkParserErrors(ErrorListener errorListener) {
         if (errorListener.hasErrors()) {
             String message = errorListener.getErrors();
+            System.out.println("Message:" +  message);
             errorListener.clearErrors();
-            throw new IllegalArgumentException(message);
+            throw new IllegalStateException(message);
         }
     }
 

@@ -3,6 +3,7 @@ package interpreter;
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
+import utils.ErrorMessageComposer;
 
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public class ErrorListener extends BaseErrorListener {
     @Override
     public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
         super.syntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e);
-        errors.add(msg + line + ":" + charPositionInLine);
+        errors.add(ErrorMessageComposer.buildErrorMessage(line, charPositionInLine, msg));
     }
 
     public boolean hasErrors() {

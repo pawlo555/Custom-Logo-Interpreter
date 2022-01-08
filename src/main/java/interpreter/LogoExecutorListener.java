@@ -14,25 +14,25 @@ public class LogoExecutorListener extends LogoMathListener {
 
     @Override
     public void exitForward(LogoParser.ForwardContext ctx) {
-        statement = new StatementForward(mathCollector.getMathStatement());
+        statement = new StatementForward(ctx, mathCollector.getMathStatement());
         exit();
     }
 
     @Override
     public void exitBack(LogoParser.BackContext ctx) {
-        statement = new StatementBack(mathCollector.getMathStatement());
+        statement = new StatementBack(ctx, mathCollector.getMathStatement());
         exit();
     }
 
     @Override
     public void exitRight(LogoParser.RightContext ctx) {
-        statement = new StatementRight(mathCollector.getMathStatement());
+        statement = new StatementRight(ctx, mathCollector.getMathStatement());
         exit();
     }
 
     @Override
     public void exitLeft(LogoParser.LeftContext ctx) {
-        statement = new StatementLeft(mathCollector.getMathStatement());
+        statement = new StatementLeft(ctx, mathCollector.getMathStatement());
         exit();
     }
 
@@ -48,25 +48,25 @@ public class LogoExecutorListener extends LogoMathListener {
 
     @Override
     public void exitHome(LogoParser.HomeContext ctx) {
-        statement = new StatementHome();
+        statement = new StatementHome(ctx);
         exit();
     }
 
     @Override
     public void exitClean(LogoParser.CleanContext ctx) {
-        statement = new StatementClean();
+        statement = new StatementClean(ctx);
         exit();
     }
 
     @Override
     public void exitIfc(LogoParser.IfcContext ctx) {
-        statement = new StatementIf(mathCollector.getMathStatement(), statementCollector.getCollectedStatements());
+        statement = new StatementIf(ctx, mathCollector.getMathStatement(), statementCollector.getCollectedStatements());
         exit();
     }
 
     @Override
     public void exitIfElse(LogoParser.IfElseContext ctx) {
-        statement = new StatementIfElse(mathCollector.getMathStatement(), statementCollector.getCollectedStatements(),
+        statement = new StatementIfElse(ctx, mathCollector.getMathStatement(), statementCollector.getCollectedStatements(),
                 statementCollector.getCollectedStatements());
         exit();
     }
@@ -75,14 +75,14 @@ public class LogoExecutorListener extends LogoMathListener {
     public void exitRepeat(LogoParser.RepeatContext ctx) {
         MathStatement statementMath = mathCollector.getMathStatement();
 
-        statement = new StatementRepeat(statementMath, statementCollector.getCollectedStatements());
+        statement = new StatementRepeat(ctx, statementMath, statementCollector.getCollectedStatements());
         exit();
     }
 
     @Override
     public void exitWhile1(LogoParser.While1Context ctx) {
         MathStatement statementMath = mathCollector.getMathStatement();
-        statement = new StatementWhile(statementMath, statementCollector.getCollectedStatements());
+        statement = new StatementWhile(ctx, statementMath, statementCollector.getCollectedStatements());
         exit();
     }
 
@@ -93,8 +93,8 @@ public class LogoExecutorListener extends LogoMathListener {
         for (LogoParser.VariableNameContext variableNameContext: ctx.variableName()) {
             variableNames.addLast(variableNameContext.getText());
         }
-        Procedure procedure = new Procedure(name, statementCollector.getCollectedStatements(), variableNames);
-        statement = new StatementProcedureCreation(name, procedure);
+        Procedure procedure = new Procedure(ctx, name, statementCollector.getCollectedStatements(), variableNames);
+        statement = new StatementProcedureCreation(ctx, name, procedure);
         exit();
     }
 
@@ -102,7 +102,7 @@ public class LogoExecutorListener extends LogoMathListener {
     public void exitLet(LogoParser.LetContext ctx) {
         String name = ctx.variableName().getText();
         MathStatement mathStatement = mathCollector.getMathStatement();
-        statement = new StatementLet(name, mathStatement);
+        statement = new StatementLet(ctx, name, mathStatement);
         exit();
     }
 
@@ -110,7 +110,7 @@ public class LogoExecutorListener extends LogoMathListener {
     public void exitAssign(LogoParser.AssignContext ctx) {
         String name = ctx.variableName().getText();
         MathStatement mathStatement = mathCollector.getMathStatement();
-        statement = new StatementLet(name, mathStatement);
+        statement = new StatementLet(ctx, name, mathStatement);
         exit();
     }
 
@@ -122,19 +122,19 @@ public class LogoExecutorListener extends LogoMathListener {
         for (int i=0; i<ctx.mathStatement().size(); i++) {
             mathStatementList.addLast(mathCollector.getMathStatement());
         }
-        statement = new StatementProcedureCall(name, mathStatementList);
+        statement = new StatementProcedureCall(ctx, name, mathStatementList);
         exit();
     }
 
     @Override
     public void exitPd(LogoParser.PdContext ctx) {
-        statement = new StatementPenDown();
+        statement = new StatementPenDown(ctx);
         exit();
     }
 
     @Override
     public void exitPu(LogoParser.PuContext ctx) {
-        statement = new StatementPenUp();
+        statement = new StatementPenUp(ctx);
         exit();
     }
 

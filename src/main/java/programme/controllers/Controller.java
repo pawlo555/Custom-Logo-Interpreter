@@ -7,7 +7,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import programme.elements.Console;
-import programme.elements.ErrorOutput;
 import programme.elements.LogoCanvas;
 import programme.elements.VariablesDisplayer;
 
@@ -17,7 +16,7 @@ public class Controller {
 
     @FXML private LogoCanvas logoCanvas;
     @FXML private Console console;
-    @FXML private ErrorOutput error_reporter;
+    @FXML private TextArea errorReporter;
     @FXML private TextArea programmeContent;
     @FXML private VBox programmeVBox;
     @FXML private VariablesDisplayer environment;
@@ -86,8 +85,8 @@ public class Controller {
         programmeContent.setText(builder.toString());
     }
 
-    public ErrorOutput getErrorLabel() {
-        return error_reporter;
+    public TextArea getErrorLabel() {
+        return errorReporter;
     }
 
     public void setInterpreter(Interpreter interpreter) {

@@ -1,4 +1,4 @@
-package interpreter;
+package interpreter.statements;
 
 import interpreter.Executor;
 

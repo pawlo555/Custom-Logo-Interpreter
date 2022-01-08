@@ -1,20 +1,21 @@
 package interpreter.statements;
 
 import interpreter.Executor;
-import interpreter.Statement;
+import org.antlr.v4.runtime.ParserRuleContext;
 
-public class StatementProcedureCreation implements Statement {
+public class StatementProcedureCreation extends AbstractStatement {
 
     private final String name;
     private final Procedure procedure;
 
-    public StatementProcedureCreation(String name, Procedure procedure) {
+    public StatementProcedureCreation(ParserRuleContext ctx, String name, Procedure procedure) {
+        super(ctx);
         this.name = name;
         this.procedure = procedure;
     }
 
     @Override
-    public void execute(Executor executor) {
+    public void customExecute(Executor executor) {
         executor.getEnvironment().addProcedure(name, procedure);
     }
 }
