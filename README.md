@@ -3,7 +3,7 @@
 - create executable jar/exe - Michał
 - add if else instruction - Paweł - DONE
 - add commands that returning value (e.g. getX) - Michał/Paweł
-- assign on multiple scopes - Paweł
+- assign on multiple scopes - Paweł - DONE
 - add line output when error - Paweł - DONE
 - change repository name to Custom-Logo-Interpreter - Paweł
 - multiple turtles (add, remove, change turtle commands) - Michał

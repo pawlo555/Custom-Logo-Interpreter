@@ -20,9 +20,11 @@ public class StatementIf extends AbstractStatement {
     public void customExecute(Executor executor) {
         boolean value = mathStatement.evaluate(executor.getEnvironment()).getBooleanValue();
         if (value) {
+            executor.getEnvironment().enterBlock();
             for (Statement statement: statementList) {
                 statement.execute(executor);
             }
+            executor.getEnvironment().exitBlock();
         }
     }
 }

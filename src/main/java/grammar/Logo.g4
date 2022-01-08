@@ -115,7 +115,7 @@ stringArg:
 
 //arguments
 variableName:
-    ':' OTHERWORD
+    ':'+ OTHERWORD
     | SPECIAL_WORD;
 
 procedure:

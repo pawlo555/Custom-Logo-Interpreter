@@ -20,9 +20,11 @@ public class StatementRepeat extends AbstractStatement {
     public void customExecute(Executor executor) {
         int times = timesStatement.evaluate(executor.getEnvironment()).getIntValue();
         for (int i=0; i<times; i++) {
+            executor.getEnvironment().enterBlock();
             for(Statement statement: statementList) {
                 statement.execute(executor);
             }
+            executor.getEnvironment().exitBlock();
         }
     }
 }

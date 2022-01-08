@@ -32,7 +32,7 @@ public class TestEnvironment {
         Environment environment = new Environment();
         IllegalStateException thrown = assertThrows(IllegalStateException.class, () ->
                 environment.getVariable(variableName));
-        assertEquals("There is no declared variable named: " + variableName , thrown.getMessage());
+        assertEquals("There is no declared variable named: " + variableName.substring(1) , thrown.getMessage());
     }
 
     @Test
@@ -49,6 +49,27 @@ public class TestEnvironment {
 
         int secondValue = Integer.parseInt(environment.getStringVariable(firstVariableName));
         assertEquals(50, secondValue);
+
+        environment.exitBlock();
+
+        int firstValue = Integer.parseInt(environment.getStringVariable(firstVariableName));
+        assertEquals(100, firstValue);
+    }
+
+    @Test
+    public void referenceToShadowedVariable() {
+        String firstVariableName = ":x";
+
+        VariableValue firstVariableValue = new VariableValue("100");
+        VariableValue secondVariableValue = new VariableValue("50");
+
+        Environment environment = new Environment();
+        environment.addVariable(firstVariableName, firstVariableValue);
+        environment.enterBlock();
+        environment.addVariable(firstVariableName, secondVariableValue);
+
+        int secondValue = Integer.parseInt(environment.getStringVariable(":"+firstVariableName));
+        assertEquals(100, secondValue);
 
         environment.exitBlock();
 

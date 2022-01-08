@@ -21,6 +21,7 @@ public class StatementIfElse extends AbstractStatement {
     @Override
     public void customExecute(Executor executor) {
         boolean value = mathStatement.evaluate(executor.getEnvironment()).getBooleanValue();
+        executor.getEnvironment().enterBlock();
         if (value) {
             for (Statement statement : trueStatementList) {
                 statement.execute(executor);
@@ -31,5 +32,6 @@ public class StatementIfElse extends AbstractStatement {
                 statement.execute(executor);
             }
         }
+        executor.getEnvironment().exitBlock();
     }
 }
