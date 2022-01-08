@@ -110,7 +110,7 @@ public class LogoExecutorListener extends LogoMathListener {
     public void exitAssign(LogoParser.AssignContext ctx) {
         String name = ctx.variableName().getText();
         MathStatement mathStatement = mathCollector.getMathStatement();
-        statement = new StatementLet(ctx, name, mathStatement);
+        statement = new StatementAssign(ctx, name, mathStatement);
         exit();
     }
 

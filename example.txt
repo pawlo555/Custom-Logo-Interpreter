@@ -3,3 +3,12 @@ procedure square :x [
         forward :x left 90
     ]
 ]
+
+procedure manySquares :begin {
+	if :begin  > 10 {
+		call square :begin
+		call manySquares :begin-10
+	}
+}
+
+call manySquares 100

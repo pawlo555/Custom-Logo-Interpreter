@@ -50,6 +50,7 @@ public class Environment {
     }
 
     private void addVariable(String name, int scope, VariableValue variableValue) {
+        System.out.println(scope);
         int currentScope = 1;
         for (HashMap<String, VariableValue> variableMap: variableHashMap) {
             if (scope == currentScope) {

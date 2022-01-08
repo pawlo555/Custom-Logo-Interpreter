@@ -22,7 +22,7 @@ public class StatementProcedureCall extends AbstractStatement {
     @Override
     public void customExecute(Executor executor) {
         Procedure procedure = executor.getEnvironment().getProcedure(name);
-        if  (procedure.variableNamesList.size() == mathStatements.size()) {
+        if  (procedure.variableNamesList.size() != mathStatements.size()) {
             throw new IllegalStateException("Number of procedure arguments is different than passed arguments");
         }
         executor.getEnvironment().enterBlock();

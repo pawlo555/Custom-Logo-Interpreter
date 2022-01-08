@@ -21,7 +21,7 @@ public class VariablesDisplayer extends TextArea implements ConsoleListener {
         StringBuilder environmentStateBuilder = new StringBuilder();
         Set<String> variablesNames = environment.getVariablesNames();
         for (String variableName: variablesNames) {
-            String value = environment.getVariable(variableName).getStringValue();
+            String value = environment.getVariable(":" + variableName).getStringValue();
             environmentStateBuilder.append(variableName)
                     .append(" : ")
                     .append(value)
@@ -33,10 +33,9 @@ public class VariablesDisplayer extends TextArea implements ConsoleListener {
     private String displayProcedures() {
         StringBuilder proceduresBuilder = new StringBuilder();
         for (String procedureName: environment.getProceduresNames()) {
-            proceduresBuilder.append(procedureName)
-                    .append(" : ")
-                    .append(environment.getProcedure(procedureName).toString());
-            }
+            proceduresBuilder.append(environment.getProcedure(procedureName).getBody())
+                .append('\n');
+        }
         return proceduresBuilder.toString();
     }
 
