@@ -62,6 +62,8 @@ public class LynxExecutorListener extends LynxMathListener {
 
     @Override
     public void enterRepeat(LynxParser.RepeatContext ctx) {
+        System.out.println("Line: " + ctx.line());
+        System.out.println(ctx.line().getStart().getLine());
         statementCollector.startCollecting();
     }
 
