@@ -377,7 +377,6 @@ YCOR:
     | 'ycor'
     ;
 
-//COMMANDS DRAVING xx2xx TODO
 BG:
     'BG'
     | 'bg'
@@ -449,7 +448,6 @@ UNFREEZEBG:
     | 'unfreezebg'
     ;
 
-//commands turtle state xx3xx TODO
 HT:
     'HT'
     | 'ht'
@@ -491,7 +489,6 @@ ST:
     | 'st'
     ;
 
-//commands turtle (other) xx4xx TODO
 CLICKOFF:
     'CLICKOFF'
     | 'clickoff'
@@ -517,7 +514,6 @@ WHO:
     | 'who'
     ;
 
-//commands text xx5xx TODO
 ANNOUNCE:
     'ANNOUNCE'
     | 'announce'
@@ -635,7 +631,6 @@ UNSELECT:
     | 'unselect'
     ;
 
-//commands words and lists xx5xx TODO
 BUTFIRST:
     'BUTFIRST'
     | 'butfirst'
@@ -818,7 +813,6 @@ COMPARISONBIGGEREQUALS:
     ;
 
 
-//commands Objects xx7xx TODO
 ASK:
     'ASK'
     | 'ask'
@@ -868,7 +862,6 @@ UNFREEZE:
     | 'unfreeze'
     ;
 
-//commands Timer xx8xx TODO
 RESETT:
     'RESETT'
     | 'restt'
@@ -911,7 +904,7 @@ THING:
     'THING'
     | 'thing'
     ;
-//commands Pages and project  xx10xx
+
 GETPAGE:
     'GETPAGE'
     | 'getpage'
