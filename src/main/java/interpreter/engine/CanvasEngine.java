@@ -1,7 +1,7 @@
 package interpreter.engine;
 
 import interpreter.Turtle;
-import programme.elements.LynxCanvas;
+import programme.elements.LogoCanvas;
 import utils.Colour;
 import utils.Rotation;
 import utils.Vector2D;
@@ -12,12 +12,12 @@ public class CanvasEngine implements Engine {
     private final static String BASE_TURTLE_NAME = "t";
 
     private final HashMap<String, Turtle> turtlesMap = new HashMap<>();
-    private final LynxCanvas lynxCanvas;
+    private final LogoCanvas logoCanvas;
     private String currentTurtleName = BASE_TURTLE_NAME;
     private Turtle currentTurtle;
 
-    public CanvasEngine(LynxCanvas canvas) {
-        this.lynxCanvas = canvas;
+    public CanvasEngine(LogoCanvas canvas) {
+        this.logoCanvas = canvas;
         Turtle turtle = new Turtle(new Vector2D(0,0));
         addTurtle(BASE_TURTLE_NAME, turtle);
         currentTurtle = turtle;
@@ -36,7 +36,7 @@ public class CanvasEngine implements Engine {
             throw new IllegalStateException("Cannot add turtle with name: " + newTurtleName + " this turtle already exist");
         }
         turtlesMap.put(newTurtleName, newTurtle);
-        lynxCanvas.paintTurtle(newTurtle);
+        logoCanvas.paintTurtle(newTurtle);
     }
 
     public void removeTurtle(String toRemoveTurtleName) {
@@ -80,9 +80,9 @@ public class CanvasEngine implements Engine {
         currentTurtle.forward(n);
 
         if (currentTurtle.isDown()) {
-            lynxCanvas.paintLine(oldPosition, currentTurtle);
+            logoCanvas.paintLine(oldPosition, currentTurtle);
         }
-        lynxCanvas.repaintTurtle(oldPosition, oldAngle, currentTurtle);
+        logoCanvas.repaintTurtle(oldPosition, oldAngle, currentTurtle);
     }
 
     public void backward(double n) {
@@ -92,7 +92,7 @@ public class CanvasEngine implements Engine {
     public void right(int degrees) {
         int oldAngle = currentTurtle.getRotation().getRotationOnCanvas();
         currentTurtle.left(degrees); // we swap axes when displaying
-        lynxCanvas.repaintTurtle(currentTurtle.getPosition(), oldAngle, currentTurtle);
+        logoCanvas.repaintTurtle(currentTurtle.getPosition(), oldAngle, currentTurtle);
     }
 
     public void left(int degrees) {
@@ -123,7 +123,7 @@ public class CanvasEngine implements Engine {
         Vector2D old = currentTurtle.getPosition();
         int oldAngle = currentTurtle.getRotation().getRotationOnCanvas();
         currentTurtle.setPosition(newX, newY);
-        lynxCanvas.repaintTurtle(old, oldAngle, currentTurtle);
+        logoCanvas.repaintTurtle(old, oldAngle, currentTurtle);
     }
 
     public Rotation getRotation() {
@@ -159,6 +159,6 @@ public class CanvasEngine implements Engine {
     }
 
     public void cleanBackground() {
-        lynxCanvas.clean();
+        logoCanvas.clean();
     }
 }

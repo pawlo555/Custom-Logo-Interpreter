@@ -1,16 +1,18 @@
 package interpreter;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class StatementCollector {
     LinkedList<LinkedList<Statement>> listOfLists = new LinkedList<>();
+    Queue<LinkedList<Statement>> collectedLists = new LinkedList<>();
 
     public void addStatement(Statement statement) {
         listOfLists.getFirst().addLast(statement);
     }
 
-    public LinkedList<Statement> endCollecting() {
-        return listOfLists.removeFirst();
+    public void endCollecting() {
+        collectedLists.add(listOfLists.removeFirst());
     }
 
     public void startCollecting() {
@@ -19,5 +21,9 @@ public class StatementCollector {
 
     public boolean isCollecting() {
         return !listOfLists.isEmpty();
+    }
+
+    public LinkedList<Statement> getCollectedStatements() {
+        return collectedLists.remove();
     }
 }

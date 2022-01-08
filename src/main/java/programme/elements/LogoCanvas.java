@@ -9,7 +9,7 @@ import javafx.scene.transform.Rotate;
 import utils.Vector2D;
 
 
-public class LynxCanvas extends Group {
+public class LogoCanvas extends Group {
     private final static double WIDTH = 800;
     private final static double HEIGHT = 680;
     private final static double TURTLE_SIZE = 20.;
@@ -19,7 +19,7 @@ public class LynxCanvas extends Group {
     private final Canvas foreground;
     private final Canvas background;
 
-    public LynxCanvas() {
+    public LogoCanvas() {
         super();
         foreground = new Canvas(WIDTH, HEIGHT);
         background = new Canvas(WIDTH, HEIGHT);

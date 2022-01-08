@@ -1,112 +1,105 @@
 package interpreter;
 
-import grammar.LynxParser;
+import grammar.LogoParser;
 import interpreter.math.MathStatement;
 import interpreter.statements.*;
 
 import java.util.LinkedList;
 
-public class LynxExecutorListener extends LynxMathListener {
+public class LogoExecutorListener extends LogoMathListener {
     private Statement statement;
     private Executor executor;
     private final StatementCollector statementCollector = new StatementCollector();
 
 
     @Override
-    public void exitForward(LynxParser.ForwardContext ctx) {
+    public void exitForward(LogoParser.ForwardContext ctx) {
         statement = new StatementForward(mathCollector.getMathStatement());
         exit();
     }
 
     @Override
-    public void exitBack(LynxParser.BackContext ctx) {
+    public void exitBack(LogoParser.BackContext ctx) {
         statement = new StatementBack(mathCollector.getMathStatement());
         exit();
     }
 
     @Override
-    public void exitRight(LynxParser.RightContext ctx) {
+    public void exitRight(LogoParser.RightContext ctx) {
         statement = new StatementRight(mathCollector.getMathStatement());
         exit();
     }
 
     @Override
-    public void exitLeft(LynxParser.LeftContext ctx) {
+    public void exitLeft(LogoParser.LeftContext ctx) {
         statement = new StatementLeft(mathCollector.getMathStatement());
         exit();
     }
 
     @Override
-    public void exitHome(LynxParser.HomeContext ctx) {
+    public void enterCommandsList(LogoParser.CommandsListContext ctx) {
+        statementCollector.startCollecting();
+    }
+
+    @Override
+    public void exitCommandsList(LogoParser.CommandsListContext ctx) {
+        statementCollector.endCollecting();
+    }
+
+    @Override
+    public void exitHome(LogoParser.HomeContext ctx) {
         statement = new StatementHome();
         exit();
     }
 
     @Override
-    public void exitClean(LynxParser.CleanContext ctx) {
+    public void exitClean(LogoParser.CleanContext ctx) {
         statement = new StatementClean();
         exit();
     }
 
     @Override
-    public void enterIfc(LynxParser.IfcContext ctx) {
-        statementCollector.startCollecting();
-    }
-
-    @Override
-    public void exitIfc(LynxParser.IfcContext ctx) {
-        statement = new StatementIf(mathCollector.getMathStatement(), statementCollector.endCollecting());
+    public void exitIfc(LogoParser.IfcContext ctx) {
+        statement = new StatementIf(mathCollector.getMathStatement(), statementCollector.getCollectedStatements());
         exit();
     }
 
-
     @Override
-    public void enterRepeat(LynxParser.RepeatContext ctx) {
-        System.out.println("Line: " + ctx.line());
-        System.out.println(ctx.line().getStart().getLine());
-        statementCollector.startCollecting();
+    public void exitIfElse(LogoParser.IfElseContext ctx) {
+        statement = new StatementIfElse(mathCollector.getMathStatement(), statementCollector.getCollectedStatements(),
+                statementCollector.getCollectedStatements());
+        exit();
     }
 
     @Override
-    public void exitRepeat(LynxParser.RepeatContext ctx) {
+    public void exitRepeat(LogoParser.RepeatContext ctx) {
         MathStatement statementMath = mathCollector.getMathStatement();
 
-        statement = new StatementRepeat(statementMath, statementCollector.endCollecting());
+        statement = new StatementRepeat(statementMath, statementCollector.getCollectedStatements());
         exit();
     }
 
     @Override
-    public void enterWhile1(LynxParser.While1Context ctx) {
-        statementCollector.startCollecting();
-    }
-
-    @Override
-    public void exitWhile1(LynxParser.While1Context ctx) {
+    public void exitWhile1(LogoParser.While1Context ctx) {
         MathStatement statementMath = mathCollector.getMathStatement();
-        statement = new StatementWhile(statementMath, statementCollector.endCollecting());
+        statement = new StatementWhile(statementMath, statementCollector.getCollectedStatements());
         exit();
     }
 
-
     @Override
-    public void enterProcedure(LynxParser.ProcedureContext ctx) {
-        statementCollector.startCollecting();
-    }
-
-    @Override
-    public void exitProcedure(LynxParser.ProcedureContext ctx) {
+    public void exitProcedure(LogoParser.ProcedureContext ctx) {
         String name = ctx.stringArg().getText();
         LinkedList<String> variableNames = new LinkedList<>();
-        for (LynxParser.VariableNameContext variableNameContext: ctx.variableName()) {
+        for (LogoParser.VariableNameContext variableNameContext: ctx.variableName()) {
             variableNames.addLast(variableNameContext.getText());
         }
-        Procedure procedure = new Procedure(name, statementCollector.endCollecting(), variableNames);
+        Procedure procedure = new Procedure(name, statementCollector.getCollectedStatements(), variableNames);
         statement = new StatementProcedureCreation(name, procedure);
         exit();
     }
 
     @Override
-    public void exitLet(LynxParser.LetContext ctx) {
+    public void exitLet(LogoParser.LetContext ctx) {
         String name = ctx.variableName().getText();
         MathStatement mathStatement = mathCollector.getMathStatement();
         statement = new StatementLet(name, mathStatement);
@@ -114,16 +107,15 @@ public class LynxExecutorListener extends LynxMathListener {
     }
 
     @Override
-    public void exitAssign(LynxParser.AssignContext ctx) {
+    public void exitAssign(LogoParser.AssignContext ctx) {
         String name = ctx.variableName().getText();
         MathStatement mathStatement = mathCollector.getMathStatement();
         statement = new StatementLet(name, mathStatement);
         exit();
     }
 
-
     @Override
-    public void exitProcedureCall(LynxParser.ProcedureCallContext ctx) {
+    public void exitProcedureCall(LogoParser.ProcedureCallContext ctx) {
         String name = ctx.stringArg().getText();
         ctx.mathStatement();
         LinkedList<MathStatement> mathStatementList = new LinkedList<>();
@@ -135,13 +127,13 @@ public class LynxExecutorListener extends LynxMathListener {
     }
 
     @Override
-    public void exitPd(LynxParser.PdContext ctx) {
+    public void exitPd(LogoParser.PdContext ctx) {
         statement = new StatementPenDown();
         exit();
     }
 
     @Override
-    public void exitPu(LynxParser.PuContext ctx) {
+    public void exitPu(LogoParser.PuContext ctx) {
         statement = new StatementPenUp();
         exit();
     }

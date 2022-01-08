@@ -1,7 +1,8 @@
 package interpreter;
 
-import grammar.LynxLexer;
-import grammar.LynxParser;
+import grammar.LogoParser;
+import grammar.LogoLexer;
+import grammar.LogoParser;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -18,7 +19,7 @@ public class Interpreter implements ConsoleListener {
     }
 
     private void parseCommands(String command) {
-        LynxParser parser = generateParser(command);
+        LogoParser parser = generateParser(command);
         ErrorListener errorListener = addErrorListenerToParser(parser);
         ParseTree tree = parser.program();
         walkTheTree(tree);
@@ -33,14 +34,14 @@ public class Interpreter implements ConsoleListener {
         }
     }
 
-    private LynxParser generateParser(String command) {
+    private LogoParser generateParser(String command) {
         CharStream charStream = CharStreams.fromString(command);
-        LynxLexer lexer = new LynxLexer(charStream);
+        LogoLexer lexer = new LogoLexer(charStream);
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        return new LynxParser(tokenStream);
+        return new LogoParser(tokenStream);
     }
 
-    private ErrorListener addErrorListenerToParser(LynxParser parser) {
+    private ErrorListener addErrorListenerToParser(LogoParser parser) {
         ErrorListener errorListener = new ErrorListener();
         parser.removeErrorListeners();
         parser.addErrorListener(errorListener);
@@ -56,7 +57,7 @@ public class Interpreter implements ConsoleListener {
     }
 
     private void walkTheTree(ParseTree tree) {
-        LynxExecutorListener listener = new LynxExecutorListener();
+        LogoExecutorListener listener = new LogoExecutorListener();
         listener.setExecutor(executor);
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(listener, tree);

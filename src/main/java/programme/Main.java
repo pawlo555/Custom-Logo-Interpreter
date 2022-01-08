@@ -18,14 +18,14 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = loader.load();
         Controller controller = loader.getController();
-        CanvasEngine canvasEngine = new CanvasEngine(controller.getLynxCanvas());
+        CanvasEngine canvasEngine = new CanvasEngine(controller.getLogoCanvas());
         Executor executor = new Executor(canvasEngine);
         Interpreter interpreter = new Interpreter(executor, controller.getErrorLabel());
         controller.setInterpreter(interpreter);
 
-        stage.setTitle("Lynx translator");
+        stage.setTitle("Logo translator");
         Scene scene = new Scene(root, 1300, 720);
-        scene.getStylesheets().add(getClass().getResource("lynxStyle.css").toString());
+        scene.getStylesheets().add(getClass().getResource("logoStyle.css").toString());
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

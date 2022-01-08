@@ -8,14 +8,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import programme.elements.Console;
 import programme.elements.ErrorOutput;
-import programme.elements.LynxCanvas;
+import programme.elements.LogoCanvas;
 import programme.elements.VariablesDisplayer;
 
 import java.io.*;
 
 public class Controller {
 
-    @FXML private LynxCanvas lynxCanvas;
+    @FXML private LogoCanvas logoCanvas;
     @FXML private Console console;
     @FXML private ErrorOutput error_reporter;
     @FXML private TextArea programmeContent;
@@ -24,8 +24,8 @@ public class Controller {
 
     public Interpreter interpreter;
 
-    public LynxCanvas getLynxCanvas() {
-        return lynxCanvas;
+    public LogoCanvas getLogoCanvas() {
+        return logoCanvas;
     }
 
     @FXML
