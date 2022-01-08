@@ -1,4 +1,4 @@
-# Custom Logo interpreter
+# Custom Logo Interpreter
 
 - create executable jar/exe - Michał
 - add if else instruction - Paweł - DONE

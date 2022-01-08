@@ -18,7 +18,7 @@ public class StatementWhile extends AbstractStatement {
 
     @Override
     public void customExecute(Executor executor) {
-        while (conditionStatement.evaluate(executor.getEnvironment()).getBooleanValue()) {
+        while (conditionStatement.evaluate(executor).getBooleanValue()) {
             executor.getEnvironment().enterBlock();
             for(Statement statement: statementList) {
                 statement.execute(executor);

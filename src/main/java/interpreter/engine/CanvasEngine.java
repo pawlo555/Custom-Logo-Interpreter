@@ -1,5 +1,6 @@
 package interpreter.engine;
 
+import interpreter.SpecialName;
 import interpreter.Turtle;
 import programme.elements.LogoCanvas;
 import utils.Colour;
@@ -160,5 +161,12 @@ public class CanvasEngine implements Engine {
 
     public void cleanBackground() {
         logoCanvas.clean();
+    }
+
+    public String getValue(SpecialName name) {
+        return switch (name) {
+            case GETX, getx  -> String.valueOf(getX());
+            case GETY, gety -> String.valueOf(getY());
+        };
     }
 }

@@ -15,7 +15,7 @@ public class StatementForward extends AbstractStatement {
 
     @Override
     public void customExecute(Executor executor) {
-        MathValue value = mathStatement.evaluate(executor.getEnvironment());
+        MathValue value = mathStatement.evaluate(executor);
         executor.getEngine().forward(value.getDoubleValue());
     }
 }

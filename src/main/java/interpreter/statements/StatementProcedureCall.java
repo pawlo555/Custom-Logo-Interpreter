@@ -27,7 +27,7 @@ public class StatementProcedureCall extends AbstractStatement {
         }
         executor.getEnvironment().enterBlock();
         for (int i = 0; i< mathStatements.size(); i++) {
-            MathValue value = mathStatements.get(i).evaluate(executor.getEnvironment());
+            MathValue value = mathStatements.get(i).evaluate(executor);
             executor.getEnvironment().addVariable(procedure.variableNamesList.get(i),
                     new VariableValue(value.toString()));
         }

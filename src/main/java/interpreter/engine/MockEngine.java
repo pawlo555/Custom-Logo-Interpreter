@@ -1,5 +1,6 @@
 package interpreter.engine;
 
+import interpreter.SpecialName;
 import interpreter.Turtle;
 import utils.Colour;
 import utils.Rotation;
@@ -157,8 +158,14 @@ public class MockEngine implements Engine{
 
     }
 
+    @Override
     public void cleanBackground() {
 
+    }
+
+    @Override
+    public String getValue(SpecialName name) {
+        return null;
     }
 
     public double getBackAmount() {

@@ -1,5 +1,8 @@
 package interpreter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class VariableValue {
     private final String stringValue;
 

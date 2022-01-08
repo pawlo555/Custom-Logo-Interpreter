@@ -19,7 +19,7 @@ public class StatementAssign extends AbstractStatement {
 
     @Override
     public void customExecute(Executor executor) {
-        MathValue mathValue = this.mathStatement.evaluate(executor.getEnvironment());
+        MathValue mathValue = this.mathStatement.evaluate(executor);
         VariableValue variableValue = new VariableValue(mathValue.toString());
         executor.getEnvironment().assignVariable(variableName, variableValue);
     }

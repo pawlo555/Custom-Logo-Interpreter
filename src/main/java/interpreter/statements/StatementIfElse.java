@@ -20,7 +20,7 @@ public class StatementIfElse extends AbstractStatement {
 
     @Override
     public void customExecute(Executor executor) {
-        boolean value = mathStatement.evaluate(executor.getEnvironment()).getBooleanValue();
+        boolean value = mathStatement.evaluate(executor).getBooleanValue();
         executor.getEnvironment().enterBlock();
         if (value) {
             for (Statement statement : trueStatementList) {

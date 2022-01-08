@@ -1,5 +1,6 @@
 package interpreter.engine;
 
+import interpreter.SpecialName;
 import interpreter.Turtle;
 import utils.Colour;
 import utils.Rotation;
@@ -62,4 +63,6 @@ public interface Engine {
     void setTurtleColour(Colour turtleColor);
 
     void cleanBackground();
+
+    String getValue(SpecialName name);
 }

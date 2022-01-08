@@ -18,7 +18,7 @@ public class StatementIf extends AbstractStatement {
 
     @Override
     public void customExecute(Executor executor) {
-        boolean value = mathStatement.evaluate(executor.getEnvironment()).getBooleanValue();
+        boolean value = mathStatement.evaluate(executor).getBooleanValue();
         if (value) {
             executor.getEnvironment().enterBlock();
             for (Statement statement: statementList) {

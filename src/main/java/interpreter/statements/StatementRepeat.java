@@ -18,7 +18,7 @@ public class StatementRepeat extends AbstractStatement {
 
     @Override
     public void customExecute(Executor executor) {
-        int times = timesStatement.evaluate(executor.getEnvironment()).getIntValue();
+        int times = timesStatement.evaluate(executor).getIntValue();
         for (int i=0; i<times; i++) {
             executor.getEnvironment().enterBlock();
             for(Statement statement: statementList) {

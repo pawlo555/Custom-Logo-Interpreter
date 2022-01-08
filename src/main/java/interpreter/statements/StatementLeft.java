@@ -15,7 +15,7 @@ public class StatementLeft extends AbstractStatement {
 
     @Override
     public void customExecute(Executor executor) {
-        MathValue value = mathStatement.evaluate(executor.getEnvironment());
+        MathValue value = mathStatement.evaluate(executor);
         executor.getEngine().left(value.getIntValue());
     }
 }

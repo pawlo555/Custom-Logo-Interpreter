@@ -1,6 +1,8 @@
 package interpreter.math;
 
 import interpreter.Environment;
+import interpreter.Executor;
+import interpreter.SpecialName;
 import interpreter.VariableValue;
 import interpreter.math.operations.doubleOperation.DoubleOperatorFactory;
 import interpreter.math.operations.operationInterface.Operation;
@@ -64,11 +66,11 @@ public class MathStatement {
         }
     }
 
-    public MathValue evaluate(Environment environment) {
+    public MathValue evaluate(Executor executor) {
         Stack<MathValue> valuesStack = new Stack<>();
         for (String element: elementsInReverseNotation) {
             if (MathElement.isValue(element)) {
-                MathValue value = convertToValue(element, environment);
+                MathValue value = convertToValue(element, executor);
                 valuesStack.push(value);
             }
             else {
@@ -91,10 +93,15 @@ public class MathStatement {
         return valuesStack.pop();
     }
 
-    public MathValue convertToValue(String string, Environment environment) {
+    public MathValue convertToValue(String string, Executor executor) {
         if (VariableValue.isVariable(string)) {
-            string = environment.getStringVariable(string);
+            string = executor.getEnvironment().getStringVariable(string);
         }
+        SpecialName name = SpecialName.checkValue(string);
+        if (name != null) {
+            string = executor.getEngine().getValue(name);
+        }
+
         Integer integer = MathElement.parseInt(string);
         if (integer != null) {
             return new MathValue(integer);
