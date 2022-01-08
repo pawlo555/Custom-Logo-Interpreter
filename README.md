@@ -6,3 +6,4 @@
 - assign on multiple scopes - Paweł
 - add line output when error - Michał/Paweł 
 - change repository name to Custom-Logo-Interpreter - Paweł
+- multiple turtles (add, remove, change turtle commands) - Michał
