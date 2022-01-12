@@ -1,4 +1,4 @@
-// Generated from C:/Studia/Kompilatory/LynxTranslator/src/main/java/grammar\Logo.g4 by ANTLR 4.9.2
+// Generated from C:/Custom-Logo-Interpreter/src/main/java/grammar\Logo.g4 by ANTLR 4.9.2
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -409,6 +409,30 @@ public interface LogoVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitThing(LogoParser.ThingContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogoParser#newTurtle}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNewTurtle(LogoParser.NewTurtleContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogoParser#rename}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRename(LogoParser.RenameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogoParser#changeTurtle}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitChangeTurtle(LogoParser.ChangeTurtleContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogoParser#removeTurtle}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRemoveTurtle(LogoParser.RemoveTurtleContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogoParser#ifc}.
 	 * @param ctx the parse tree

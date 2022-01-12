@@ -55,6 +55,11 @@ cmd:
     | setpensize
     | stamp
     | unfreezebg
+    //turtle
+    | newTurtle
+    | rename
+    | changeTurtle
+    | removeTurtle
     ;
 
 // math statements
@@ -186,6 +191,18 @@ namex:
     ;
 thing:
     THING brakeArg '\''stringArg'\''
+    ;
+newTurtle:
+    NEWTURTLE brakeArg stringArg
+    ;
+rename:
+    RENAME brakeArg stringArg
+    ;
+changeTurtle:
+    CHANGETURTLE brakeArg stringArg
+    ;
+removeTurtle:
+    REMOVE brakeArg stringArg
     ;
 
 ifc:
@@ -835,6 +852,10 @@ REMOVE:
 RENAME:
     'RENAME'
     | 'rename'
+    ;
+CHANGETURTLE:
+    'changeturtle'
+    | 'CHANGETURTLE'
     ;
 SET:
     'SET'

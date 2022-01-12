@@ -149,6 +149,33 @@ public class LogoExecutorListener extends LogoMathListener {
         statement = new StatementSetPenColor(ctx,mathCollector.getMathStatement());
         exit();
     }
+    @Override
+    public void exitNewTurtle(LogoParser.NewTurtleContext ctx){
+        String name = ctx.stringArg().getText();
+        statement = new StatementNewTurtle(ctx,name);
+        exit();
+    }
+
+    @Override
+    public void exitRename(LogoParser.RenameContext ctx){
+        String name = ctx.stringArg().getText();
+        statement = new StatementRename(ctx,name);
+        exit();
+    }
+
+    @Override
+    public void exitChangeTurtle (LogoParser.ChangeTurtleContext ctx){
+        String name = ctx.stringArg().getText();
+        statement = new StatementChangeTurtle(ctx,name);
+        exit();
+    }
+
+    @Override
+    public void exitRemoveTurtle (LogoParser.RemoveTurtleContext ctx){
+        String name = ctx.stringArg().getText();
+        statement = new StatementRemoveTurtle(ctx,name);
+        exit();
+    }
 
     private void exit() {
         if (!statementCollector.isCollecting()) {

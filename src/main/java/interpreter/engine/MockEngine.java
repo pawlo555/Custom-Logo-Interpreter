@@ -30,7 +30,12 @@ public class MockEngine implements Engine{
     }
 
     @Override
-    public void removeTurtle(String toRemoveTurtleName) {
+    public void removeTurtle(String toRemoveTurtleName,boolean toRename) {
+
+    }
+
+    @Override
+    public void renameTurtle(String newTurtleName) {
 
     }
 

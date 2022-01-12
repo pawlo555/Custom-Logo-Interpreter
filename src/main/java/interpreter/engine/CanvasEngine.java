@@ -1,5 +1,6 @@
 package interpreter.engine;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import interpreter.SpecialName;
 import interpreter.Turtle;
 import programme.elements.LogoCanvas;
@@ -30,6 +31,7 @@ public class CanvasEngine implements Engine {
         }
         currentTurtleName = newTurtleName;
         currentTurtle = turtlesMap.get(currentTurtleName);
+        //System.out.println("[CHANGE TURTLE] " + currentTurtleName);
     }
 
     public void addTurtle(String newTurtleName, Turtle newTurtle) {
@@ -38,19 +40,31 @@ public class CanvasEngine implements Engine {
         }
         turtlesMap.put(newTurtleName, newTurtle);
         logoCanvas.paintTurtle(newTurtle);
+        //System.out.println("[ADD TURTLE] " +currentTurtleName + " " + newTurtleName);
     }
 
-    public void removeTurtle(String toRemoveTurtleName) {
-        if (toRemoveTurtleName.equals(currentTurtleName) && turtlesMap.size() == 1) {
+    public void removeTurtle(String toRemoveTurtleName,boolean toRename) {
+        Turtle toRemove = turtlesMap.get(toRemoveTurtleName);
+        logoCanvas.removeTurtle(toRemove.getPosition(),toRemove.getRotation().getRotationOnCanvas());
+        if (toRemoveTurtleName.equals(currentTurtleName) && turtlesMap.size() == 1 && !toRename) {
             throw new IllegalStateException("Cannot delete last turtle");
         }
         turtlesMap.remove(toRemoveTurtleName);
-        if (currentTurtleName.equals(toRemoveTurtleName)) {
+        if (currentTurtleName.equals(toRemoveTurtleName) && turtlesMap.size() != 0) {
             currentTurtleName = (String) turtlesMap.keySet().toArray()[0];
             currentTurtle = turtlesMap.get(currentTurtleName);
         }
     }
 
+    public void renameTurtle(String name){
+        Turtle temp = currentTurtle;
+        removeTurtle(currentTurtleName,true);
+        currentTurtleName = name;
+        addTurtle(currentTurtleName,temp);
+        System.out.println(currentTurtleName + " " + turtlesMap.size());
+
+
+    }
     public boolean isDown() {
         return currentTurtle.isDown();
     }

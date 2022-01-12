@@ -1,4 +1,4 @@
-// Generated from C:/Studia/Kompilatory/LynxTranslator/src/main/java/grammar\Logo.g4 by ANTLR 4.9.2
+// Generated from C:/Custom-Logo-Interpreter/src/main/java/grammar\Logo.g4 by ANTLR 4.9.2
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -683,6 +683,46 @@ public interface LogoListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitThing(LogoParser.ThingContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogoParser#newTurtle}.
+	 * @param ctx the parse tree
+	 */
+	void enterNewTurtle(LogoParser.NewTurtleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoParser#newTurtle}.
+	 * @param ctx the parse tree
+	 */
+	void exitNewTurtle(LogoParser.NewTurtleContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogoParser#rename}.
+	 * @param ctx the parse tree
+	 */
+	void enterRename(LogoParser.RenameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoParser#rename}.
+	 * @param ctx the parse tree
+	 */
+	void exitRename(LogoParser.RenameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogoParser#changeTurtle}.
+	 * @param ctx the parse tree
+	 */
+	void enterChangeTurtle(LogoParser.ChangeTurtleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoParser#changeTurtle}.
+	 * @param ctx the parse tree
+	 */
+	void exitChangeTurtle(LogoParser.ChangeTurtleContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogoParser#removeTurtle}.
+	 * @param ctx the parse tree
+	 */
+	void enterRemoveTurtle(LogoParser.RemoveTurtleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoParser#removeTurtle}.
+	 * @param ctx the parse tree
+	 */
+	void exitRemoveTurtle(LogoParser.RemoveTurtleContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LogoParser#ifc}.
 	 * @param ctx the parse tree

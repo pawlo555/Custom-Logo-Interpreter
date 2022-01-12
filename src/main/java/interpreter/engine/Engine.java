@@ -12,7 +12,7 @@ public interface Engine {
 
     void addTurtle(String newTurtleName, Turtle newTurtle) ;
 
-    void removeTurtle(String toRemoveTurtleName);
+    void removeTurtle(String toRemoveTurtleName,boolean toRename);
 
     boolean isDown();
 
@@ -65,4 +65,6 @@ public interface Engine {
     void cleanBackground();
 
     String getValue(SpecialName name);
+
+    void renameTurtle(String name);
 }
