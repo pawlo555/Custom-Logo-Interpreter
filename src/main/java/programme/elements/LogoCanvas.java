@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.PixelWriter;
 import javafx.scene.transform.Rotate;
 import utils.Vector2D;
 
@@ -33,6 +34,7 @@ public class LogoCanvas extends Group {
     public void paintLine(Vector2D oldPosition, Turtle turtle) {
         GraphicsContext gc = background.getGraphicsContext2D();
         gc.setLineWidth(turtle.getPenSize());
+        gc.setStroke(turtle.getPenColour().toJavaFXColour());
 
         Vector2D turtlePosition = toCanvasCoordinates(turtle.getPosition());
         Vector2D oldPositionTransform = toCanvasCoordinates(oldPosition);

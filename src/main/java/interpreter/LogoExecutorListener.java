@@ -138,6 +138,18 @@ public class LogoExecutorListener extends LogoMathListener {
         exit();
     }
 
+    @Override
+    public void exitPensize(LogoParser.PensizeContext ctx){
+        statement = new StatementSetPenSize(ctx,mathCollector.getMathStatement());
+        exit();
+    }
+
+    @Override
+    public void exitSetcolor(LogoParser.SetcolorContext ctx){
+        statement = new StatementSetPenColor(ctx,mathCollector.getMathStatement());
+        exit();
+    }
+
     private void exit() {
         if (!statementCollector.isCollecting()) {
             statement.execute(executor);
