@@ -139,7 +139,7 @@ public class LogoExecutorListener extends LogoMathListener {
     }
 
     @Override
-    public void exitPensize(LogoParser.PensizeContext ctx){
+    public void exitSetpensize(LogoParser.SetpensizeContext ctx){
         statement = new StatementSetPenSize(ctx,mathCollector.getMathStatement());
         exit();
     }
@@ -177,12 +177,24 @@ public class LogoExecutorListener extends LogoMathListener {
         exit();
     }
 
+    @Override
+    public void enterComment(LogoParser.CommentContext ctx){
+        statementCollector.startEndComment();
+    }
+
+    @Override
+    public void exitComment(LogoParser.CommentContext ctx){
+        statementCollector.startEndComment();
+    }
+
     private void exit() {
-        if (!statementCollector.isCollecting()) {
-            statement.execute(executor);
-        }
-        else {
-            statementCollector.addStatement(statement);
+        if(!statementCollector.isComment()){
+            if (!statementCollector.isCollecting()) {
+                statement.execute(executor);
+            }
+            else {
+                statementCollector.addStatement(statement);
+            }
         }
         statement = null;
     }

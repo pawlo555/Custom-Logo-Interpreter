@@ -34,6 +34,7 @@ public class LogoCanvas extends Group {
     public void paintLine(Vector2D oldPosition, Turtle turtle) {
         GraphicsContext gc = background.getGraphicsContext2D();
         gc.setLineWidth(turtle.getPenSize());
+        System.out.println(turtle.getPenSize());
         gc.setStroke(turtle.getPenColour().toJavaFXColour());
 
         Vector2D turtlePosition = toCanvasCoordinates(turtle.getPosition());

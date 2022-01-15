@@ -454,6 +454,26 @@ public interface LogoListener extends ParseTreeListener {
 	 */
 	void exitAnd(LogoParser.AndContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LogoParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void enterComment(LogoParser.CommentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void exitComment(LogoParser.CommentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LogoParser#acction}.
+	 * @param ctx the parse tree
+	 */
+	void enterAcction(LogoParser.AcctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LogoParser#acction}.
+	 * @param ctx the parse tree
+	 */
+	void exitAcction(LogoParser.AcctionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LogoParser#stringArg}.
 	 * @param ctx the parse tree
 	 */
@@ -554,46 +574,6 @@ public interface LogoListener extends ParseTreeListener {
 	 */
 	void exitRight(LogoParser.RightContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogoParser#setheading}.
-	 * @param ctx the parse tree
-	 */
-	void enterSetheading(LogoParser.SetheadingContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#setheading}.
-	 * @param ctx the parse tree
-	 */
-	void exitSetheading(LogoParser.SetheadingContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#setx}.
-	 * @param ctx the parse tree
-	 */
-	void enterSetx(LogoParser.SetxContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#setx}.
-	 * @param ctx the parse tree
-	 */
-	void exitSetx(LogoParser.SetxContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#sety}.
-	 * @param ctx the parse tree
-	 */
-	void enterSety(LogoParser.SetyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#sety}.
-	 * @param ctx the parse tree
-	 */
-	void exitSety(LogoParser.SetyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#namefromcolor}.
-	 * @param ctx the parse tree
-	 */
-	void enterNamefromcolor(LogoParser.NamefromcolorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#namefromcolor}.
-	 * @param ctx the parse tree
-	 */
-	void exitNamefromcolor(LogoParser.NamefromcolorContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LogoParser#setcolor}.
 	 * @param ctx the parse tree
 	 */
@@ -613,76 +593,6 @@ public interface LogoListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSetpensize(LogoParser.SetpensizeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#setbg}.
-	 * @param ctx the parse tree
-	 */
-	void enterSetbg(LogoParser.SetbgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#setbg}.
-	 * @param ctx the parse tree
-	 */
-	void exitSetbg(LogoParser.SetbgContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#setpos}.
-	 * @param ctx the parse tree
-	 */
-	void enterSetpos(LogoParser.SetposContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#setpos}.
-	 * @param ctx the parse tree
-	 */
-	void exitSetpos(LogoParser.SetposContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#distance}.
-	 * @param ctx the parse tree
-	 */
-	void enterDistance(LogoParser.DistanceContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#distance}.
-	 * @param ctx the parse tree
-	 */
-	void exitDistance(LogoParser.DistanceContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#towards}.
-	 * @param ctx the parse tree
-	 */
-	void enterTowards(LogoParser.TowardsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#towards}.
-	 * @param ctx the parse tree
-	 */
-	void exitTowards(LogoParser.TowardsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#clearname}.
-	 * @param ctx the parse tree
-	 */
-	void enterClearname(LogoParser.ClearnameContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#clearname}.
-	 * @param ctx the parse tree
-	 */
-	void exitClearname(LogoParser.ClearnameContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#namex}.
-	 * @param ctx the parse tree
-	 */
-	void enterNamex(LogoParser.NamexContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#namex}.
-	 * @param ctx the parse tree
-	 */
-	void exitNamex(LogoParser.NamexContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#thing}.
-	 * @param ctx the parse tree
-	 */
-	void enterThing(LogoParser.ThingContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#thing}.
-	 * @param ctx the parse tree
-	 */
-	void exitThing(LogoParser.ThingContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LogoParser#newTurtle}.
 	 * @param ctx the parse tree
@@ -744,16 +654,6 @@ public interface LogoListener extends ParseTreeListener {
 	 */
 	void exitIfElse(LogoParser.IfElseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogoParser#heading}.
-	 * @param ctx the parse tree
-	 */
-	void enterHeading(LogoParser.HeadingContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#heading}.
-	 * @param ctx the parse tree
-	 */
-	void exitHeading(LogoParser.HeadingContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LogoParser#home}.
 	 * @param ctx the parse tree
 	 */
@@ -763,56 +663,6 @@ public interface LogoListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitHome(LogoParser.HomeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#pos}.
-	 * @param ctx the parse tree
-	 */
-	void enterPos(LogoParser.PosContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#pos}.
-	 * @param ctx the parse tree
-	 */
-	void exitPos(LogoParser.PosContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#clearnames}.
-	 * @param ctx the parse tree
-	 */
-	void enterClearnames(LogoParser.ClearnamesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#clearnames}.
-	 * @param ctx the parse tree
-	 */
-	void exitClearnames(LogoParser.ClearnamesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#names}.
-	 * @param ctx the parse tree
-	 */
-	void enterNames(LogoParser.NamesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#names}.
-	 * @param ctx the parse tree
-	 */
-	void exitNames(LogoParser.NamesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#bg}.
-	 * @param ctx the parse tree
-	 */
-	void enterBg(LogoParser.BgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#bg}.
-	 * @param ctx the parse tree
-	 */
-	void exitBg(LogoParser.BgContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#cg}.
-	 * @param ctx the parse tree
-	 */
-	void enterCg(LogoParser.CgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#cg}.
-	 * @param ctx the parse tree
-	 */
-	void exitCg(LogoParser.CgContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LogoParser#clean}.
 	 * @param ctx the parse tree
@@ -824,46 +674,6 @@ public interface LogoListener extends ParseTreeListener {
 	 */
 	void exitClean(LogoParser.CleanContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogoParser#color}.
-	 * @param ctx the parse tree
-	 */
-	void enterColor(LogoParser.ColorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#color}.
-	 * @param ctx the parse tree
-	 */
-	void exitColor(LogoParser.ColorContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#colorrunder}.
-	 * @param ctx the parse tree
-	 */
-	void enterColorrunder(LogoParser.ColorrunderContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#colorrunder}.
-	 * @param ctx the parse tree
-	 */
-	void exitColorrunder(LogoParser.ColorrunderContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#fill}.
-	 * @param ctx the parse tree
-	 */
-	void enterFill(LogoParser.FillContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#fill}.
-	 * @param ctx the parse tree
-	 */
-	void exitFill(LogoParser.FillContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#freezebg}.
-	 * @param ctx the parse tree
-	 */
-	void enterFreezebg(LogoParser.FreezebgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#freezebg}.
-	 * @param ctx the parse tree
-	 */
-	void exitFreezebg(LogoParser.FreezebgContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LogoParser#pd}.
 	 * @param ctx the parse tree
 	 */
@@ -874,26 +684,6 @@ public interface LogoListener extends ParseTreeListener {
 	 */
 	void exitPd(LogoParser.PdContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LogoParser#pe}.
-	 * @param ctx the parse tree
-	 */
-	void enterPe(LogoParser.PeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#pe}.
-	 * @param ctx the parse tree
-	 */
-	void exitPe(LogoParser.PeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#pensize}.
-	 * @param ctx the parse tree
-	 */
-	void enterPensize(LogoParser.PensizeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#pensize}.
-	 * @param ctx the parse tree
-	 */
-	void exitPensize(LogoParser.PensizeContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LogoParser#pu}.
 	 * @param ctx the parse tree
 	 */
@@ -903,26 +693,6 @@ public interface LogoListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPu(LogoParser.PuContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#stamp}.
-	 * @param ctx the parse tree
-	 */
-	void enterStamp(LogoParser.StampContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#stamp}.
-	 * @param ctx the parse tree
-	 */
-	void exitStamp(LogoParser.StampContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LogoParser#unfreezebg}.
-	 * @param ctx the parse tree
-	 */
-	void enterUnfreezebg(LogoParser.UnfreezebgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LogoParser#unfreezebg}.
-	 * @param ctx the parse tree
-	 */
-	void exitUnfreezebg(LogoParser.UnfreezebgContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LogoParser#let}.
 	 * @param ctx the parse tree

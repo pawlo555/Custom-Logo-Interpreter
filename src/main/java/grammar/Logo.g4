@@ -17,49 +17,25 @@ cmd:
     | back
     | left
     | right
-    | setheading
-    | setx
-    | sety
-    | setpos
-    | distance
-    | towards
-    | heading
     | home
-    | pos
     //variables cmd
-    | clearname
-    | namex
-    | thing
-    | clearnames
-    | names
     | let
     | assign
     //logic cmd
     | ifc
     | ifElse
     //draw cmd
-    | bg
-    | cg
-    | clean
-    | color
-    | colorrunder
-    | fill
-    | freezebg
-    | namefromcolor
     | pd
-    | pe
-    | pensize
     | pu
-    | setbg
     | setcolor
     | setpensize
-    | stamp
-    | unfreezebg
     //turtle
     | newTurtle
     | rename
     | changeTurtle
     | removeTurtle
+    | comment
+    | clean
     ;
 
 // math statements
@@ -114,6 +90,20 @@ doubleArgMathOperator:
     | AND # and
     ;
 
+comment:
+    COMMENTBRACKET
+    (acction)+
+    COMMENTBRACKET
+    ;
+acction:
+    brakeArg
+    | program
+    | cmd
+    | mathStatement
+    | OTHERWORD
+    ;
+
+
 stringArg:
     OTHERWORD
     ;
@@ -149,49 +139,14 @@ left:
 right:
     RIGHT brakeArg mathStatement
     ;
-setheading:
-    SETHEADING brakeArg mathStatement
-    ;
-setx:
-    SETX brakeArg mathStatement
-    ;
-sety:
-    SETY brakeArg mathStatement
-    ;
-namefromcolor:
-    NAMEFROMCOLOUR brakeArg mathStatement
-    ;
 setcolor:
     SETCOLOR brakeArg mathStatement
     ;
 setpensize:
     SETPENSIZE brakeArg mathStatement
     ;
-setbg:
-    SETBG brakeArg mathStatement
-    ;
-
-//bracket commands
-setpos:
-    SETPOS brakeArg  '[' brakeArg mathStatement brakeArg ',' brakeArg mathStatement  brakeArg']'
-    ;
 
 //word commands
-distance:
-    DISTANCE brakeArg '\''stringArg'\''
-    ;
-towards:
-    TOWARDS brakeArg '\''stringArg'\''
-    ;
-clearname:
-    CLEARNAME brakeArg '\''stringArg'\''
-    ;
-namex:
-    NAMEX brakeArg '\''stringArg'\''
-    ;
-thing:
-    THING brakeArg '\''stringArg'\''
-    ;
 newTurtle:
     NEWTURTLE brakeArg stringArg
     ;
@@ -213,59 +168,18 @@ ifElse:
     ;
 
 //just commands
-heading:
-    HEADING
-    ;
 home:
     HOME
-    ;
-pos:
-    POS
-    ;
-clearnames:
-    CLEARNAMES
-    ;
-names:
-    NAMES
-    ;
-bg:
-    BG
-    ;
-cg:
-    CG
     ;
 clean:
     CLEAN
     ;
-color:
-    COLOR
-    ;
-colorrunder:
-    COLORUNDER
-    ;
-fill:
-    FILL
-    ;
-freezebg:
-    FREEZEBG
-    ;
+
 pd:
     PD
     ;
-pe:
-    PE
-    ;
-pensize:
-    PENSIZE
-    ;
 pu:
     PU
-    ;
-stamp:
-    STAMP
-    ;
-unfreezebg:
-    UNFREEZEBG
     ;
 
 //list commands
@@ -324,19 +238,11 @@ BACK:
     |'BK'
     |'bk'
     ;
-DISTANCE:
-    'DISTANCE'
-    | 'distance'
-    ;
 FORWARD:
     'FORWARD'
     | 'FD'
     | 'forward'
     | 'fd'
-    ;
-HEADING:
-    'HEADING'
-    |'heading'
     ;
 HOME:
     'HOME'
@@ -348,378 +254,31 @@ LEFT:
     | 'LT'
     | 'lt'
     ;
-POS:
-    'POS'
-    | 'pos'
-    ;
 RIGHT:
     'RIGHT'
     | 'RT'
     | 'right'
     | 'rt'
     ;
-SETHEADING:
-    'SETHEADING'
-    | 'setheading'
-    | 'SETH'
-    | 'seth'
-    ;
-SETPOS:
-    'SETPOS'
-    | 'setpos'
-    ;
-SETX:
-    'SETX'
-    | 'setx'
-    ;
-SETY:
-    'SETY'
-    | 'sety'
-    ;
-TOWARDS:
-    'TOWARDS'
-    | 'towards'
-    ;
-
-BG:
-    'BG'
-    | 'bg'
-    ;
-CG:
-    'CG'
-    | 'cg'
-    ;
 CLEAN:
     'CLEAN'
     | 'clean'
-    ;
-COLOR:
-    'COLOR'
-    | 'color'
-    ;
-COLORUNDER:
-    'COLORUNDER'
-    | 'colorunder'
-    ;
-FILL:
-    'FILL'
-    | 'fill'
-    ;
-FREEZEBG:
-    'FREEZEBG'
-    | 'freezebg'
-    ;
-NAMEFROMCOLOUR:
-    'NAMEFROMCOLOR'
-    | 'namefromcolor'
     ;
 PD:
     'PD'
     | 'pd'
     ;
-PE:
-    'PE'
-    | 'pe'
-    ;
-PENSIZE:
-    'PENSIZE'
-    | 'pensize'
-    ;
 PU:
     'PU'
     | 'pu'
-    ;
-SETBG:
-    'SETBG'
-    | 'setbg'
-    ;
-SETCOLOR:
-    'SETCOLOR'
-    | 'setcolor'
-    | 'SETC'
-    | 'setc'
     ;
 SETPENSIZE:
     'SETPENSIZE'
     | 'setpensize'
     ;
-STAMP:
-    'STAMP'
-    | 'stamp'
-    ;
-UNFREEZEBG:
-    'UNFREEZEBG'
-    | 'unfreezebg'
-    ;
-
-HT:
-    'HT'
-    | 'ht'
-    ;
-INBACK:
-    'INBACK'
-    | 'inback'
-    ;
-INFRONT:
-    'INFRONT'
-    | 'infront'
-    ;
-OPACITY:
-    'OPACITY'
-    | 'opacity'
-    ;
-SETOPACITY:
-    'SETOPACITY'
-    | 'setopacity'
-    ;
-SETSHAPE:
-    'SETSHAPE'
-    | 'setshape'
-    ;
-SETSIZE:
-    'SETSIZE'
-    | 'setsize'
-    ;
-SHAPE:
-    'SHAPE'
-    | 'shape'
-    ;
-SIZE:
-    'SIZE'
-    | 'size'
-    ;
-ST:
-    'ST'
-    | 'st'
-    ;
-
-CLICKOFF:
-    'CLICKOFF'
-    | 'clickoff'
-    ;
-CLICKON:
-    'CLICKON'
-    | 'clickon'
-    ;
-CLONE:
-    'CLONE'
-    | 'clone'
-    ;
-TELL:
-    'TELL'
-    | 'tell'
-    ;
-TOUCHINGX:
-    'TOUCHING?'
-    | 'toughing?'
-    ;
-WHO:
-    'WHO'
-    | 'who'
-    ;
-
-ANNOUNCE:
-    'ANNOUNCE'
-    | 'announce'
-    ;
-ASCII:
-    'ASCII'
-    | 'ascii'
-    ;
-BOTTOM:
-    'BOTTOM'
-    | 'bottom'
-    ;
-CB:
-    'CB'
-    | 'cb'
-    ;
-CC:
-    'CC'
-    | 'cc'
-    ;
-CD:
-    'CD'
-    | 'cd'
-    ;
-CF:
-    'CF'
-    | 'cf'
-    ;
-CHAR:
-    'CHAR'
-    | 'char'
-    ;
-CLEARTEXT:
-    'CLEARTEXT'
-    | 'cleartext'
-    | 'CT'
-    | 'ct'
-    ;
-CU:
-    'CU'
-    | 'cu'
-    ;
-DELETE:
-    'DELETE'
-    | 'delate'
-    ;
-EOL:
-    'EOL'
-    | 'eol'
-    ;
-EOT:
-    'EOT?'
-    | 'eot?'
-    ;
-HIDETEXT:
-    'HIDETEXT'
-    | 'hidetext'
-    ;
-INSERT:
-    'INSERT'
-    | 'insert'
-    ;
-PRINT:
-    'PRINT'
-    | 'print'
-    | 'PR'
-    | 'pr'
-    ;
-SELECT:
-    'SELECT'
-    | 'select'
-    ;
-SELECTED:
-    'SELECTED'
-    | 'selected'
-    ;
-SHOW:
-    'SHOW'
-    | 'show'
-    ;
-SHOWTEXT:
-    'SHOWTEXT'
-    | 'showtext'
-    ;
-SOL:
-    'SOL'
-    | 'sol'
-    ;
-TEXTCOUNT:
-    'TEXTCOUNT'
-    | 'textcount'
-    ;
-TEXTITEM:
-    'TEXTITEM'
-    | 'textitem'
-    ;
-TEXTPICK:
-    'TEXTPICK'
-    | 'textpick'
-    ;
-TEXTWHO:
-    'TEXTWHO'
-    | 'textwho'
-    ;
-TOP:
-    'TOP'
-    | 'top'
-    ;
-TRANSPARENT:
-    'TRANSPARENT'
-    | 'transparent'
-    ;
-UNSELECT:
-    'UNSELECT'
-    | 'unselect'
-    ;
-
-BUTFIRST:
-    'BUTFIRST'
-    | 'butfirst'
-    | 'BT'
-    | 'bt'
-    ;
-BUTLAST:
-    'BUTLAST'
-    | 'butlast'
-    | 'BL'
-    | 'bl'
-    ;
-COUNT:
-    'COUNT'
-    | 'count'
-    ;
-EMPTY:
-    'EMPTY?'
-    | 'empty?'
-    ;
-EQUALX:
-    'EQUAL?'
-    | 'equal?'
-    ;
-FIRST:
-    'FIRST'
-    | 'first'
-    ;
-FPUT:
-    'FPUT'
-    | 'eput'
-    ;
-IDENTICALX:
-    'IDENTICAL?'
-    | 'identical?'
-    ;
-ITEM:
-    'ITEM'
-    | 'item'
-    ;
-LAST:
-    'LAST'
-    | 'last'
-    ;
-LIST:
-    'LIST'
-    | 'list'
-    ;
-LISTX:
-    'LIST?'
-    | 'list?'
-    ;
-LPUT:
-    'LPUT'
-    | 'lput'
-    ;
-MEMBERX:
-    'MEMBER?'
-    | 'member?'
-    ;
-NUMBER:
-    'NUMBER?'
-    | 'number?'
-    ;
-PARSE:
-    'PARSE'
-    | 'parse'
-    ;
-PICK:
-    'PICK'
-    | 'pick'
-    ;
-SENTENCE:
-    'SENTENCE'
-    | 'sentence'
-    | 'SE'
-    | 'se'
-    ;
-WORD:
-    'WORD'
-    | 'word'
-    ;
-WORDX:
-    'WORD?'
-    | 'word?'
+SETCOLOR:
+    'SETCOLOR'
+    | 'setcolor'
     ;
 //commands number and maths xx6xx DONE
 ABS:
@@ -817,41 +376,17 @@ COMPARISONBIGGEREQUALS:
     ;
 
 
-ASK:
-    'ASK'
-    | 'ask'
-    ;
-FREEZE:
-    'FREEZE'
-    | 'freeze'
-    ;
-GET:
-    'GET'
-    | 'get'
-    ;
-NEWPAGE:
-    'NEWPAGE'
-    | 'newpage'
-    ;
-NEWSLIDER:
-    'NEWSLIDER'
-    | 'newslider'
-    ;
-NEWTEXT:
-    'NEWTEXT'
-    | 'newtext'
-    ;
 NEWTURTLE:
     'NEWTURTLE'
     | 'newturtle'
     ;
-REMOVE:
-    'REMOVE'
-    | 'remove'
-    ;
 RENAME:
     'RENAME'
     | 'rename'
+    ;
+REMOVE:
+    'REMOVETURTLE'
+    | 'removeturtle'
     ;
 CHANGETURTLE:
     'changeturtle'
@@ -861,33 +396,8 @@ SET:
     'SET'
     | 'set'
     ;
-TALKTO:
-    'TALKTO'
-    | 'talkto'
-    ;
-UNFREEZE:
-    'UNFREEZE'
-    | 'unfreeze'
-    ;
-
-RESETT:
-    'RESETT'
-    | 'restt'
-    ;
-TIMER:
-    'TIMER'
-    | 'timer'
-    ;
 
 //commands Variables xx9xx DONE
-CLEARNAME:
-    'CLEARNAME'
-    | 'clearname'
-    ;
-CLEARNAMES:
-    'CLEARNAMES'
-    | 'clearnames'
-    ;
 LET:
     'LET'
     | 'let'
@@ -895,47 +405,6 @@ LET:
 ASSIGN:
     'ASSIGN'
     | 'assign'
-    ;
-MAKE:
-    'MAKE'
-    | 'make'
-    ;
-NAMEX:
-    'NAME?'
-    | 'name?'
-    ;
-NAMES:
-    'NAMES'
-    | 'names'
-    ;
-THING:
-    'THING'
-    | 'thing'
-    ;
-
-GETPAGE:
-    'GETPAGE'
-    | 'getpage'
-    ;
-NAMEPAGE:
-    'NAMEPAGE'
-    | 'namepage'
-    ;
-NEXTPAGE:
-    'NEXTPAGE'
-    | 'nextpage'
-    ;
-PAGELIST:
-    'PAGELIST'
-    | 'pagelist'
-    ;
-PREVPAGE:
-    'PREVPAGE'
-    | 'prevpage'
-    ;
-PROJECTSIZE:
-    'PROJECTSIZE'
-    | 'projectsize'
     ;
 //commands logic xxx11xx DONE
 AND:
@@ -963,87 +432,7 @@ OR:
     ;
 
 //commands interaction xxx12xx
-ANSWER:
-    'ANSWER'
-    | 'answer'
-    ;
-KEYX:
-    'KEY?'
-    | 'key?'
-    ;
-MOUSEPOS:
-    'MOUSEPOS'
-    | 'mousepos'
-    ;
-PEEKCHAR:
-    'PEEKCHAR'
-    | 'peekchar'
-    ;
-QUESTION:
-    'QUESTION'
-    | 'question'
-    ;
-READCHAR:
-    'READCHAR'
-    | 'readchar'
-    ;
-SAY:
-    'SAY'
-    | 'say'
-    ;
-SAYAS:
-    'SAYAS'
-    | 'says'
-    ;
-SKIPCHAR:
-    'SKIPCHAR'
-    | 'skipchar'
-    ;
-VOICES:
-    'VOICES'
-    | 'voices'
-    ;
 //commands Control and events xxx13xx
-BROADCAST:
-    'BROADCAST'
-    | 'broadcast'
-    ;
-CANCEL:
-    'CANCEL'
-    | 'cancel'
-    ;
-CAREFULLY:
-    'CAREFULLY'
-    | 'carefully'
-    ;
-DOLIST:
-    'DOLIST'
-    | 'dolist'
-    ;
-DOTIMES:
-    'DOTIMES'
-    | 'dotimes'
-    ;
-ERRORMESSAGE:
-    'ERRORMESSAGE'
-    | 'errormessage'
-    ;
-EVERYONE:
-    'EVERYONE'
-    | 'everyone'
-    ;
-FOREVER:
-    'FOREVER'
-    | 'forever'
-    ;
-LAUNCH:
-    'LAUNCH'
-    | 'launch'
-    ;
-OUTPUT:
-    'OUTPUT'
-    | 'output'
-    ;
 REPEAT:
     'REPEAT'
     | 'repeat'
@@ -1052,23 +441,6 @@ REPEAT:
 WHILE:
     'WHILE'
     | 'while'
-    ;
-RUN:
-    'RUN'
-    | 'run'
-    ;
-STOP:
-    'STOP'
-    | 'stop'
-    ;
-STOPALL:  'STOPALL' | 'stopall';
-STOPME:
-    'STOPME'
-    | 'stopme'
-    ;
-WAIT:
-    'WAIT'
-    | 'wait'
     ;
 PROCEDURE:
     'PROCEDURE'
@@ -1084,6 +456,9 @@ CALL :
 
 DIVISION:
     '/'
+    ;
+COMMENTBRACKET:
+    '#'
     ;
 
 NATURALNUMBER:
@@ -1108,3 +483,4 @@ WHITESPACE:
 NEWLINE:
     '\r'? '\n'
     | '\r';
+

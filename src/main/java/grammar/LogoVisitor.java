@@ -272,6 +272,18 @@ public interface LogoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAnd(LogoParser.AndContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LogoParser#comment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComment(LogoParser.CommentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LogoParser#acction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAcction(LogoParser.AcctionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LogoParser#stringArg}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -332,30 +344,6 @@ public interface LogoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRight(LogoParser.RightContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogoParser#setheading}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSetheading(LogoParser.SetheadingContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#setx}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSetx(LogoParser.SetxContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#sety}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSety(LogoParser.SetyContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#namefromcolor}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNamefromcolor(LogoParser.NamefromcolorContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link LogoParser#setcolor}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -367,48 +355,6 @@ public interface LogoVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSetpensize(LogoParser.SetpensizeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#setbg}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSetbg(LogoParser.SetbgContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#setpos}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSetpos(LogoParser.SetposContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#distance}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDistance(LogoParser.DistanceContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#towards}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTowards(LogoParser.TowardsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#clearname}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClearname(LogoParser.ClearnameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#namex}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNamex(LogoParser.NamexContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#thing}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitThing(LogoParser.ThingContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogoParser#newTurtle}.
 	 * @param ctx the parse tree
@@ -446,47 +392,11 @@ public interface LogoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIfElse(LogoParser.IfElseContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogoParser#heading}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitHeading(LogoParser.HeadingContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link LogoParser#home}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitHome(LogoParser.HomeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#pos}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPos(LogoParser.PosContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#clearnames}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClearnames(LogoParser.ClearnamesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#names}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNames(LogoParser.NamesContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#bg}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBg(LogoParser.BgContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#cg}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCg(LogoParser.CgContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogoParser#clean}.
 	 * @param ctx the parse tree
@@ -494,65 +404,17 @@ public interface LogoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitClean(LogoParser.CleanContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogoParser#color}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitColor(LogoParser.ColorContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#colorrunder}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitColorrunder(LogoParser.ColorrunderContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#fill}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFill(LogoParser.FillContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#freezebg}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFreezebg(LogoParser.FreezebgContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link LogoParser#pd}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitPd(LogoParser.PdContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LogoParser#pe}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPe(LogoParser.PeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#pensize}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPensize(LogoParser.PensizeContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link LogoParser#pu}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitPu(LogoParser.PuContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#stamp}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStamp(LogoParser.StampContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LogoParser#unfreezebg}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUnfreezebg(LogoParser.UnfreezebgContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LogoParser#let}.
 	 * @param ctx the parse tree

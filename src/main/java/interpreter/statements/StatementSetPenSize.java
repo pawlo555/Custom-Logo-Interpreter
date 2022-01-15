@@ -15,7 +15,9 @@ public class StatementSetPenSize extends AbstractStatement{
 
     @Override
     public void customExecute(Executor executor) {
+        System.out.println("statment ok start ");
         MathValue value = mathStatement.evaluate(executor);
         executor.getEngine().setPenSize((value.getIntValue()));
+        System.out.println("statment ok end ");
     }
 }

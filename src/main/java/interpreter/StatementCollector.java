@@ -8,6 +8,7 @@ import java.util.Queue;
 public class StatementCollector {
     LinkedList<LinkedList<Statement>> listOfLists = new LinkedList<>();
     Queue<LinkedList<Statement>> collectedLists = new LinkedList<>();
+    private boolean inComment = false;
 
     public void addStatement(Statement statement) {
         listOfLists.getFirst().addLast(statement);
@@ -28,4 +29,10 @@ public class StatementCollector {
     public LinkedList<Statement> getCollectedStatements() {
         return collectedLists.remove();
     }
+
+    public void startEndComment() {
+        inComment = !inComment;
+    }
+
+    public boolean isComment(){return inComment;}
 }
