@@ -42,7 +42,7 @@ All possible conversions will be done automatically for example:<br>
 true will be cast to 1 or 1.0 if necessary and 0 to false or 0.0<br>
 
 ## Lists of commands
-In many commands you are supposed to add at least one list of commands that. These 3 ways of doing this are the same:
+In many commands you are supposed to add at least one list of commands. These 3 ways of doing this are the same:
 ```
 if 1>0 forward 100
 if 1>0 { forward 100 }
@@ -100,11 +100,7 @@ call square 100
 # Custom Logo Interpreter
 
 - create executable jar/exe - Michał
-- add if else instruction - Paweł - DONE
 - add commands that returning value (e.g. getX) - Michał/Paweł - mostly
-- assign on multiple scopes - Paweł - DONE
-- add line output when error - Paweł - DONE
-- change repository name to Custom-Logo-Interpreter - Paweł - DONE
 - multiple turtles (add, remove, change turtle commands) - Michał - DONE (TO CHECK RENAME)
     commands
     - newturtle x - adds new turtle to playground x = new turtle name
@@ -113,3 +109,7 @@ call square 100
     - changeturtle x - changes current turtle to turtle x
 - commands to change pen size and color (optionally turtle color) - Michał - PARTLY DONE
 - implement easy commands as setting turtle visible - Michał
+- documentation - Paweł
+    - all commands list
+    - all commands examples
+    - how gui work
