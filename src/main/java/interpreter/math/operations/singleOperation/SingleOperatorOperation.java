@@ -1,7 +1,8 @@
 package interpreter.math.operations.singleOperation;
 
 import interpreter.math.MathValue;
-import interpreter.math.operations.operationInterface.Operation;
+import interpreter.math.operations.MathException;
+import interpreter.math.operations.Operation;
 
 
 public abstract class SingleOperatorOperation implements Operation {
@@ -12,5 +13,5 @@ public abstract class SingleOperatorOperation implements Operation {
         this.element = element;
     }
 
-    public abstract MathValue evaluate();
+    public abstract MathValue evaluate() throws MathException;
 }

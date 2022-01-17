@@ -1,7 +1,8 @@
 package interpreter.math.operations.doubleOperation;
 
 import interpreter.math.MathValue;
-import interpreter.math.operations.operationInterface.Operation;
+import interpreter.math.operations.MathException;
+import interpreter.math.operations.Operation;
 
 
 public abstract class DoubleOperatorOperation implements Operation {
@@ -14,5 +15,5 @@ public abstract class DoubleOperatorOperation implements Operation {
         this.secondElement = secondElement;
     }
 
-    public abstract MathValue evaluate();
+    public abstract MathValue evaluate() throws MathException;
 }

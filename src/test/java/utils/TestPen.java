@@ -17,7 +17,7 @@ public class TestPen {
 
     @Test
     public void assertionTest() {
-        AssertionError thrown = assertThrows(AssertionError.class, () ->new Pen(Colour.WHITE, 0));
+        AssertionError thrown = assertThrows(AssertionError.class, () ->new Pen(Colour.WHITE, -1));
 
         assertEquals(Pen.ASSERTION_MESSAGE, thrown.getMessage());
     }

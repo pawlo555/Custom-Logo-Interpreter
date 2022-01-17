@@ -1,13 +1,13 @@
-package interpreter.math.operations.commands;
+package interpreter.math.operations.singleOperation;
 
 import interpreter.math.MathValue;
-import interpreter.math.operations.singleOperation.SingleOperatorOperation;
 
 import static java.lang.StrictMath.cos;
 
-public class MinusSingleOperation extends SingleOperatorOperation {
 
-    public MinusSingleOperation(MathValue element) {
+public class CosOperation extends SingleOperatorOperation {
+
+    public CosOperation(MathValue element) {
         super(element);
     }
 
@@ -16,11 +16,11 @@ public class MinusSingleOperation extends SingleOperatorOperation {
         int checkVal = element.checkValue();
         if(checkVal == 0){
             double value = element.getIntValue();
-            return new MathValue(-value);
+            return new MathValue(cos(value));
         }
         else{
             int value = element.getIntValue();
-            return new MathValue(-value);
+            return new MathValue(cos(value));
         }
     }
 }

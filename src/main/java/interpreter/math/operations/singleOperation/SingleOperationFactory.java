@@ -2,7 +2,6 @@ package interpreter.math.operations.singleOperation;
 
 import interpreter.math.MathValue;
 import interpreter.math.Operators;
-import interpreter.math.operations.commands.*;
 
 public class SingleOperationFactory {
 

@@ -2,7 +2,7 @@ package interpreter.math.operations.doubleOperation;
 
 import interpreter.math.MathValue;
 import interpreter.math.Operators;
-import interpreter.math.operations.commands.*;
+import interpreter.math.operations.singleOperation.RemainderOperation;
 
 public class DoubleOperatorFactory {
 
@@ -25,5 +25,4 @@ public class DoubleOperatorFactory {
             default -> throw new IllegalStateException("Unsupported operator");
         };
     }
-
 }

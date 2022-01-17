@@ -1,12 +1,10 @@
-package interpreter.math.operations.commands;
+package interpreter.math.operations.doubleOperation;
 
 import interpreter.math.MathValue;
-import interpreter.math.operations.doubleOperation.DoubleOperatorOperation;
 
+public class MultiplyOperation extends DoubleOperatorOperation {
 
-public class MinusDoubleOperation extends DoubleOperatorOperation {
-
-    public MinusDoubleOperation(MathValue firstElement, MathValue secondElement) {
+    public MultiplyOperation(MathValue firstElement, MathValue secondElement) {
         super(firstElement, secondElement);
     }
 
@@ -17,14 +15,12 @@ public class MinusDoubleOperation extends DoubleOperatorOperation {
         if(firstCheckValue == 0 || secondCheckValue == 0){
             double first = firstElement.getIntValue();
             double second = secondElement.getIntValue();
-            return new MathValue(second-first);
+            return new MathValue(first*second);
         }
         else{
             int first = firstElement.getIntValue();
             int second = secondElement.getIntValue();
-            return new MathValue(second-first);
+            return new MathValue(first*second);
         }
     }
-
-
 }

@@ -28,6 +28,6 @@ public class Pen {
 
     public void setSize(int size) {
         this.size = size;
-        //penAssertion();
+        penAssertion();
     }
 }

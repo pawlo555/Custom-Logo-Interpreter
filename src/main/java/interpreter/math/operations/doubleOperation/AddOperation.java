@@ -1,8 +1,6 @@
-package interpreter.math.operations.commands;
+package interpreter.math.operations.doubleOperation;
 
 import interpreter.math.MathValue;
-import interpreter.math.operations.doubleOperation.DoubleOperatorOperation;
-
 
 public class AddOperation extends DoubleOperatorOperation {
 
@@ -25,6 +23,4 @@ public class AddOperation extends DoubleOperatorOperation {
             return new MathValue(first+second);
         }
     }
-
-
 }
