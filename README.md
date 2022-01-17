@@ -1,5 +1,12 @@
 # Custom Logo language
-Logo interpreter presented here is just another implementation of popular logo languages.
+Logo interpreter presented here is just another implementation of popular [Logo language](https://en.wikipedia.org/wiki/Logo_(programming_language)). <br>
+During work, we took inspiration from:<br>
+[Lynx](https://lynxcoding.club/) which is a modern, online version of logo with many additions as animations, multiple turtles.
+
+## Programme usage
+
+Here will be gui description
+
 
 ## Language list of commands:
 |Name|Description|Syntax|
