@@ -5,7 +5,6 @@ Logo interpreter presented here is just another implementation of popular logo l
 |Name|Description|Syntax|
 |----|-----------|------|
 |<b>forward</b>|Move current turtle forward|`forward 100` <br> `fd 50+40`|
-|----|-----------|------|
 |<b>back</b>| Move current turtle back | `backward -10` <br> `bc 50-40`|
 |<b>left</b>| Turn current turtle left | `left 90` <br> `lt 45` |
 |<b>right</b> | Turn current turtle right | `right 90` <br> `rt 45` |
