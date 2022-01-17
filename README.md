@@ -34,6 +34,39 @@ Language enables writing mathematical expression for example:<br>
 `(2+2)*2` will evaluate to 8 and `2+2*2` will evaluate to 6.<br>
 When writing operator that takes two arguments put it between them:<br>
 `2 pow 7` is correct, while:<br> `pow 2 7` will give an error.<br>
+<br>
+List of mathematical expressions:
+
+|Name|Value|Alternative values|Description|
+|----|-----|------------------|-----------|
+|<b>abs</b>| abs|ABS| Absolute value|
+|<b>arctan</b>|arctan|ARCTAN| Arcus tangent from value |
+|<b>cos</b>| cos|COS| Cosine function |
+|<b>int</b>| int | INT | Cast value to integer |
+|<b>ln</b>| ln | LN | Natural logarithm |
+|<b>minus</b>| - | | Minus sign |
+|<b>random</b>| random | RANDOM | Random number between 0 (inclusive) and specified value (casted to int and exclusive)
+|<b>round</b>| round | ROUND | Round value to integer
+|<b>sin</b>| sin | SIN | Sinus function |
+|<b>sqrt</b>| sqrt | SQRT | Square root of value | 
+|<b>tan</b>| tan | TAN | Tangent function
+|<b>not</b>| not | NOT, ! | Logical not |
+|<b>power</b>| pow | POW | Power of two numbers 10 pow 2 is equal 100
+|<b>sum</b>| + | | Sum of two values
+|<b>product</b>| * | | Product of two values
+|<b>division</b>| / | | Division of two values
+|<b>different</b>| != | | Not equal |
+|<b>equals</b>| == | | Equal
+|<b>bigger</b>| \> | | Bigger relation
+|<b>smaller</b>| < | | Smaller relation
+|<b>bigger or equal</b>| \>= | => | Bigger or equal relation
+|<b>smaller or equal</b>| <= | =< | Smaller or equal relation
+|<b>exp</b>| exp | EXP | Exponential function equals to POW with e as exponent
+|<b>log</b>| log | LOG | Logarithm with specified base: 2 log 16 = 4
+|<b>or</b>| or | OR, &#124;&#124; | Logical or |
+|<b>and</b>| and | AND, && | Logical and |
+
+
 
 ## Variables
 Variable could bea an integer, boolean or double.<br>
@@ -113,3 +146,4 @@ call square 100
     - all commands list
     - all commands examples
     - how gui work
+- add errors to math expressions and check order: e.g. write: 2 pow 16 or 16 pow 2
