@@ -1,7 +1,7 @@
 # Custom Logo language
 Logo interpreter presented here is just another implementation of popular [Logo language](https://en.wikipedia.org/wiki/Logo_(programming_language)). <br>
 During work, we took inspiration from:<br>
-[Lynx](https://lynxcoding.club/) which is a modern, online version of logo with many additions as animations, multiple turtles.
+[Lynx](https://lynxcoding.club/) a modern, online version of logo with many additions as animations, multiple turtles etc.
 
 ## Programme usage
 
@@ -54,11 +54,12 @@ List of mathematical expressions:
 |<b>minus</b>| - | | Minus sign |
 |<b>random</b>| random | RANDOM | Random number between 0 (inclusive) and specified value (casted to int and exclusive)
 |<b>round</b>| round | ROUND | Round value to integer
+|<b>remainder<b>| remainder | REMAINDER, % | Modulo 
 |<b>sin</b>| sin | SIN | Sinus function |
 |<b>sqrt</b>| sqrt | SQRT | Square root of value | 
 |<b>tan</b>| tan | TAN | Tangent function
 |<b>not</b>| not | NOT, ! | Logical not |
-|<b>power</b>| pow | POW | Power of two numbers 10 pow 2 is equal 100
+|<b>power</b>| pow | POW, ^ | Power of two numbers 10 pow 2 is equal 100
 |<b>sum</b>| + | | Sum of two values
 |<b>product</b>| * | | Product of two values
 |<b>division</b>| / | | Division of two values
@@ -69,7 +70,7 @@ List of mathematical expressions:
 |<b>bigger or equal</b>| \>= | => | Bigger or equal relation
 |<b>smaller or equal</b>| <= | =< | Smaller or equal relation
 |<b>exp</b>| exp | EXP | Exponential function equals to POW with e as exponent
-|<b>log</b>| log | LOG | Logarithm with specified base: 2 log 16 = 4
+|<b>log</b>| log | LOG | Logarithm with specified base: 16 log 2 = 4
 |<b>or</b>| or | OR, &#124;&#124; | Logical or |
 |<b>and</b>| and | AND, && | Logical and |
 

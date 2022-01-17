@@ -23,17 +23,17 @@ public enum Operators {
 
     public int getPriority() {
         return switch(this) {
-            case LEFT_BRACKET, RIGHT_BRACKET -> 11;
-            case COMP,COMPSMALLER,COMPSMALLEREQUALS,COMPBIGGER,COMPBIGGEREQUALS -> 0;
+            case LEFT_BRACKET, RIGHT_BRACKET -> -1;
+            case COMP, COMPSMALLER, COMPSMALLEREQUALS, COMPBIGGER, COMPBIGGEREQUALS -> 0;
             case AND,OR -> 1;
-            case MINUS,DIFFERENCE, MINUS_SINGLE,NOT  -> 2;
+            case MINUS, DIFFERENCE, NOT  -> 2;
             case  PLUS ,REMAINDER  -> 5;
             case  DIVIDE -> 6;
             case  MULTIPLY,QUOT -> 7;
             case  POW,EXP-> 8;
             case  LOG-> 9;
-            case  LN, INT, ABS, COS ,RAND, ROUND, SIN ,SQRT, TAN,ARCTAN -> 10;
-
+            case  LN, INT, ABS, COS ,RAND, ROUND, SIN , SQRT, TAN, ARCTAN -> 10;
+            case MINUS_SINGLE -> 11;
         };
     }
 }

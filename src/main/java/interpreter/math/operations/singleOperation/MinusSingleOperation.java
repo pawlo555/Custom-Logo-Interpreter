@@ -11,11 +11,11 @@ public class MinusSingleOperation extends SingleOperatorOperation {
     @Override
     public MathValue evaluate() {
         int checkVal = element.checkValue();
-        if(checkVal == 0){
+        if(checkVal == 0) {
             double value = element.getIntValue();
             return new MathValue(-value);
         }
-        else{
+        else {
             int value = element.getIntValue();
             return new MathValue(-value);
         }

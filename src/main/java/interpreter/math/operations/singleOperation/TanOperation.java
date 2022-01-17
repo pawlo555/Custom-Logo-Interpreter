@@ -14,11 +14,11 @@ public class TanOperation extends SingleOperatorOperation {
     @Override
     public MathValue evaluate() {
         int checkVal = element.checkValue();
-        if(checkVal == 0){
-            double value = element.getIntValue();
+        if(checkVal == 0) {
+            double value = element.getDoubleValue();
             return new MathValue(tan(value));
         }
-        else{
+        else {
             int value = element.getIntValue();
             return new MathValue(tan(value));
         }

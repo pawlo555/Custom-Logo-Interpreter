@@ -16,27 +16,31 @@ public class MathStatement {
     public MathStatement(LinkedList<String> elements) {
 
         Stack<String> operators = new Stack<>();
+        System.out.println("Elements:" + elements);
         for(String element: elements) {
             if (MathElement.isValue(element)) {
                 elementsInReverseNotation.addLast(element);
             }
             else if (element.equals("(")) {
+                System.out.println("Adding (");
                 operators.push(Operators.LEFT_BRACKET.name());
             }
             else if (element.equals(")")){
                 if (operators.isEmpty()) {
                     throw new IllegalStateException("Brakets mismatch");
                 }
+                System.out.println("Operators:" + operators);
                 String operator = operators.pop();
                 while (!operator.equals(Operators.LEFT_BRACKET.name())) {
                     elementsInReverseNotation.addLast(operator);
                     if (operators.isEmpty()) {
-                        throw new IllegalStateException("Brakets mismatch");
+                        throw new IllegalStateException("Stack error no" + Operators.LEFT_BRACKET.name());
                     }
                     operator = operators.pop();
                 }
             }
             else if (MathElement.isOperator(element)) {
+                System.out.println("Operators in isOperator:" + operators);
                 boolean isRightCumulative = Operators.valueOf(element).isRightCumulate();
                 int priority = Operators.valueOf(element).getPriority();
                 while (!operators.isEmpty()) {

@@ -13,27 +13,28 @@ public class LogOperation extends DoubleOperatorOperation {
     public MathValue evaluate() {
         int firstCheckValue = firstElement.checkValue();
         int secondCheckValue = secondElement.checkValue();
+        checkErrors();
         if(firstCheckValue == 0 || secondCheckValue == 0){
-            double base = firstElement.getIntValue();
-            double antiLogarithm = secondElement.getIntValue();
-            if (base < 0.0 || base == 1) {
-                throw new MathException(MathException.LOG_BASE, base);
-            }
-            if (antiLogarithm < 0.0) {
-                throw new MathException(MathException.LOG_ANTI_LOGARITHM, antiLogarithm);
-            }
+            double base = firstElement.getDoubleValue();
+            double antiLogarithm = secondElement.getDoubleValue();
             return new MathValue(Math.log(antiLogarithm) / Math.log(base));
         }
         else{
             int base = firstElement.getIntValue();
             int antiLogarithm = secondElement.getIntValue();
-            if (base < 0 || base == 1) {
-                throw new MathException(MathException.LOG_BASE, base);
-            }
-            if (antiLogarithm < 0.0) {
-                throw new MathException(MathException.LOG_ANTI_LOGARITHM, antiLogarithm);
-            }
             return new MathValue(Math.log(antiLogarithm) / Math.log(base));
+        }
+    }
+
+    private void checkErrors() {
+        double base = firstElement.getDoubleValue();
+        if (base == 1 || base <= 0) {
+            throw new MathException(MathException.LOG_BASE, firstElement);
+        }
+
+        double antiLogarithm = secondElement.getDoubleValue();
+        if (antiLogarithm <= 0.0) {
+            throw new MathException(MathException.LOG_ANTI_LOGARITHM, secondElement);
         }
     }
 }

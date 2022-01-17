@@ -322,6 +322,7 @@ PI:
 POWER:
     'POW'
     | 'pow'
+    | '^'
     ;
 PRODUCT:
     '*'
@@ -337,6 +338,7 @@ RANDOM:
 REMAINDER:
     'REMAINDER'
     | 'remainder'
+    | '%'
     ;
 ROUND:
     'ROUND'

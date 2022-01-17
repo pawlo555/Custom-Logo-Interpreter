@@ -11,28 +11,24 @@ public class PowerOperation extends DoubleOperatorOperation {
 
     @Override
     public MathValue evaluate() {
+        if (firstElement.getDoubleValue() == 0.0 && secondElement.getDoubleValue() == 0.0) {
+            throw new MathException(MathException.ZERO_TO_ZERO, firstElement);
+        }
         int firstCheckValue = firstElement.checkValue();
         int secondCheckValue = secondElement.checkValue();
-        if(firstCheckValue == 0 || secondCheckValue == 0){
-            double first = firstElement.getIntValue();
-            double second = secondElement.getIntValue();
-            if (first < 0) {
-                throw new MathException(MathException.NEGATIVE_POWER_BASE, first);
+        if (firstCheckValue == 0 || secondCheckValue == 0) {
+            double first = firstElement.getDoubleValue();
+            double second = secondElement.getDoubleValue();
+            if (second < 0) {
+                throw new MathException(MathException.NEGATIVE_POWER_BASE, firstElement);
             }
-            if (first == 0.0 && second == 0.0) {
-                throw new MathException(MathException.ZERO_TO_ZERO, first);
-            }
-            return new MathValue(Math.pow(second,first));
+            return new MathValue(Math.pow(second, first));
         }
-        else{
+        else {
             int first = firstElement.getIntValue();
             int second = secondElement.getIntValue();
-            if (first == 0 && second == 0) {
-                throw new MathException(MathException.ZERO_TO_ZERO, first);
-            }
+
             return new MathValue((int) Math.pow(second,first));
         }
     }
-
-
 }

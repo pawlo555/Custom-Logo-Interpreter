@@ -13,8 +13,8 @@ public class MultiplyOperation extends DoubleOperatorOperation {
         int firstCheckValue = firstElement.checkValue();
         int secondCheckValue = secondElement.checkValue();
         if(firstCheckValue == 0 || secondCheckValue == 0){
-            double first = firstElement.getIntValue();
-            double second = secondElement.getIntValue();
+            double first = firstElement.getDoubleValue();
+            double second = secondElement.getDoubleValue();
             return new MathValue(first*second);
         }
         else{

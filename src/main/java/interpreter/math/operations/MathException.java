@@ -1,5 +1,7 @@
 package interpreter.math.operations;
 
+import interpreter.math.MathValue;
+
 public class MathException extends RuntimeException {
     public final static String PREFIX = "Math exception: ";
     public final static String ZERO_DIVISION = "Illegal denominator ";
@@ -9,17 +11,17 @@ public class MathException extends RuntimeException {
     public final static String NEGATIVE_SQRT = "Negative radicand: ";
     public final static String ZERO_TO_ZERO = "Zero to power: ";
 
-    double value;
+    MathValue value;
     String message;
 
-    public MathException(String message, double value) {
+    public MathException(String message, MathValue value) {
         this.message = message;
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return (PREFIX + message + value);
+        return PREFIX + message + value;
     }
 
     @Override

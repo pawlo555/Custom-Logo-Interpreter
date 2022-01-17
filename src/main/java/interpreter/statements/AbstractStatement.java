@@ -2,7 +2,8 @@ package interpreter.statements;
 
 import interpreter.Executor;
 import org.antlr.v4.runtime.ParserRuleContext;
-import utils.ErrorMessageComposer;
+import interpreter.LogoError;
+
 
 public abstract class AbstractStatement implements Statement {
     private final int line;
@@ -24,10 +25,11 @@ public abstract class AbstractStatement implements Statement {
         try {
             customExecute(executor);
         }
-        catch (IllegalStateException exception) {
-            String errorMessage = ErrorMessageComposer.buildErrorMessage(line, index, exception.getMessage());
-            System.out.println(errorMessage);
-            throw new RuntimeException(errorMessage);
+        catch (LogoError error) {
+            throw error;
+        }
+        catch (Exception | Error exception) {
+            throw new LogoError(line, index, exception.getMessage());
         }
     }
 

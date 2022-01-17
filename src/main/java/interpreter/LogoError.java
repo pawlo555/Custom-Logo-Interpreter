@@ -1,8 +1,12 @@
-package utils;
+package interpreter;
 
-public class ErrorMessageComposer {
+public class LogoError extends RuntimeException {
     private final static int CHARS_PER_LINE = 60;
 
+    public LogoError(int line, int index, String message) {
+        super(buildErrorMessage(line, index, message));
+    }
+    
     public static String buildErrorMessage(int line, int index, String message) {
         System.out.println("Error at line: " + line + ", element: " + index + ", Message:\n"
                 + getSplitMessage(message));

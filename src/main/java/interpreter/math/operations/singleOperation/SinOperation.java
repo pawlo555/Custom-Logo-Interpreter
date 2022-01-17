@@ -15,7 +15,7 @@ public class SinOperation extends SingleOperatorOperation {
     public MathValue evaluate() {
         int checkVal = element.checkValue();
         if(checkVal == 0){
-            double value = element.getIntValue();
+            double value = element.getDoubleValue();
             return new MathValue(sin(value));
         }
         else{

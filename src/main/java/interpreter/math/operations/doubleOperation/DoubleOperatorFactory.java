@@ -2,7 +2,6 @@ package interpreter.math.operations.doubleOperation;
 
 import interpreter.math.MathValue;
 import interpreter.math.Operators;
-import interpreter.math.operations.singleOperation.RemainderOperation;
 
 public class DoubleOperatorFactory {
 

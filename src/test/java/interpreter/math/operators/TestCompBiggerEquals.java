@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestCompBiggerEquals {
 
@@ -20,7 +20,6 @@ public class TestCompBiggerEquals {
         MathStatement statement = new MathStatement(linkedList);
         MathValue value = statement.evaluate(null);
 
-        assertEquals(true, value.getBooleanValue());
-
+        assertTrue(value.getBooleanValue());
     }
 }
