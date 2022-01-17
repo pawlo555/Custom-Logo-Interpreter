@@ -7,26 +7,26 @@ Logo interpreter presented here is just another implementation of popular logo l
 |<b>forward</b>|Move current turtle forward|`forward 100` <br> `fd 50+40`|
 |----|-----------|------|
 |<b>back</b>| Move current turtle back | `backward -10` <br> `bc 50-40`|
-|<b>left</b>| Turn current turtle left | `left 90` <br> `lt 45`
-|<b>right</b> | Turn current turtle right |
-|<b>repeat</b> | Perform block of instruction set number of times |
-|<b>while</b> | While loop |
+|<b>left</b>| Turn current turtle left | `left 90` <br> `lt 45` |
+|<b>right</b> | Turn current turtle right | `right 90` <br> `rt 45` |
+|<b>repeat</b> | Perform block of instruction set number of times | `repeat 2 [ fd 20 lt 90]` |
+|<b>while</b> | While loop | `while 1 [ fd 20 rt 90]` | 
 |<b>assign</b> | Assign value to the variable |
 |<b>let</b> | Creates a variable with specific value or overwrite it |
-|<b>changeTurtle</b> | Change turtle from one to another |
-|<b>clean</b> | Clean the canvas |
-|<b>home</b> | Set current turtle to start location (0,0)|
+|<b>changeTurtle</b> | Change turtle from one to another |  `changeturtle tt` |
+|<b>clean</b> | Clean the canvas | `clean` |
+|<b>home</b> | Set current turtle to start location (0,0)| `home` |
 |<b>if</b> | If instruction - with no else |
 |<b>ifElse</b> | IfElse instruction - else is compulsory to specify |
-|<b>newTurtle</b> | creates a new turtle with specified name |
-|<b>penDown</b> | Put the pen down - turtle is drawing line when walking |
-|<b>penUp</b> | Put the pen up - turtle is not drawing while walking|
+|<b>newTurtle</b> | creates a new turtle with specified name | `newturtle tt` |
+|<b>penDown</b> | Put the pen down - turtle is drawing line when walking | `pd` |
+|<b>penUp</b> | Put the pen up - turtle is not drawing while walking| `pu` |
 |<b>call</b> | Call a specified procedure|
 |<b>procedure</b> | Creates a procedure|
-|<b>removeTurtle</b> | Removes the selected turtle|
-|<b>rename</b> | Change current turtle name|
-|<b>setPenColor</b> | Set current turtle pen color|
-|<b>setPenSize</b> |Set current turtle pen size|
+|<b>removeTurtle</b> | Removes turtle | `removeturtle tt` |
+|<b>rename</b> | Change current turtle name| `rename ttt` |
+|<b>setColor</b> | Set current turtle pen color| `setcolor 7` |
+|<b>setPenSize</b> |Set current turtle pen size| `setpensize 5` |
 |<b></b> 
 
 ## Math expression:
