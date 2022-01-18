@@ -44,10 +44,10 @@ public class CanvasEngine implements Engine {
 
     public void removeTurtle(String toRemoveTurtleName,boolean toRename) {
         Turtle toRemove = turtlesMap.get(toRemoveTurtleName);
-        logoCanvas.removeTurtle(toRemove.getPosition(),toRemove.getRotation().getRotationOnCanvas());
         if (toRemoveTurtleName.equals(currentTurtleName) && turtlesMap.size() == 1 && !toRename) {
             throw new IllegalStateException("Cannot delete last turtle");
         }
+        logoCanvas.removeTurtle(toRemove.getPosition(),toRemove.getRotation().getRotationOnCanvas());
         turtlesMap.remove(toRemoveTurtleName);
         if (currentTurtleName.equals(toRemoveTurtleName) && turtlesMap.size() != 0) {
             currentTurtleName = (String) turtlesMap.keySet().toArray()[0];
@@ -97,6 +97,11 @@ public class CanvasEngine implements Engine {
             logoCanvas.paintLine(oldPosition, currentTurtle);
         }
         logoCanvas.repaintTurtle(oldPosition, oldAngle, currentTurtle);
+        if(turtlesMap.size() > 1){
+            for(Turtle t : turtlesMap.values()){
+                logoCanvas.paintTurtle(t);
+            }
+        }
     }
 
     public void backward(double n) {
@@ -107,6 +112,12 @@ public class CanvasEngine implements Engine {
         int oldAngle = currentTurtle.getRotation().getRotationOnCanvas();
         currentTurtle.left(degrees); // we swap axes when displaying
         logoCanvas.repaintTurtle(currentTurtle.getPosition(), oldAngle, currentTurtle);
+        if(turtlesMap.size() > 1){
+            for(Turtle t : turtlesMap.values()){
+                logoCanvas.paintTurtle(t);
+
+            }
+        }
     }
 
     public void left(int degrees) {
