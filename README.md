@@ -23,7 +23,7 @@ Commands view consists of:
 Procedures view is very similar to Commands view - the main difference
 is command prompt and command history is replaced with simple editor and button executing the programme written in the editor.
 
-![Variables state](images/img_2.png)
+![Variables state](images/img_2.png)<br>
 Variable state displaying all current variables with values and all stored procedures.
 
 
@@ -162,7 +162,7 @@ call square 100
 
 ## Opening application
 
-Download LogoTranslator-1.0-shaded.jar located in ... and type command:<br>
+Download target/LogoTranslator-1.0-shaded.jar located in ... and type command:<br>
 `java -jar --module-path path\to\javafx\sdk\lib --add-modules=javafx.controls,javafx.fxml LogoTranslator-1.0-shaded.jar`
 
 or open and install Maven project.
