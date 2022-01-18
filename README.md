@@ -160,6 +160,13 @@ procedure square :x {
 call square 100 
 ```
 
+## Opening application
+
+Download LogoTranslator-1.0-shaded.jar located in ... and type command:<br>
+`java -jar --module-path path\to\javafx\sdk\lib --add-modules=javafx.controls,javafx.fxml LogoTranslator-1.0-shaded.jar`
+
+or open and install Maven project.
+
 # Custom Logo Interpreter
 
 - create executable jar/exe - Michał
