@@ -17,23 +17,26 @@ Here will be gui description
 |<b>right</b> | Turn current turtle right | `right 90` <br> `rt 45` |
 |<b>repeat</b> | Perform block of instruction set number of times | `repeat 2 [ fd 20 lt 90]` |
 |<b>while</b> | While loop | `while 1 [ fd 20 rt 90]` | 
-|<b>assign</b> | Assign value to the variable |
-|<b>let</b> | Creates a variable with specific value or overwrite it |
+|<b>assign</b> | Assign value to the variable | `assign :x 100` |
+|<b>let</b> | Creates a variable with specific value or overwrite it | `let ::x 100` |
 |<b>changeTurtle</b> | Change turtle from one to another |  `changeturtle tt` |
 |<b>clean</b> | Clean the canvas | `clean` |
 |<b>home</b> | Set current turtle to start location (0,0)| `home` |
-|<b>if</b> | If instruction - with no else |
-|<b>ifElse</b> | IfElse instruction - else is compulsory to specify |
+|<b>if</b> | If instruction - with no else | `if :x>10 { forward 100 left 90}` |
+|<b>ifElse</b> | IfElse instruction - else is compulsory to specify | `ifElse :x>10 [fd 100] [back 100]` |
 |<b>newTurtle</b> | creates a new turtle with specified name | `newturtle tt` |
 |<b>penDown</b> | Put the pen down - turtle is drawing line when walking | `pd` |
 |<b>penUp</b> | Put the pen up - turtle is not drawing while walking| `pu` |
-|<b>call</b> | Call a specified procedure|
-|<b>procedure</b> | Creates a procedure|
+|<b>call</b> | Call a specified procedure| `call square :x`
+|<b>procedure</b> | Creates a procedure| `procedure square :x { repeat 4 [ fd :x left 90]}`
 |<b>removeTurtle</b> | Removes turtle | `removeturtle tt` |
 |<b>rename</b> | Change current turtle name| `rename ttt` |
 |<b>setColor</b> | Set current turtle pen color| `setcolor 7` |
 |<b>setPenSize</b> |Set current turtle pen size| `setpensize 5` |
-|<b></b> 
+
+### Comments
+To write commends use: `# comment here #` <br>
+Comments need to be open and closed and could take many lines.
 
 ## Math expression:
 
