@@ -1,4 +1,4 @@
-grammar Logo; // Define a com.grammar called Hello
+grammar Logo; // Define a grammar called Logo
 
 // PARSER
 
@@ -485,4 +485,3 @@ WHITESPACE:
 NEWLINE:
     '\r'? '\n'
     | '\r';
-
