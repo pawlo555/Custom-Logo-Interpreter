@@ -20,10 +20,12 @@ Commands view consists of:
 - error box where errors will be displayed
 
 ![Procedures](images/img_1.png)
+
 Procedures view is very similar to Commands view - the main difference
 is command prompt and command history is replaced with simple editor and button executing the programme written in the editor.
 
-![Variables state](images/img_2.png)<br>
+![Variables state](images/img_2.png)
+
 Variable state displaying all current variables with values and all stored procedures.
 
 
@@ -165,7 +167,9 @@ call square 100
 Download target/LogoTranslator-1.0-shaded.jar located in ... and type command:<br>
 `java -jar --module-path path\to\javafx\sdk\lib --add-modules=javafx.controls,javafx.fxml LogoTranslator-1.0-shaded.jar`
 
-or open and install Maven project.
+This work with java and javafx version "17.0.1"
+
+Other option is install Maven project.
 
 # Custom Logo Interpreter
 
