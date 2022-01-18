@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>Programme</groupId>
-    <artifactId>LynxTranslator</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.logo</groupId>
+    <artifactId>LogoTranslator</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -101,8 +101,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
 
@@ -118,28 +118,25 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>programme.Main</mainClass>
+                    <mainClass>com.programme.Main</mainClass>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>programme.Main</mainClass>
+                                <transformer implementation=
+                                                     "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.programme.Main</mainClass>
                                 </transformer>
                             </transformers>
-
                         </configuration>
                     </execution>
                 </executions>
