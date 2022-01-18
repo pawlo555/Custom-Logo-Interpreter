@@ -3,9 +3,28 @@ Logo com.interpreter presented here is just another implementation of popular [L
 During work, we took inspiration from:<br>
 [Lynx](https://lynxcoding.club/) a modern, online version of logo with many additions as animations, multiple turtles etc.
 
-## Programme usage
+## Graphical User interface
 
-Here will be gui description
+![Commands](images/img.png)
+
+Commands view consists of:
+- logo canvas where user can see code execution
+- history of pressed commands
+- navigation buttons
+  - Commands button - go to Commands view (at picture above)
+  - Procedures button - go to procedure view (at picture below)
+  - Variables state - go to Variable state view
+  - Load file - load ready file to programme
+  - Clean button - clean environment (procedures and variables)
+- command prompt to write commands (Enter to execute) 
+- error box where errors will be displayed
+
+![Procedures](images/img_1.png)
+Procedures view is very similar to Commands view - the main difference
+is command prompt and command history is replaced with simple editor and button executing the programme written in the editor.
+
+![Variables state](images/img_2.png)
+Variable state displaying all current variables with values and all stored procedures.
 
 
 ## Language list of commands:
@@ -153,8 +172,3 @@ call square 100
     - changeturtle x - changes current turtle to turtle x
 - commands to change pen size and color (optionally turtle color) - Michał - PARTLY DONE
 - implement easy commands as setting turtle visible - Michał
-- documentation - Paweł
-    - all commands list
-    - all commands examples
-    - how gui work
-- add errors to math expressions and check order: e.g. write: 2 pow 16 or 16 pow 2
