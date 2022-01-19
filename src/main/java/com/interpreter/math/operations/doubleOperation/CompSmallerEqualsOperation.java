@@ -11,7 +11,7 @@ public class CompSmallerEqualsOperation extends DoubleOperatorOperation {
 
     @Override
     public MathValue evaluate() {
-        return new CompBiggerOperation(secondElement, firstElement).evaluate();
+        return new CompBiggerEqualsOperation(secondElement, firstElement).evaluate();
     }
 
 
