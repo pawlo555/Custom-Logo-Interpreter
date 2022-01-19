@@ -164,22 +164,9 @@ call square 100
 
 ## Opening application
 
-Download target/LogoTranslator-1.0-shaded.jar located in ... and type command:<br>
-`java -jar --module-path path\to\javafx\sdk\lib --add-modules=javafx.controls,javafx.fxml LogoTranslator-1.0-shaded.jar`
+Download target/LogoTranslator-1.0.jar and exec by command:
+`java -jar LogoTranslator-1.0.jar`
 
-This work with java and javafx version "17.0.1"
+This work with java version "17.0.1"
 
 Other option is install Maven project.
-
-# Custom Logo Interpreter
-
-- create executable jar/exe - Michał
-- add commands that returning value (e.g. getX) - Michał/Paweł - mostly
-- multiple turtles (add, remove, change turtle commands) - Michał - DONE (TO CHECK RENAME)
-    commands
-    - newturtle x - adds new turtle to playground x = new turtle name
-    - rename x - renames current turtle to name x
-    - remove x - removes turtle x
-    - changeturtle x - changes current turtle to turtle x
-- commands to change pen size and color (optionally turtle color) - Michał - PARTLY DONE
-- implement easy commands as setting turtle visible - Michał

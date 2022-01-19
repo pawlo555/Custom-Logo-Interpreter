@@ -28,27 +28,6 @@
 
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
-            <version>11</version>
-            <classifier>win</classifier>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
-            <version>11</version>
-            <classifier>mac</classifier>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
-            <version>11</version>
-            <classifier>linux</classifier>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
             <version>11</version>
             <classifier>win</classifier>
@@ -118,7 +97,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.programme.Main</mainClass>
+                    <mainClass>com.programme.Launcher</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -130,11 +109,10 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
                                 <transformer implementation=
                                                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.programme.Main</mainClass>
+                                    <mainClass>com.programme.Launcher</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
