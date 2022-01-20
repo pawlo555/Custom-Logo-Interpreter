@@ -1,14 +1,13 @@
 package com.programme.controllers;
 
 import com.interpreter.Interpreter;
+import com.programme.elements.*;
+import com.programme.elements.Console;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import com.programme.elements.Console;
-import com.programme.elements.LogoCanvas;
-import com.programme.elements.VariablesDisplayer;
 
 import java.io.*;
 
@@ -22,6 +21,8 @@ public class Controller {
     @FXML private VariablesDisplayer environment;
 
     public Interpreter interpreter;
+    public Monitor monitor = new Monitor();
+    public CommandsThread commandThread = new CommandsThread(monitor,interpreter);
 
     public LogoCanvas getLogoCanvas() {
         return logoCanvas;
@@ -66,10 +67,13 @@ public class Controller {
     }
 
     @FXML
-    private void executeProgramme() {
+    private void executeProgramme() throws InterruptedException {
         String programme = programmeContent.getText();
-        interpreter.executeCode(programme);
-        environment.displayEnvironment();
+        monitor.addTask(programme);
+        boolean ifUpdate = monitor.checkIfReset();
+        if(ifUpdate){
+            environment.displayEnvironment();
+        }
     }
 
     private void openFile(File file) throws IOException {
