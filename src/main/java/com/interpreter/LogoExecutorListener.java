@@ -14,7 +14,9 @@ public class LogoExecutorListener extends LogoMathListener {
 
     @Override
     public void exitForward(LogoParser.ForwardContext ctx) {
-        statement = new StatementForward(ctx, mathCollector.getMathStatement());
+        MathStatement mathStatement = mathCollector.getMathStatement();
+        statement = new StatementForward(ctx, mathStatement);
+        System.out.println(mathStatement);
         exit();
     }
 

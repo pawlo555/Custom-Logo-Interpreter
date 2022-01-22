@@ -8,14 +8,11 @@ public class LogoError extends RuntimeException {
     }
     
     public static String buildErrorMessage(int line, int index, String message) {
-        System.out.println("Error at line: " + line + ", element: " + index + ", Message:\n"
-                + getSplitMessage(message));
         return "Error at line: " + line + ", element: " + index + ", Message:\n"
                 + getSplitMessage(message);
     }
 
     private static String getSplitMessage(String message) {
-        System.out.println(message);
         StringBuilder builder = new StringBuilder();
         int index = 0;
         while (index <= message.length()) {

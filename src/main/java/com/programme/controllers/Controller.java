@@ -18,11 +18,9 @@ public class Controller {
     @FXML private TextArea errorReporter;
     @FXML private TextArea programmeContent;
     @FXML private VBox programmeVBox;
-    @FXML private VariablesDisplayer environment;
+    @FXML private VariablesDisplayer variablesDisplayer;
 
-    public Interpreter interpreter;
-    public Monitor monitor = new Monitor();
-    public CommandsThread commandThread = new CommandsThread(monitor,interpreter);
+    private Interpreter interpreter;
 
     public LogoCanvas getLogoCanvas() {
         return logoCanvas;
@@ -32,21 +30,21 @@ public class Controller {
     private void loadConsole() {
         console.setVisible(true);
         programmeVBox.setVisible(false);
-        environment.setVisible(false);
+        variablesDisplayer.setVisible(false);
     }
 
     @FXML
     private void loadProcedures() {
         console.setVisible(false);
         programmeVBox.setVisible(true);
-        environment.setVisible(false);
+        variablesDisplayer.setVisible(false);
     }
 
     @FXML
     private void loadEnvironment() {
         console.setVisible(false);
         programmeVBox.setVisible(false);
-        environment.setVisible(true);
+        variablesDisplayer.setVisible(true);
     }
 
     @FXML
@@ -63,17 +61,13 @@ public class Controller {
     @FXML
     private void clean() {
         interpreter.getExecutor().getEnvironment().clean();
-        environment.displayEnvironment();
+        variablesDisplayer.displayEnvironment();
     }
 
     @FXML
-    private void executeProgramme() throws InterruptedException {
+    private void executeProgramme() {
         String programme = programmeContent.getText();
-        monitor.addTask(programme);
-        boolean ifUpdate = monitor.checkIfReset();
-        if(ifUpdate){
-            environment.displayEnvironment();
-        }
+        interpreter.executeCode(programme);
     }
 
     private void openFile(File file) throws IOException {
@@ -93,10 +87,18 @@ public class Controller {
         return errorReporter;
     }
 
+    public VariablesDisplayer getDisplayer() {
+        return variablesDisplayer;
+    }
+
     public void setInterpreter(Interpreter interpreter) {
         this.interpreter = interpreter;
         this.console.addListener(interpreter);
-        this.environment.setEnvironment(interpreter.getExecutor().getEnvironment());
-        this.console.addListener(this.environment);
+        this.variablesDisplayer.setEnvironment(interpreter.getExecutor().getEnvironment());
+        this.console.addListener(this.variablesDisplayer);
+    }
+
+    public void setStop() {
+        interpreter.stopThread();
     }
 }
