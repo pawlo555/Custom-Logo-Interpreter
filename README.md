@@ -5,7 +5,7 @@ During work, we took inspiration from:<br>
 
 ## Graphical User interface
 
-![Commands](images/img.png)
+![img.png](images/img.png)
 
 Commands view consists of:
 - logo canvas where user can see code execution
@@ -16,15 +16,16 @@ Commands view consists of:
   - Variables state - go to Variable state view
   - Load file - load ready file to programme
   - Clean button - clean environment (procedures and variables)
+  - Stop button - stop current execution
 - command prompt to write commands (Enter to execute) 
 - error box where errors will be displayed
 
-![Procedures](images/img_1.png)
+![img_1.png](images/img_1.png)
 
 Procedures view is very similar to Commands view - the main difference
 is command prompt and command history is replaced with simple editor and button executing the programme written in the editor.
 
-![Variables state](images/img_2.png)
+![img_2.png](images/img_2.png)
 
 Variable state displaying all current variables with values and all stored procedures.
 

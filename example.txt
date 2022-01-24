@@ -1,14 +1,23 @@
-procedure square :x [
+procedure square :x :y [
     repeat 4 [
-        forward :x left 90
+        forward :x left :y
     ]
 ]
 
 procedure manySquares :begin {
 	if :begin  > 10 {
-		call square :begin
+		call square :begin 90
 		call manySquares :begin-10
 	}
 }
 
 call manySquares 100
+
+procedure factorial :n {
+	let ::result 1
+	let :i 1
+	while :i <= :n {
+		assign :result :result*:i
+		assign :i :i+1
+	}
+}
