@@ -47,6 +47,9 @@ public class CanvasEngine implements Engine {
         }
         logoCanvas.removeTurtle(toRemove.getPosition(),toRemove.getRotation().getRotationOnCanvas());
         turtlesMap.remove(toRemoveTurtleName);
+        for(Turtle t : turtlesMap.values()){
+            logoCanvas.paintTurtle(t);
+        }
         if (currentTurtleName.equals(toRemoveTurtleName) && turtlesMap.size() != 0) {
             currentTurtleName = (String) turtlesMap.keySet().toArray()[0];
             currentTurtle = turtlesMap.get(currentTurtleName);

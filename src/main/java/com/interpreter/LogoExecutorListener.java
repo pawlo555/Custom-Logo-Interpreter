@@ -154,8 +154,11 @@ public class LogoExecutorListener extends LogoMathListener {
     @Override
     public void exitNewTurtle(LogoParser.NewTurtleContext ctx){
         String name = ctx.stringArg().getText();
-        statement = new StatementNewTurtle(ctx,name);
-        exit();
+        if(!name.equals("<missing OTHERWORD>")){
+            System.out.println("THIS IS NAME ----> " + name + "W\n");
+            statement = new StatementNewTurtle(ctx,name);
+            exit();
+        }
     }
 
     @Override
