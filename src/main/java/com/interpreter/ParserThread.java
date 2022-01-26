@@ -29,8 +29,8 @@ public class ParserThread extends Thread {
     @Override
     public void run() {
         try {
+            Platform.runLater(() -> errorOutput.setText(" "));
             parseCommands();
-            errorOutput.setText(" ");
         }
         catch (Exception exception) {
             System.out.println("Exception:" + exception.getMessage());
@@ -77,7 +77,7 @@ public class ParserThread extends Thread {
         }
         catch (InterruptedException exception) {
             System.out.println("General interrupt");
-            throw new IllegalStateException("Stopped clicked outside locks");
+            throw new IllegalStateException("Stopped clicked");
         }
     }
 
